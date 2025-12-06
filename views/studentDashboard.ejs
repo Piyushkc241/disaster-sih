@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard - Disaster Management App</title>
+
+    <link rel="stylesheet" href="/css/style2.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <div class="layout">
+      <!-- ========== SIDEBAR ========== -->
+      <aside class="sidebar">
+        <a href="/" class="sidebar-logo">
+          <img src="/assets/logo.png" alt="Disaster Learning Hub Logo" />
+          <span>Disaster Learning Hub</span>
+        </a>
+
+        <nav class="sidebar-nav">
+          <a href="#hero" class="active">
+            <i class="fa fa-gauge"></i> Dashboard
+          </a>
+          <a href="#modules">
+            <i class="fa fa-book"></i> Modules
+          </a>
+          <a href="#Quizz">
+            <i class="fa fa-gamepad"></i> Quizz
+          </a>
+          <a href="#chatbot">
+            <i class="fa fa-robot"></i> Chatbot
+          </a>
+        </nav>
+
+        <button id="logoutBtn" class="sidebar-logout">
+          <i class="fa fa-sign-out-alt"></i>
+          Logout
+        </button>
+      </aside>
+
+      <!-- ========== MAIN AREA ========== -->
+      <div class="main-area">
+        <!-- Hero Banner -->
+        <section id="hero" class="dashboard-hero">
+          <div class="overlay"></div>
+          <div class="hero-content">
+            <h1>Welcome, Student!</h1>
+            <p>Explore Disaster Management with Fun Learning Tools</p>
+          </div>
+        </section>
+
+        <!-- Dashboard Grid Content -->
+        <section class="dashboard-content">
+          <div class="dashboard-grid">
+            
+            <!-- NEW MODULES CARD -->
+            <div class="dashboard-card" id="modules">
+              <h2><i class="fa fa-book"></i> Learning Modules</h2>
+              <p>
+                Learn disaster safety step-by-step with structured modules,
+                activity sheets, and real-life survival examples.
+              </p>
+              <form action="/index">
+
+                <button class="cta-btn" style="border-color: white; border-radius: 0.5rem;" >View Modules</button>
+              </form>
+              </div>
+
+            <!-- Quiz Card -->
+            <div class="dashboard-card" id="Quizz">
+              <h2><i class="fa fa-question-circle"></i> Learn with Quizz</h2>
+              <p>
+                Make learning exciting with interactive quizzes that test real-life
+                decision-making during emergencies.
+              </p>
+
+              <form action="/quiz">
+
+                <button class="cta-btn" style="border-radius: 0.6rem; border-color: white;">Start Quizz</button>
+              </form>
+              </div>
+
+            <!-- Chatbot -->
+            <div class="dashboard-card chatbot-full" id="chatbot">
+              <h2><i class="fa fa-robot"></i> Chatbot Assistant</h2>
+              <p>Ask questions about disasters and get quick safety tips.</p>
+
+              <div class="chat-container">
+                <div id="chatMessages" class="chat-messages">
+                  <div class="message bot-message">
+                    <div class="bubble">
+                      Hi! I’m <strong>DisasterBot</strong>. Kya jana hai? (Try:
+                      earthquake, flood, fire)
+                    </div>
+                  </div>
+                </div>
+
+                <div class="chat-input-container">
+                  <input
+                    type="text"
+                    id="chatInput"
+                    class="chat-input"
+                    placeholder="Type your query..."
+                    onkeypress="handleKeyPress(event)"
+                  />
+                  <button class="send-btn" onclick="sendMessage()">
+                    <i class="fa fa-paper-plane"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- ========== SCRIPT ========== -->
+    <script>
+      // Logout redirect
+      document.getElementById("logoutBtn").addEventListener("click", function () {
+        window.location.href = "/";
+      });
+      // Chatbot functions (same logic as before)
+      function sendMessage() {
+        const input = document.getElementById("chatInput");
+        const message = input.value.trim();
+        if (!message) return;
+
+        addMessage(message, "user");
+        input.value = "";
+
+        setTimeout(() => {
+          const response = getBotResponse(message.toLowerCase());
+          addMessage(response, "bot");
+        }, 800);
+      }
+
+      function handleKeyPress(event) {
+        if (event.key === "Enter") sendMessage();
+      }
+
+      function addMessage(text, sender) {
+        const messagesDiv = document.getElementById("chatMessages");
+        const messageDiv = document.createElement("div");
+        messageDiv.className = `message ${sender}-message`;
+        messageDiv.innerHTML = `<div class="bubble">${text}</div>`;
+        messagesDiv.appendChild(messageDiv);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+      }
+
+      // (Bot response logic unchanged)
+    </script>
+  </body>
+</html>

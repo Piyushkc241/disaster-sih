@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Disaster Preparedness & Response Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Icons (Font Awesome CDN) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="/css/style2.css" />
+</head>
+<body>
+  <!-- ========== NAVBAR ========== -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <img src="/assets/logo.png" alt="Disaster Learning Hub Logo" class="logo-img" />
+        <span class="logo-text">Disaster Learning Hub</span>
+      </div>
+            
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+  
+      <ul class="nav-links" id="navLinks">
+        <li><a data-target="home"href="/" >Home</a></li>
+        <li><a data-target="about" >About Us</a></li>
+        <li><a data-target="response">Response</a></li>
+        <li class="dropdown">
+          <a data-target="past-crisis">Past Crisis</a>
+          <ul class="dropdown-menu">
+            <li><a href="/firehistory">Fire</a></li>
+            <li><a href="/earthquakehistory">Earthquake</a></li>
+            <li><a href="/floodhistory">Flood</a></li>
+          </ul>
+        </li>
+      
+        <!-- Updated Report Link opens report.html page -->
+        <li><a href="/report">Report Incident</a></li>
+      </ul>
+      
+  
+      <!-- LOGIN BUTTON -->
+       <form action="/chooselogin">
+
+         <button id="loginBtn" class="btn nav-login-btn">
+           <i class="fa-solid fa-user"></i> Login
+          </button>
+        </form>
+    </div>
+  </header>
+  
+
+  <!-- ========== MAIN CONTENT ========== -->
+  <main>
+    <!-- HOME / HERO -->
+    <section id="home">
+      <div class="section-card hero-card">
+        <div class="hero-text">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            Live Disaster Monitoring & Response
+          </div>
+          <h1>Disaster Preparedness & Response Portal</h1>
+          <p>
+            Be prepared before disaster strikes. This portal connects citizens, volunteers,
+            and authorities for faster coordination during emergencies like floods,
+            earthquakes, fires and industrial accidents.
+          </p>
+          <p>
+            Learn what to do, follow verified guidelines, and instantly report incidents
+            from your area.
+          </p>
+
+          <div class="hero-buttons">
+          
+            <button class="btn btn-outline" data-target="response">
+              <i class="fa-solid fa-book-open"></i>
+              View Safety Steps
+            </button>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat-card">
+              <strong><i class="fa-solid fa-clock"></i> 24/7 Monitoring</strong>
+              Central control room tracks alerts and coordinates response teams.
+            </div>
+            <div class="hero-stat-card">
+              <strong><i class="fa-solid fa-people-group"></i> 5000+ Volunteers</strong>
+              Trained responders and local volunteers ready to assist on ground.
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-image-box">
+          <!-- Main disaster response image -->
+          <img src="https://images.pexels.com/photos/929382/pexels-photo-929382.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Disaster response team" />
+          <div class="hero-caption">
+            <i class="fa-solid fa-location-dot"></i>
+            Coordinated response teams working across regions.
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- READINESS SLIDER (COLD WAVES & FLOODS) -->
+    <section id="readiness">
+      <div class="section-card readiness-card">
+        <div class="section-header">
+          <i class="fa-solid fa-temperature-low"></i>
+          <h2>Get Ready: Cold Waves & Floods</h2>
+        </div>
+
+        <div class="readiness-slider">
+          <div class="readiness-slide active" id="slide-cold">
+            <div class="readiness-content">
+              <h3><i class="fa-solid fa-snowflake"></i> Get Ready for Cold Waves</h3>
+              <p>
+                Severe cold waves can lead to hypothermia, frostbite and
+                respiratory problems. Prepare in advance to stay warm and safe.
+              </p>
+              <ul>
+                <li>Keep enough warm clothes, blankets and socks ready.</li>
+                <li>Seal windows and doors to reduce cold air drafts.</li>
+                <li>Store basic medicines for cold, fever and cough.</li>
+              </ul>
+              <button
+                type="button"
+                class="btn btn-outline read-more-toggle"
+                data-target="coldMore"
+              >
+                Read more
+              </button>
+              <div class="read-more-content" id="coldMore">
+                <p>
+                  • Avoid prolonged exposure to cold; wear layers instead of a single thick jacket.<br />
+                  • Keep a hot water bottle or heating pad (use carefully) for elderly and infants.<br />
+                  • Ensure proper ventilation if you are using room heaters to avoid carbon monoxide build-up.<br />
+                  • Check on neighbours, especially elderly or people living alone, during extreme cold.
+                </p>
+              </div>
+            </div>
+            <div class="readiness-image-box">
+              <!-- Cold wave image -->
+              <img
+                src="https://images.pexels.com/photos/688660/pexels-photo-688660.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Cold wave preparedness"
+              />
+            </div>
+          </div>
+
+          <div class="readiness-slide" id="slide-flood">
+            <div class="readiness-content">
+              <h3><i class="fa-solid fa-water"></i> Get Ready for Floods</h3>
+              <p>
+                Floods can come quickly after heavy rain or dam release.
+                Planning now helps you react calmly and safely.
+              </p>
+              <ul>
+                <li>Identify safe higher places and nearest shelters.</li>
+                <li>Keep important documents in waterproof pouches.</li>
+                <li>Prepare a small emergency “go-bag” with essentials.</li>
+              </ul>
+              <button
+                type="button"
+                class="btn btn-outline read-more-toggle"
+                data-target="floodMore"
+              >
+                Read more
+              </button>
+              <div class="read-more-content" id="floodMore">
+                <p>
+                  • Never ignore early flood warnings or evacuation messages.<br />
+                  • Keep a battery-powered radio or fully charged phone for alerts.<br />
+                  • Turn off electricity and gas at main switches if instructed by authorities.<br />
+                  • Teach children basic safety rules: “Don’t play in flood water” and “Stay with adults”.
+                </p>
+              </div>
+            </div>
+            <div class="readiness-image-box">
+              <!-- Flood image -->
+              <img
+                src="https://images.pexels.com/photos/518530/pexels-photo-518530.jpeg?auto=compress&cs=tinysrgb&w=800"
+                alt="Flood preparedness"
+              />
+            </div>
+          </div>
+
+          <button class="slide-nav prev" id="prevSlide">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          <button class="slide-nav next" id="nextSlide">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESPONSE GUIDELINES -->
+    <section id="response">
+      <div class="section-card response-main-card">
+        <div class="section-header">
+          <i class="fa-solid fa-helmet-safety"></i>
+          <h2>Disaster Response Guidelines</h2>
+        </div>
+        <p>
+          Follow these basic guidelines during common emergencies. Share them with
+          your family and neighbours so everyone knows what to do.
+        </p>
+
+        <div class="cards">
+          <div class="response-card">
+            <h3><i class="fa-solid fa-house-crack"></i> Earthquake</h3>
+            <ul>
+              <li><strong>Indoors:</strong> Drop, Cover, and Hold On under a strong table.</li>
+              <li>Stay away from windows, glass, and heavy furniture.</li>
+              <li>Do not use lifts; use stairs after shaking stops.</li>
+              <li>Move to open ground away from buildings once safe.</li>
+            </ul>
+          </div>
+
+          <div class="response-card">
+            <h3><i class="fa-solid fa-water"></i> Flood</h3>
+            <ul>
+              <li>Move to higher ground immediately; avoid low-lying areas.</li>
+              <li>Do not walk or drive through moving flood water.</li>
+              <li>Turn off electricity and gas if instructed and safe.</li>
+              <li>Keep drinking water, dry food and important documents sealed.</li>
+            </ul>
+          </div>
+
+          <div class="response-card">
+            <h3><i class="fa-solid fa-fire-flame-curved"></i> Fire</h3>
+            <ul>
+              <li>Raise an alarm and call the fire department immediately.</li>
+              <li>Use stairs, never lifts, during evacuation.</li>
+              <li>Crawl low under smoke to avoid inhalation.</li>
+              <li>If clothes catch fire: Stop, Drop, and Roll.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="quick-note">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <p>
+            <strong>Quick Checklist:</strong><br />
+            Keep a basic emergency kit ready (torch, first aid, power bank, whistle, important
+            documents). Save emergency numbers and practice mock drills with your family at
+            least twice a year.
+          </p>
+        </div>
+
+        <!-- Extra disaster images -->
+        <div class="disaster-gallery">
+          <div class="gallery-item">
+            <img
+              src=https://images.pexels.com/photos/51951/forest-fire-fire-smoke-conservation-51951.jpeg
+              alt="Forest fire"
+            />
+            <span>Wildfire Fire</span>
+          </div>
+          <div class="gallery-item">
+            <img
+              src=https://images.pexels.com/photos/33779953/pexels-photo-33779953.jpeg
+              alt="Flooded area"
+            />
+            <span>Urban flooding</span>
+          </div>
+          <div class="gallery-item">
+            <img
+              src=https://images.pexels.com/photos/7806161/pexels-photo-7806161.jpeg
+              alt="Earthquake damage"
+            />
+            <span>Earthquake damage</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT US -->
+    <section id="about">
+      <div class="section-card about-card">
+        <div>
+          <div class="section-header">
+            <i class="fa-solid fa-circle-info"></i>
+            <h2>About Us</h2>
+          </div>
+          <p>
+            Our Disaster Preparedness & Response (DPR) cell acts as a bridge between
+            government agencies, NGOs, and the community. We focus on preparedness,
+            real-time emergency response, and Students don’t just read – they practice. Games, quizzes, and simulations teach
+            exactly what to do before, during, and after a disaster..
+          </p>
+          <br />
+          <ul>
+            <li>Real-time incident reporting and alert broadcasting</li>
+            <li>Integrated teams for rescue, medical aid, and logistics support</li>
+            <li>Verified information to reduce rumours and panic</li>
+            <li>Training programs in schools, colleges, and communities</li>
+          </ul>
+        </div>
+
+        <div class="about-info-card">
+          <h3><i class="fa-solid fa-bullseye"></i> Our Mission</h3>
+          <p>
+            To protect lives, reduce damage, and restore normalcy quickly through
+            timely and coordinated disaster response.
+          </p>
+          <br />
+          <h3><i class="fa-solid fa-list-check"></i> What We Do</h3>
+          <ul>
+            <li>Monitor early warning systems and risk indicators.</li>
+            <li>Issue alerts and safety instructions to the public.</li>
+            <li>Coordinate shelters, relief camps, and supply chains.</li>
+            <li>Support post-disaster rehabilitation and counselling.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+   
+<!--FOOTER-->
+    <footer class="footer">
+      <div class="footer-container">
+    
+        <!-- Column 1: Logo + tagline -->
+        <div class="footer-col footer-brand">
+          <div class="brand-row">
+            <img src="/assets/logo.png" alt="Disaster Hub Logo" class="footer-logo" />
+            <h3>Disaster Learning Hub</h3>
+          </div>
+          <p class="footer-tagline">Empowering communities with knowledge and preparedness.</p>
+        </div>
+        
+    
+        <!-- Column 2: Navigation -->
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a data-target="home">Home</a></li>
+            <li><a data-target="about">About Us</a></li>
+            <li><a data-target="response">Response</a></li>
+            <li>
+              <a data-target="past-crisis">Past Crisis</a>
+              <ul class="dropdown-menu">
+                <li><a href="/firehistory">Fire</a></li>
+                <li><a href="/earthquakehistroy">Earthquake</a></li>
+                <li><a href="/floodhistory">Flood</a></li>
+              </ul>
+            </li> 
+            <li><a href="/report">Report Incident</a></li>
+            <li><a data-target="contact">Contact</a></li>
+          </ul>
+        </div>
+        
+    
+        <!-- Column 3: Contact Info -->
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <ul class="contact-list">
+            <li><i class="fa fa-phone"></i> +91 98765 43210</li>
+            <li><i class="fa fa-envelope"></i> support@disasterlearninghub.org</li>
+            <li><i class="fa fa-location-dot"></i> New Delhi, India</li>
+          </ul>
+        </div>
+    
+      </div>
+    
+      <!-- Bottom Bar -->
+      <div class="footer-bottom">
+        <p>© 2025 Disaster Learning Hub | All Rights Reserved</p>
+      </div>
+    </footer>
+    
+      
+    </div>
+  </footer>
+
+
+  
+      <!-- Login Modal -->
+      <div id="loginModal" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" id="closeLogin">&times;</span>
+          <h2>Log In</h2>
+          <p class="modal-subtitle">Access your Disaster Management learning dashboard</p>
+  
+          <form id="loginForm" class="login-form">
+            <div class="form-group">
+              <label for="loginEmail">Email</label>
+              <input
+                type="email"
+                id="loginEmail"
+                placeholder="example@email.com"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="loginPassword">Password</label>
+              <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+  
+            <button type="submit" class="cta-btn login-submit">
+              Log In
+            </button>
+  
+            <p class="login-helper">
+              New here? <a href="#">Create an account</a> •
+              <a href="#">Forgot password?</a>
+            </p>
+  
+            <p id="loginStatus" class="login-status"></p>
+          </form>
+        </div>
+      </div>
+  
+  
+
+  <!-- Main script -->
+  <script src="/js/script.js"></script>
+</body>
+</html>

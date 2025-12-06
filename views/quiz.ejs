@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title><h1>Disaster Management — Level-by-Level Advanced Quiz</h1></title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#071226; --card:#0b1220; --muted:#94a3b8; --accent:#6ee7b7; --danger:#ff6b6b;
+    --glass: rgba(255,255,255,0.03);
+    --glass-2: rgba(255,255,255,0.02);
+    color-scheme: dark;
+    font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; min-height:100vh;
+    background: linear-gradient(180deg,#021027 0%, #07112a 65%);
+    color:#e6eef8; -webkit-font-smoothing:antialiased;
+    padding:28px;
+    display:flex; justify-content:center; align-items:flex-start;
+  }
+  .container{width:100%;max-width:1100px}
+  header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px}
+  header h1{font-size:1.4rem;margin:0}
+  header p{margin:0;color:var(--muted);font-size:0.9rem}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:18px;border-radius:14px;box-shadow:0 8px 30px rgba(2,6,23,0.6)}
+  .controls{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+  select, button.input-btn, .toggle, .checkbox{background:var(--glass);color:inherit;border:1px solid rgba(255,255,255,0.04);padding:10px 12px;border-radius:10px}
+  .input-btn{cursor:pointer}
+  .levels{display:flex;gap:8px;flex-wrap:wrap}
+  .level-btn{padding:8px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);cursor:pointer;background:transparent}
+  .level-btn.active{background:linear-gradient(90deg, rgba(110,231,183,0.08), rgba(110,231,183,0.02));border-color:rgba(110,231,183,0.25);color:var(--accent)}
+  .quiz-area{margin-top:8px}
+  .question-card{display:grid;grid-template-columns:1fr 320px;padding:16px;border-radius:12px;gap:16px;align-items:start}
+  
+  .meta{display:flex;justify-content:space-between;align-items:center;font-size:0.9rem;color:var(--muted);margin-bottom:10px}
+  .question{font-weight:700;margin:8px 0 14px;font-size:1.05rem}
+  .answers{display:flex;flex-direction:column;gap:10px}
+  .answer-btn{padding:12px 12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);text-align:left;cursor:pointer;transition:transform .15s, box-shadow .15s}
+  .answer-btn:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,0.45)}
+  .answer-btn.correct{outline:3px solid rgba(34,197,94,0.12);background:linear-gradient(90deg, rgba(34,197,94,0.06), rgba(34,197,94,0.02))}
+  .answer-btn.wrong{outline:3px solid rgba(255,107,107,0.12);opacity:0.95}
+  .explanation{margin-top:12px;padding:12px;border-radius:8px;background:rgba(255,255,255,0.02);color:var(--muted);display:none}
+  .footer-actions{display:flex;gap:10px;justify-content:space-between;margin-top:12px;align-items:center}
+  .small{font-size:0.85rem;color:var(--muted)}
+  .top-row{display:flex;gap:12px;align-items:center}
+  .leaderboard{margin-top:18px}
+  table{width:100%;border-collapse:collapse}
+  th,td{padding:8px;text-align:left;border-bottom:1px dashed rgba(255,255,255,0.03);font-size:0.9rem}
+  .hidden{display:none}
+  .center{text-align:center}
+  img.q-image{width:100%;height:220px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,0.03)}
+  /* Accessible mode adjustments */
+  .accessible .question{font-size:1.5rem}
+  .accessible .answer-btn{font-size:1.2rem;padding:16px;border-radius:14px}
+  .accessible img.q-image{height:260px}
+  /* right panel */
+  .q-right{display:flex;flex-direction:column;gap:10px}
+  .voice-controls{display:flex;gap:8px;align-items:center}
+  .small-btn{padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:var(--glass);cursor:pointer}
+  .progress{height:10px;background:rgba(255,255,255,0.02);border-radius:8px;overflow:hidden}
+  .progress > i{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--accent),#4fd1c5);transition:width .4s}
+  @media (max-width:980px){
+    .question-card{grid-template-columns:1fr; }
+    .q-right{order:2}
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <header style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px">
+      <div>
+        <h1>Disaster Management — Level-by-Level Advanced Quiz</h1>
+        <p class="small">Designed for Grade 10 and above — now with images & voice for accessibility.</p>
+      </div>
+      <div class="top-row">
+        <div class="small">Mode: <strong id="modeLabel">Practice</strong></div>
+        <button class="input-btn" id="toggleMode">Toggle Mode</button>
+      </div>
+    </header>
+
+    <div class="card">
+      <div class="controls" aria-hidden="false">
+        <div style="flex:1">
+          <label class="small">Select level</label>
+          <div class="levels" id="levels"></div>
+        </div>
+
+        <div style="width:220px">
+          <label class="small">Time per question</label>
+          <select id="timePerQ" aria-label="Time per question">
+            <option value="0">No timer</option>
+            <option value="20">20s</option>
+            <option value="40">40s</option>
+            <option value="60">60s</option>
+          </select>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">
+          <div style="display:flex;gap:8px;align-items:center">
+            <label class="small" title="Shuffles answer options">Randomize</label>
+            <input type="checkbox" id="randomize" class="checkbox" aria-label="Randomize answers">
+          </div>
+          <div style="display:flex;gap:8px">
+            <label class="small">Accessible</label>
+            <input type="checkbox" id="accessibleToggle" class="checkbox" aria-label="Accessible mode">
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center">
+          <button class="input-btn" id="startBtn">Start Quiz</button>
+        </div>
+      </div>
+
+      <div class="quiz-area" id="quizArea">
+        <div class="center small" id="pretext">Choose a level and click <strong>Start Quiz</strong> to begin. Use the voice controls on the right to read questions aloud.</div>
+
+        <div id="questionWrap" class="hidden">
+          <div class="question-card" id="questionCard" role="region" aria-live="polite">
+            <div class="q-left">
+              <div class="meta" id="metaRow">
+                <div class="small">Level: <strong id="currentLevelName"></strong></div>
+                <div class="small">Q <span id="qIndex">1</span> / <span id="qTotal">1</span></div>
+              </div>
+
+              <div class="question" id="questionText">Question will appear here</div>
+
+              <div class="answers" id="answers" role="list"></div>
+
+              <div class="explanation" id="explanation" aria-hidden="true"></div>
+
+              <div class="footer-actions">
+                <div style="display:flex;flex-direction:column;gap:6px">
+                  <div class="small" id="timerText" aria-live="polite"></div>
+                  <div class="small">Accessible mode: larger fonts & slower voice</div>
+                </div>
+                <div style="flex:1"></div>
+                <div style="display:flex;gap:8px;align-items:center">
+                  <button class="input-btn" id="prevBtn" disabled>Prev</button>
+                  <button class="input-btn" id="nextBtn" disabled>Next</button>
+                </div>
+              </div>
+            </div>
+
+            <aside class="q-right" aria-label="Question panel">
+              <!-- image -->
+              <div id="imageWrap" style="border-radius:10px;overflow:hidden;">
+                <img class="q-image" id="questionImage" alt="illustration for question">
+              </div>
+
+              <!-- voice controls -->
+              <div class="card" style="padding:10px;margin-top:8px;background:var(--glass-2)">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                  <div class="small">Voice</div>
+                  <div style="display:flex;gap:6px;align-items:center">
+                    <select id="voiceSelect" class="small" style="padding:6px;border-radius:8px;background:transparent"></select>
+                  </div>
+                </div>
+
+                <div style="margin-top:8px" class="voice-controls">
+                  <button class="small-btn" id="playBtn" title="Read question and answers">🔊 Read</button>
+                  <button class="small-btn" id="stopBtn" title="Stop speaking">⏹ Stop</button>
+                  <button class="small-btn" id="repeatBtn" title="Repeat question">🔁 Repeat</button>
+                </div>
+
+                <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+                  <label class="small">Speed</label>
+                  <input id="voiceRate" type="range" min="0.5" max="1.6" step="0.1" value="1" />
+                </div>
+
+                <div style="margin-top:10px">
+                  <div class="small">Auto voice on show</div>
+                  <input type="checkbox" id="autoSpeak" class="checkbox" />
+                </div>
+              </div>
+
+              <!-- progress -->
+              <div style="margin-top:10px">
+                <div class="small">Progress</div>
+                <div class="progress" style="margin-top:6px"><i id="progressBar"></i></div>
+              </div>
+
+              <!-- leaderboard summary -->
+              <div style="margin-top:12px">
+                <div class="small">Score</div>
+                <div style="font-weight:700;font-size:1.1rem;margin-top:6px" id="currentScore">0</div>
+              </div>
+            </aside>
+          </div>
+
+          <!-- results / save -->
+          <div class="card leaderboard hidden" id="resultCard" style="margin-top:12px">
+            <div class="small">Quiz finished — <span id="scoreText"></span></div>
+            <div style="margin-top:8px">
+              <label class="small">Enter your name to save score:</label>
+              <div style="display:flex;gap:8px;margin-top:6px">
+                <input id="playerName" placeholder="Your name" style="flex:1;padding:8px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:inherit">
+                <button class="input-btn" id="saveScore">Save</button>
+              </div>
+            </div>
+            <div class="leaderboard" id="leaderboardWrap" style="margin-top:10px">
+              <h3 style="margin-top:12px;margin-bottom:6px">Leaderboard</h3>
+              <table id="leaderTable" aria-live="polite"><thead><tr><th>Name</th><th>Score</th><th>Level</th><th>Date</th></tr></thead><tbody></tbody></table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <details style="margin-top:14px;color:var(--muted)">
+        <summary>About this quiz</summary>
+        <p>The quiz is structured into progressive levels (Awareness -> Response -> Mitigation -> Planning -> Advanced Scenarios -> Expert). Each level contains images and voice to help learners with different needs. Practice mode reveals explanations; Challenge mode hides explanations and enables timed scoring.</p>
+      </details>
+
+    </div>
+  </div>
+
+<script>
+/* 
+   Question bank (images + options + answer index)
+   fields: level, title, image (optional), questions: { q, options[], ans(index), explanation(optional) }
+    */
+const LEVELS = [
+  {
+    level: 1, title: "Basic Awareness",
+    questions: [
+      { q: "What is the primary goal of disaster management?", ans: 1,
+        options: ["To respond only","To reduce loss of life and property","To avoid rain","None"],
+        image: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=0f3d99d3d2ea8a44b5f280c8c8a6f3c0",
+        explanation: "Disaster management aims to reduce loss of life and property through preparedness, mitigation, response and recovery."
+      },
+      { q: "Which of the following is a natural disaster?", ans: 2,
+        options: ["Terror attack","Industrial fire","Earthquake","Road accident"],
+        image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=62ff4c9a3b5094f7a13e2cd7d8b98421",
+        explanation: "Earthquakes are natural geophysical events, while the others are man-made incidents."
+      },
+     {
+  q: "Which of the following is a geological disaster?",
+  ans: 1,
+  options: ["Drought", "Landslide", "Forest fire", "Chemical spill"],
+  image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Landslides occur due to slope failure caused by natural geological processes."
+},
+
+{
+  q: "What is the most reliable indicator of an approaching cyclone?",
+  ans: 0,
+  options: ["Rapid drop in atmospheric pressure", "Increase in humidity", "Rise in temperature", "Clear sky"],
+  image: "https://images.unsplash.com/photo-1500674425229-f692875b0ab7?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Cyclones are always preceded by a sudden drop in atmospheric pressure."
+},
+
+{
+  q: "Which disaster is most commonly associated with aftershocks?",
+  ans: 2,
+  options: ["Forest fire", "Flood", "Earthquake", "Tsunami"],
+  image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Aftershocks are smaller earthquakes that follow the main quake."
+},
+
+{
+  q: "Which of these disasters can create a tsunami?",
+  ans: 3,
+  options: ["Heatwave", "Drought", "Wildfire", "Underwater earthquake"],
+  image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Most tsunamis are generated by seismic activity beneath the ocean floor."
+},
+
+{
+  q: "Which natural disaster is measured using the Richter scale?",
+  ans: 0,
+  options: ["Earthquake", "Volcanic eruption", "Cyclone", "Landslide"],
+  image: "https://images.unsplash.com/photo-1507668077129-56e32842fceb?q=80&w=1200&auto=format&fit=crop",
+  explanation: "The Richter scale quantifies the magnitude of earthquakes."
+},
+
+{
+  q: "Which of the following disasters is directly linked to climate change?",
+  ans: 3,
+  options: ["Earthquake", "Volcanic eruption", "Tornado", "Heatwave"],
+  image: "https://images.unsplash.com/photo-1501889088093-90b27410c0aa?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Heatwaves have increased in frequency due to global warming."
+},
+
+{
+  q: "What is the primary cause of most urban floods?",
+  ans: 1,
+  options: ["Strong winds", "Poor drainage systems", "Landslides", "Earthquake shaking"],
+  image: "https://images.unsplash.com/photo-1506466010722-395aa2bef877?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Blocked or insufficient drainage causes rapid water accumulation during rain."
+},
+
+{
+  q: "Which natural disaster spews ash, lava, and gases?",
+  ans: 2,
+  options: ["Tornado", "Flood", "Volcano eruption", "Drought"],
+  image: "https://images.unsplash.com/photo-1503264116251-35a269479413?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Volcanic eruptions release molten lava, volcanic ash, and toxic gases from the Earth's crust."
+}
+
+    ]
+  }, 
+  {
+    level: 2, title: "Preparedness",
+    questions: [
+      { q: "What does a family disaster kit NOT include?", ans: 3,
+        options: ["Food","Water","First aid","Luxury items"],
+        image: "https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=7dbd4c4d85f580e2f021f4a8a6e9d2f2",
+        explanation: "A disaster kit focuses on essentials — food, water, medicine; luxury items are not necessary."
+      },
+      { q: "Which organization handles early warnings in India?", ans: 2,
+        options: ["NTA","BSNL","IMD","WHO"],
+        image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=5cc5d90b2fb5da6c4b6d6a0c93f87b5c",
+        explanation: "IMD (India Meteorological Department) issues weather-related warnings."
+      },
+      
+  { q: "What should you do first when you feel strong earthquake shaking indoors?",
+  ans: 1,
+  options: ["Run outside immediately", "Drop, Cover, and Hold On", "Stand near windows", "Use the elevator"],
+  image: "https://images.unsplash.com/photo-1518459031867-a89b944bffe4?q=80&w=1200&auto=format&fit=crop",
+  explanation: "The safest action during a quake is to Drop, Cover, and Hold On to avoid falling objects."
+},
+
+{
+  q: "What is the safest place to go during a cyclone?",
+  ans: 3,
+  options: ["Under trees", "Near electric poles", "Open beaches", "Inside a secure concrete building"],
+  image: "https://images.unsplash.com/photo-1479244209311-71e148f692d7?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Staying inside a strong building protects you from flying debris and strong winds."
+},
+
+{
+  q: "What should be included in a basic emergency preparedness kit?",
+  ans: 0,
+  options: ["Water, flashlight, first-aid", "Makeup kit", "Laptop and speakers", "Sports equipment"],
+  image: "https://images.unsplash.com/photo-1604004215174-1c8f6a87fe1f?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Emergency kits must contain essentials like water, torch, medicines, and basic tools."
+},
+
+{
+  q: "During a fire, what is the correct method to safely exit a smoke-filled area?",
+  ans: 2,
+  options: ["Run fast through the smoke", "Stand upright and cover your head", "Stay low and crawl", "Jump out of any window"],
+  image: "https://images.unsplash.com/photo-1501663105295-c1d780e0e8f7?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Smoke rises, so crawling low helps you breathe cleaner air and escape safely."
+},
+
+{
+  q: "Before a flood warning, what should families do first?",
+  ans: 1,
+  options: ["Move to rooftops", "Store clean water and switch off electricity", "Open all drains", "Hide valuables under the bed"],
+  image: "https://images.unsplash.com/photo-1502622796232-e88458466c33?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Storing water and switching off electricity helps prevent contamination and electric shock."
+},
+
+{
+  q: "What is the safest action during lightning?",
+  ans: 3,
+  options: ["Stand under a large tree", "Ride a bicycle", "Hold metal objects", "Stay indoors away from windows"],
+  image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Lightning safety requires staying inside and avoiding windows, doors, and metal."
+},
+
+{
+  q: "What is the first step in creating a family disaster plan?",
+  ans: 0,
+  options: ["Identify safe meeting points", "Buy extra groceries", "Pack vacation bags", "Switch off your phone"],
+  image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Meeting points ensure family members know where to regroup after a disaster."
+},
+
+{
+  q: "Why is it important to participate in school disaster drills?",
+  ans: 2,
+  options: ["To get extra attendance", "To avoid studying", "To learn safe evacuation procedures", "To win prizes"],
+  image: "https://images.unsplash.com/photo-1503676264518-332cc812e1e8?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Drills train students to respond quickly and safely during real emergencies."
+},
+
+    ]
+  },
+  {
+    level: 3, title: "Mitigation & Response",
+    questions: [
+      { q: "What is the first step when you feel an earthquake?", ans: 2,
+        options: ["Run outside","Use lift","Drop, Cover, Hold","Call police"],
+        image: "https://images.unsplash.com/photo-1582719478179-6ae4f8b1e30a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=016c33f5a2c4cfb8d9e1d6f0fbc1a1b7",
+        explanation: "The 'Drop, Cover, Hold' technique reduces injury risk from falling objects."
+      },
+      { q: "Flood-safe action includes?", ans: 2,
+        options: ["Move to lower area","Turn on electricity","Move to higher ground","Swim"],
+        image: "https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=0f1b3b27f1e3d5b922406c8b5d9f2f9d",
+        explanation: "In floods, seek higher ground and avoid contact with floodwater and power lines."
+      },
+      {
+  q: "Which structure is used to reduce flood impact in cities?",
+  ans: 1,
+  options: ["Statues", "Embankments", "Playgrounds", "Billboards"],
+  image: "https://images.unsplash.com/photo-1509377244-43ecf3a8efc3?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Embankments and levees help control water flow and reduce flood damage."
+},
+
+{
+  q: "What should be done after a disaster warning is issued?",
+  ans: 2,
+  options: ["Ignore it", "Continue daily routine", "Follow official evacuation instructions", "Wait for neighbors to decide"],
+  image: "https://images.unsplash.com/photo-1487505983481-9aa2d9f9901a?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Evacuation orders are issued to protect lives during emergencies."
+},
+
+{
+  q: "Which measure helps reduce wildfire spread?",
+  ans: 0,
+  options: ["Clearing dry vegetation", "Keeping old wiring", "Burning waste near forests", "Constructing wooden fences"],
+  image: "https://images.unsplash.com/photo-1542317824-8e15c07fc7cb?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Removing dry fuel breaks fire pathways and slows wildfire spread."
+},
+
+{
+  q: "What is the purpose of retrofitting old buildings?",
+  ans: 1,
+  options: ["To change paint color", "To make them earthquake-resistant", "To increase rent", "To expand parking"],
+  image: "https://images.unsplash.com/photo-1486304873000-235643847519?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Retrofitting strengthens structures to withstand seismic forces."
+},
+
+{
+  q: "What is the immediate response step after a fire breaks out?",
+  ans: 3,
+  options: ["Open all windows", "Hide under a bed", "Use a lift to escape", "Activate the fire alarm and evacuate"],
+  image: "https://images.unsplash.com/photo-1558640473-823802c522b9?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Alerting everyone and evacuating quickly reduces casualties."
+},
+
+{
+  q: "Which system helps authorities monitor disasters in real time?",
+  ans: 2,
+  options: ["WhatsApp Status", "Basic phone calls", "GIS and satellite systems", "Offline maps only"],
+  image: "https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?q=80&w=1200&auto=format&fit=crop",
+  explanation: "GIS and satellites track weather, floods, fires, and earthquakes effectively."
+},
+
+{
+  q: "What is a common mitigation measure for landslide-prone hills?",
+  ans: 0,
+  options: ["Planting deep-rooted vegetation", "Removing all plants", "Building houses on unstable slopes", "Digging random pits"],
+  image: "https://images.unsplash.com/photo-1611095973516-29a0c07212e0?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Vegetation stabilizes soil and reduces chances of slope failure."
+},
+
+{
+  q: "What is the first step after reaching an evacuation shelter?",
+  ans: 3,
+  options: ["Open your luggage", "Find a charging point", "Start cooking food", "Register your name with officials"],
+  image: "https://images.unsplash.com/photo-1556911220-e15b29be8c49?q=80&w=1200&auto=format&fit=crop",
+  explanation: "Registering helps officials track people and assist families during emergencies."
+}
+
+    ]
+  }
+];
+
+/* ---------------------------
+   App State
+   --------------------------- */
+let selectedLevel = LEVELS[0].level;
+let currentQuestions = [];
+let qIndex = 0;
+let score = 0;
+let timePerQ = 0;
+let timerId = null;
+let mode = 'practice'; // or 'challenge'
+let accessibleMode = false;
+
+/* 
+   DOM refs
+    */
+const levelsEl = document.getElementById('levels');
+const startBtn = document.getElementById('startBtn');
+const questionWrap = document.getElementById('questionWrap');
+const pretext = document.getElementById('pretext');
+const questionText = document.getElementById('questionText');
+const answersEl = document.getElementById('answers');
+const explanationEl = document.getElementById('explanation');
+const nextBtn = document.getElementById('nextBtn');
+const prevBtn = document.getElementById('prevBtn');
+const qIndexEl = document.getElementById('qIndex');
+const qTotalEl = document.getElementById('qTotal');
+const currentLevelName = document.getElementById('currentLevelName');
+const timePerQselect = document.getElementById('timePerQ');
+const timerText = document.getElementById('timerText');
+const resultCard = document.getElementById('resultCard');
+const scoreText = document.getElementById('scoreText');
+const playerName = document.getElementById('playerName');
+const saveScoreBtn = document.getElementById('saveScore');
+const leaderTableBody = document.querySelector('#leaderTable tbody');
+const toggleModeBtn = document.getElementById('toggleMode');
+const modeLabel = document.getElementById('modeLabel');
+const randomizeCheckbox = document.getElementById('randomize');
+const accessibleToggle = document.getElementById('accessibleToggle');
+const questionImage = document.getElementById('questionImage');
+const playBtn = document.getElementById('playBtn');
+const stopBtn = document.getElementById('stopBtn');
+const repeatBtn = document.getElementById('repeatBtn');
+const voiceSelect = document.getElementById('voiceSelect');
+const voiceRate = document.getElementById('voiceRate');
+const autoSpeak = document.getElementById('autoSpeak');
+const progressBar = document.getElementById('progressBar');
+const currentScoreEl = document.getElementById('currentScore');
+const prevBtnEl = prevBtn;
+
+/* 
+   Accessibility helpers
+    */
+function setAccessible(on){
+  accessibleMode = Boolean(on);
+  const card = document.getElementById('questionCard');
+  if(on) card.classList.add('accessible'); else card.classList.remove('accessible');
+}
+
+/*
+   Leaderboard
+    */
+function loadLeaderboard(){
+  const key = 'dm_quiz_leaderboard';
+  const raw = localStorage.getItem(key);
+  const data = raw ? JSON.parse(raw) : [];
+  leaderTableBody.innerHTML = '';
+  data.forEach(r=>{
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${escapeHtml(r.name)}</td><td>${r.score}/${r.total}</td><td>${escapeHtml(r.level)}</td><td>${new Date(r.date).toLocaleString()}</td>`;
+    leaderTableBody.appendChild(tr);
+  });
+}
+function saveLeaderboardEntry(entry){
+  const key = 'dm_quiz_leaderboard';
+  const raw = localStorage.getItem(key);
+  const data = raw ? JSON.parse(raw) : [];
+  data.push(entry);
+  data.sort((a,b)=> b.score - a.score);
+  localStorage.setItem(key, JSON.stringify(data.slice(0,50)));
+  loadLeaderboard();
+}
+function escapeHtml(s){return String(s).replace(/[&<>"']/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c]});}
+
+/* 
+   Init level buttons and voices
+    */
+function initLevels(){
+  levelsEl.innerHTML = '';
+  LEVELS.forEach((lvl, idx)=>{
+    const b = document.createElement('button');
+    b.className = 'level-btn' + (idx===0? ' active':'');
+    b.textContent = `Level ${lvl.level}: ${lvl.title}`;
+    b.dataset.level = lvl.level;
+    b.addEventListener('click', ()=>{
+      document.querySelectorAll('.level-btn').forEach(bt=>bt.classList.remove('active'));
+      b.classList.add('active');
+      selectedLevel = lvl.level;
+    });
+    levelsEl.appendChild(b);
+  });
+}
+initLevels();
+loadLeaderboard();
+
+/*
+   SpeechSynthesis setup
+    */
+let voices = [];
+function populateVoices(){
+  voices = speechSynthesis.getVoices().filter(v=>v.lang && v.lang.startsWith('en'));
+  voiceSelect.innerHTML = voices.map((v,i)=>`<option value="${i}">${v.name} (${v.lang})</option>`).join('');
+}
+populateVoices();
+if (speechSynthesis.onvoiceschanged !== undefined) speechSynthesis.onvoiceschanged = populateVoices;
+
+function speakText(text, opts = {}){
+  if(!('speechSynthesis' in window)) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(String(text));
+  const vIndex = Number(voiceSelect.value);
+  if(!isNaN(vIndex) && voices[vIndex]) u.voice = voices[vIndex];
+  u.rate = Number(voiceRate.value) || 1;
+  if (accessibleMode) u.rate = Math.max(0.6, Math.min(1.1, u.rate * 0.8)); // slower when accessible
+  if(opts.onend) u.onend = opts.onend;
+  speechSynthesis.speak(u);
+}
+function stopSpeak(){ if('speechSynthesis' in window) speechSynthesis.cancel(); }
+
+/* 
+   Start quiz
+    */
+document.getElementById('startBtn').addEventListener('click', ()=>{
+  startQuiz();
+});
+toggleModeBtn.addEventListener('click', ()=>{
+  mode = (mode==='practice') ? 'challenge' : 'practice';
+  modeLabel.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
+});
+accessibleToggle.addEventListener('change',(e)=>setAccessible(e.target.checked));
+
+/* 
+   Starting & preparing questions
+    */
+function startQuiz(){
+  const lvl = LEVELS.find(x=>x.level==selectedLevel);
+  currentLevelName.textContent = lvl.title;
+  currentQuestions = JSON.parse(JSON.stringify(lvl.questions)); // deep copy
+
+  // randomize order of questions optionally
+  if(randomizeCheckbox.checked){
+    currentQuestions = shuffleArray(currentQuestions);
+  }
+
+  // shuffle choices and convert to consistent structure (options array + ans index)
+  currentQuestions.forEach(q=>{
+    // ensure q.options exists and q.ans is index
+    // if data used 'a' or 'answerText' adapt here (we already use ans index)
+    q._originalOptions = q.options.slice();
+    // shuffle while preserving answer index:
+    const correctText = q.options[q.ans];
+    q.options = shuffleArray(q.options.slice());
+    q.ans = q.options.indexOf(correctText);
+  });
+
+  qIndex = 0; score = 0; resultCard.classList.add('hidden');
+  timePerQ = Number(timePerQselect.value);
+  pretext.classList.add('hidden'); questionWrap.classList.remove('hidden');
+  qTotalEl.textContent = currentQuestions.length;
+  renderQuestion();
+}
+
+/* 
+   Render question
+   */
+function renderQuestion(){
+  clearTimer();
+  const q = currentQuestions[qIndex];
+  qIndexEl.textContent = qIndex+1;
+  questionText.textContent = q.q;
+  answersEl.innerHTML = '';
+  explanationEl.style.display='none'; explanationEl.textContent='';
+
+  // image
+  if(q.image){
+    questionImage.src = q.image;
+    questionImage.alt = `Image for question ${qIndex+1}`;
+    questionImage.style.display = 'block';
+  } else {
+    // fallback SVG as data URL
+    questionImage.src = svgDataURLPlaceholder(q.q);
+    questionImage.alt = 'Illustration';
+    questionImage.style.display = 'block';
+  }
+
+  // choices
+  q.options.forEach((choice, idx)=>{
+    const b = document.createElement('button');
+    b.className='answer-btn';
+    b.textContent = choice;
+    b.setAttribute('role','listitem');
+    b.addEventListener('click', ()=>selectAnswer(idx, b));
+    answersEl.appendChild(b);
+  });
+
+  // timer
+  if(timePerQ>0 && mode==='challenge') startTimer(timePerQ);
+  timerText.textContent = timePerQ>0 && mode==='challenge' ? `Time: ${timePerQ}s` : '';
+
+  // progress & UI
+  nextBtn.disabled = true;
+  prevBtn.disabled = (qIndex===0);
+  currentScoreEl.textContent = score;
+  updateProgress();
+
+  // Auto speak if checked
+  if(autoSpeak.checked) {
+    playQuestionVoice();
+  }
+}
+
+/* ---------------------------
+   Select answer
+   --------------------------- */
+function selectAnswer(selectedIdx, btnEl){
+  const q = currentQuestions[qIndex];
+  Array.from(answersEl.children).forEach((b,i)=>{
+    b.disabled = true;
+    if(i===q.ans) b.classList.add('correct');
+  });
+  if(selectedIdx === q.ans){
+    btnEl.classList.add('correct'); score += 1;
+  } else { btnEl.classList.add('wrong'); }
+
+  if(mode==='practice'){
+    explanationEl.style.display='block';
+    explanationEl.textContent = q.explanation || '—';
+    explanationEl.setAttribute('aria-hidden','false');
+  }
+
+  nextBtn.disabled = false;
+  clearTimer();
+  currentScoreEl.textContent = score;
+}
+
+/* ---------------------------
+   Next / Prev
+   --------------------------- */
+nextBtn.addEventListener('click', ()=>{
+  qIndex++;
+  if(qIndex >= currentQuestions.length) finishQuiz();
+  else renderQuestion();
+});
+prevBtn.addEventListener('click', ()=>{
+  if(qIndex>0){ qIndex--; renderQuestion(); }
+});
+
+/* ---------------------------
+   Finish quiz & save
+   --------------------------- */
+function finishQuiz(){
+  stopSpeak();
+  questionWrap.scrollIntoView({behavior:'smooth'});
+  // clear question area
+  questionText.textContent = '';
+  answersEl.innerHTML = '';
+  resultCard.classList.remove('hidden');
+  scoreText.textContent = `${score} / ${currentQuestions.length}`;
+  explanationEl.style.display='none';
+  // show save option
+  currentScoreEl.textContent = score;
+}
+
+saveScoreBtn.addEventListener('click', ()=>{
+  const name = (playerName.value || 'Anonymous').trim();
+  const lvl = LEVELS.find(x=>x.level==selectedLevel).title;
+  saveLeaderboardEntry({name, score, total: currentQuestions.length, level: lvl, date: new Date().toISOString()});
+  playerName.value='';
+  alert('Score saved to local leaderboard.');
+});
+
+/* ---------------------------
+   Timer helpers
+   --------------------------- */
+function startTimer(seconds){
+  let t = seconds;
+  timerText.textContent = `Time left: ${t}s`;
+  timerId = setInterval(()=>{
+    t--;
+    timerText.textContent = `Time left: ${t}s`;
+    if(t<=0){
+      clearTimer();
+      // auto-mark: show correct answer
+      Array.from(answersEl.children).forEach((b,i)=>{ if(i===currentQuestions[qIndex].ans) b.classList.add('correct'); b.disabled = true; });
+      if(mode==='practice'){
+        explanationEl.style.display='block'; explanationEl.textContent = currentQuestions[qIndex].explanation||'';
+      }
+      nextBtn.disabled = false;
+    }
+  },1000);
+}
+function clearTimer(){ if(timerId) clearInterval(timerId); timerId = null; }
+
+/* ---------------------------
+   Utilities
+   --------------------------- */
+function shuffleArray(a){
+  for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+function updateProgress(){
+  const totalQuestions = currentQuestions.length || 1;
+  const currentIndex = qIndex;
+  const percent = Math.round((currentIndex / totalQuestions) * 100);
+  progressBar.style.width = percent + '%';
+}
+
+/* ---------------------------
+   Voice controls (read question + each option)
+   --------------------------- */
+function buildSpeakText(){
+  const q = currentQuestions[qIndex];
+  if(!q) return '';
+  let s = `Question ${qIndex+1}. ${q.q}. `;
+  q.options.forEach((opt,i)=>{ s += `Option ${i+1}: ${opt}. `; });
+  return s;
+}
+function playQuestionVoice(){
+  stopSpeak();
+  const text = buildSpeakText();
+  if(!text) return;
+  speakText(text);
+}
+playBtn.addEventListener('click', ()=> playQuestionVoice());
+stopBtn.addEventListener('click', ()=> stopSpeak());
+repeatBtn.addEventListener('click', ()=> { stopSpeak(); setTimeout(()=>playQuestionVoice(), 250); });
+
+/* 
+   Speech helpers
+    */
+function svgDataURLPlaceholder(title){
+  const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='600'><defs><linearGradient id='g' x1='0' x2='1'><stop offset='0' stop-color='#0f1724'/><stop offset='1' stop-color='#0b1220'/></linearGradient></defs><rect width='100%' height='100%' fill='#07112a'/><text x='50%' y='50%' fill='#9fb4d9' font-size='36' font-family='Inter,Arial' text-anchor='middle'>${escapeHtml(title.substring(0,80))}</text></svg>`;
+  return 'data:image/svg+xml;base64,'+btoa(svg);
+}
+
+/* ---------------------------
+   Init UI states & keyboard accessibility
+   --------------------------- */
+document.addEventListener('keydown', (e)=>{
+  if(e.key==='Enter' && document.activeElement === startBtn) startBtn.click();
+  if(e.key===' ' && questionWrap.classList.contains('hidden')===false){ // space toggles play
+    e.preventDefault();
+    playQuestionVoice();
+  }
+});
+
+document.getElementById('voiceRate').addEventListener('input', ()=>{ /* rate changes applied on next speak */ });
+document.getElementById('voiceSelect').addEventListener('change', ()=>{ /* voice changed */ });
+
+/* ---------------------------
+   Initial UI setup: select first level, pre-fill voice select when available
+   --------------------------- */
+(function initial(){
+  // default selection highlight done in initLevels
+  currentLevelName.textContent = LEVELS[0].title;
+  // set selectedLevel default
+  selectedLevel = LEVELS[0].level;
+  // populate voices when they become available
+  setTimeout(populateVoices, 500);
+})();
+
+window.LEVELS = LEVELS;
+</script>
+</body>
+</html>
+
+

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flood Preparedness Module</title>
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+
+<!-- HEADER / Breadcrumb -->
+<header class="subpage-header">
+  <div class="container sub-header-inner">
+    <a href="/index" class="breadcrumb-link">← Back to Modules</a>
+    <span class="badge-soft">Student Module</span>
+  </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="module-hero">
+  <div class="container hero-content">
+    
+    <!-- LEFT SIDE TEXT -->
+    <div class="hero-left">
+      <h1 id="moduleTitle">Flood Preparedness</h1>
+      <p id="moduleIntro">
+        Floods occur when overflowing water submerges normally dry land. Learn causes, warning levels,
+        evacuation steps, and Punjab-specific flood risks.
+      </p>
+
+      <!-- Accessibility Buttons -->
+      <div class="accessibility-tools">
+        <button id="ttsBtn" class="pill-btn">🔊 Text to Speech</button>
+        <button id="ttsStopBtn" class="pill-btn">⛔ Stop Reading</button>
+        <button id="largeTextBtn" class="pill-btn">A↕ Increase Text Size</button>
+        <button id="contrastBtn" class="pill-btn">◑ High Contrast</button>
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE IMAGE -->
+    <div class="hero-right">
+      <img src="/assets/flood.jpg" class="hero-img" alt="Flood Image"/>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- MAIN CONTENT -->
+<section class="section">
+  <div class="container module-layout">
+
+    <!-- LEFT CONTENT -->
+    <div class="module-main">
+
+<!-- ABOUT FLOODS -->
+<article class="content-card">
+  <h2>About Floods</h2>
+  <p>
+    Floods happen when heavy rainfall, overflowing rivers, or poor drainage causes water to cover land
+    that is normally dry. Punjab faces frequent flooding due to monsoon rains, river overflow
+    (Sutlej, Beas, Ravi, Ghaggar), and urban drainage issues.
+  </p>
+  <p>
+    Low-lying areas in Punjab such as Ropar, Jalandhar, Ferozepur, Patiala, and Gurdaspur are highly vulnerable.
+  </p>
+</article>
+
+<!-- PREPAREDNESS SECTION -->
+<article class="content-card">
+  <h2>Preparedness Before a Flood</h2>
+  <ul>
+    <li>Keep important documents in waterproof bags.</li>
+    <li>Prepare an emergency kit with water, food, medicines, flashlight, and radio.</li>
+    <li>Know flood shelters and evacuation routes in your locality.</li>
+    <li>Move animals and vehicles to higher ground.</li>
+    <li>Avoid disposing garbage in drains and rivers.</li>
+    <li>Stay updated with IMD and Punjab disaster alerts.</li>
+  </ul>
+</article>
+
+<!-- DOs & DON’Ts -->
+<article class="content-card">
+  <h2>Do’s & Don’ts During Flood</h2>
+
+  <h3>✔ Do’s</h3>
+  <ul>
+    <li>Move immediately to higher ground.</li>
+    <li>Turn off electricity and gas supply before evacuating.</li>
+    <li>Take your emergency kit and essential medicines.</li>
+    <li>Help children, elderly, and persons with disabilities.</li>
+  </ul>
+
+  <h3>❌ Don’ts</h3>
+  <ul>
+    <li>Do NOT walk or drive through moving floodwater.</li>
+    <li>Do NOT touch electric poles, transformers, or wet wires.</li>
+    <li>Do NOT drink untreated water.</li>
+    <li>Do NOT spread rumors or panic.</li>
+  </ul>
+</article>
+
+<!-- HELPING OTHERS -->
+<article class="content-card">
+  <h2>How to Help Others After a Flood</h2>
+  <ul>
+    <li>Rescue and assist children, elderly, and people with disabilities.</li>
+    <li>Provide clean drinking water and food.</li>
+    <li>Give first aid to injured individuals.</li>
+    <li>Report damaged electrical lines and contaminated water.</li>
+    <li>Help in community cleanup activities.</li>
+  </ul>
+</article>
+
+<!-- SIGN LANGUAGE -->
+<article class="content-card">
+  <h2>Sign Language Support</h2>
+  <video controls muted class="sign-video">
+    <source src="/assets/Flood_SL.mp4" type="video/mp4" />
+  </video>
+  <p class="media-caption">Sign language explanation for flood awareness.</p>
+</article>
+
+    </div>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="module-side">
+
+      <!-- Animation Section -->
+      <article class="content-card">
+        <h2>Animation</h2>
+        <video src="/assets/Flood_Video.mp4" autoplay muted loop></video>
+        <p class="media-caption">Animation explaining how floods occur.</p>
+      </article>
+
+      <!-- Quick Summary Points -->
+      <article class="content-card">
+        <h3>Quick Summary</h3>
+        <ul>
+          <li>Causes of floods</li>
+          <li>Warning levels</li>
+          <li>Safety steps</li>
+          <li>Evacuation guidelines</li>
+        </ul>
+      </article>
+
+      <!-- Emergency Checklist -->
+      <article class="content-card">
+        <h3>Emergency Checklist</h3>
+        <ul>
+          <li>Water, food & medicines</li>
+          <li>Flashlight & batteries</li>
+          <li>Waterproof bag for documents</li>
+          <li>First-aid kit</li>
+          <li>Emergency contact list</li>
+        </ul>
+      </article>
+
+      <!-- Do's & Don'ts Quick Card -->
+      <article class="content-card">
+        <h3>Flood Do’s & Don’ts</h3>
+        <ul>
+          <li>✔ Move to higher ground</li>
+          <li>✔ Carry emergency kit</li>
+          <li>❌ Avoid floodwater</li>
+          <li>❌ Stay away from electric poles</li>
+        </ul>
+      </article>
+
+    </aside>
+
+  </div>
+</section>
+
+
+<!-- QUIZ SECTION (Split Layout with Map) -->
+<section class="quiz-section">
+  <div class="container quiz-grid">
+
+    <!-- LEFT SIDE: QUIZ -->
+    <div class="quiz-left">
+      <h2>Quick Quiz</h2>
+      <p>Check what you learned from this module.</p>
+
+      <form id="quizForm" class="quiz-form">
+
+        <div class="quiz-question">
+          <p>1. What should you do first during a flood warning?</p>
+          <label><input type="radio" name="q1" value="a"> Stay near the river</label>
+          <label><input type="radio" name="q1" value="b"> Move to higher ground</label>
+          <label><input type="radio" name="q1" value="c"> Ignore warnings</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>2. Which areas in Punjab are most flood-prone?</p>
+          <label><input type="radio" name="q2" value="a"> Hilly areas</label>
+          <label><input type="radio" name="q2" value="b"> Low-lying river districts</label>
+          <label><input type="radio" name="q2" value="c"> Desert areas</label>
+        </div>
+
+        <div class="quiz-question">
+          <p>3. What should you avoid during floods?</p>
+          <label><input type="radio" name="q3" value="a"> Walking in water</label>
+          <label><input type="radio" name="q3" value="b"> Listening to alerts</label>
+          <label><input type="radio" name="q3" value="c"> Helping neighbors</label>
+        </div>
+
+        <button type="submit" class="submit-quiz-btn">Submit Quiz</button>
+      </form>
+
+      <p id="quizResult" class="quiz-result"></p>
+    </div>
+
+    <!-- RIGHT SIDE: MAP -->
+    <div class="quiz-right">
+      <article class="content-card">
+        <h3>Flood Prone Zones of Punjab</h3>
+        <img src="/assets/Punjab_Map.webp" class="map-img" alt="Punjab Flood Map">
+        <p class="media-caption">
+          Punjab’s high-risk districts include: Ropar, Jalandhar, Ferozepur, Patiala, Gurdaspur & Tarn Taran.
+        </p>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+<script src="/js/module.js"></script>
+</body>
+</html>
+
+
+

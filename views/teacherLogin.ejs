@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Teacher Login • Disaster Learning Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/css/style2.css" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body class="auth-page">
+
+    <!-- MAIN LOGIN CARD -->
+    <div class="auth-main">
+      <div class="auth-tag">
+        <i class="fa-solid fa-shield-halved"></i>
+        Secure Teacher Access
+      </div>
+
+      <h1 class="auth-title">Teacher Portal Login</h1>
+      <p class="auth-subtitle">
+        Sign in to manage course content, assignments, and disaster preparedness
+        training modules for your students.
+      </p>
+
+      <form id="teacherLoginForm" class="auth-form" method="post" action="/teacherlogin">
+        <div class="form-group">
+          <label for="teacherEmail">Institute Email</label>
+          <input
+            type="email"
+            id="teacherEmail"
+            placeholder="teacher@institute.edu"
+            name="email"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="teacherPassword">Password</label>
+          <input
+            type="password"
+            id="teacherPassword"
+            placeholder="Enter your password"
+            name="password"
+            required
+          />
+        </div>
+
+        <div class="auth-actions">
+          <label class="auth-remember">
+            <input type="checkbox" id="teacherRemember" />
+            Remember me
+          </label>
+
+          <a href="#" class="auth-link">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary auth-submit-btn">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          Log in as Teacher
+        </button>
+
+        <p class="auth-status" id="teacherLoginStatus"></p>
+
+        <p class="auth-extra">
+          Not a teacher? <a href="/studentlogin" class="auth-link">Log in as student</a>
+        </p>
+        <p class="auth-extra">
+          <!-- updated index.html → home.html -->
+          <a href="/" class="auth-link">← Back to main portal</a>
+        </p>
+      </form>
+    </div>
+
+    <!-- RIGHT PANEL (currently not used)
+    <aside class="auth-side"> ... </aside>
+    -->
+  </div>
+
+  <!--<script>
+    const teacherForm = document.getElementById("teacherLoginForm");
+    const teacherStatus = document.getElementById("teacherLoginStatus");
+
+    if (teacherForm) {
+      teacherForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const email = document.getElementById("teacherEmail").value.trim();
+        const password = document.getElementById("teacherPassword").value.trim();
+
+        if (!email || !password) {
+          teacherStatus.textContent = "Please enter both email and password.";
+          teacherStatus.className = "auth-status error";
+          return;
+        }
+
+        teacherStatus.textContent = "Verifying credentials...";
+        teacherStatus.className = "auth-status";
+
+        setTimeout(() => {
+          teacherStatus.textContent =
+            "Login successful (demo). Redirecting to teacher dashboard...";
+          teacherStatus.className = "auth-status success";
+
+          setTimeout(() => {
+            window.location.href = "dashboard.html";
+          }, 900);
+        }, 700);
+      });
+    }
+  </script>-->
+
+</body>
+</html>

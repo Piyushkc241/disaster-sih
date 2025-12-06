@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Punjab Earthquake Disaster History</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background-color: #f6f8f5;
+            color: #333;
+            display: flex;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            background-color: #eef3ed;
+            padding: 25px;
+            border-right: 3px solid #0f9d58;   /* Updated */
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .sidebar h3 {
+            color: #0b6e3f; /* darker match */
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: #222;
+            display: block;
+            margin: 12px 0;
+            padding: 10px 12px;
+            font-size: 1.05rem;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #c8f3dc;   /* soft green hover */
+            border-left: 5px solid #0f9d58; /* Updated */
+            padding-left: 18px;
+        }
+
+        /* Main content */
+        .main-content {
+            margin-left: 0px;
+            padding: 20px 40px;
+            flex: 1;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header */
+        header {
+            background-color: #0f9d58; /* Updated */
+            color: white;
+            text-align: center;
+            padding: 25px 10px;
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            position: relative;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        /* Flags */
+        header::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            width: 65px;
+            height: 45px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg');
+            background-size: cover;
+        }
+        header::after { right: 15px; }
+
+        /* Headings */
+        h2 {
+            color: #0b6e3f;  /* Updated */
+            border-left: 6px solid #0f9d58; /* Updated */
+            padding-left: 12px;
+            margin-top: 25px;
+            font-size: 1.8rem;
+        }
+
+        /* Year Blocks */
+        .year-block {
+            background: #d9f5e6;  /* lighter green backdrop */
+            padding: 18px 20px;
+            border-left: 5px solid #0f9d58; /* Updated */
+            margin-bottom: 18px;
+            border-radius: 8px;
+            box-shadow: 0 2px 7px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+
+        .year-block:hover {
+            transform: translateY(-3px);
+        }
+
+        .year-block h3 {
+            margin: 0;
+            color: #0b6e3f; /* Updated heading color */
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .year-block p {
+            line-height: 1.65;
+            font-size: 1.05rem;
+        }
+
+        /* Paragraphs */
+        .main-content p {
+            font-size: 1.1rem;
+            background: #ffffff;
+            padding: 10px 18px;
+            border-radius: 8px;
+            border-left: 4px solid #0f9d58; /* Updated */
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="main-content">
+
+    <header>
+         Earthquake Disaster History
+    </header>
+
+    <p>
+        Punjab occasionally experiences mild tremors due to seismic activity in northern India, especially Himachal
+        Pradesh and Kashmir regions. Although not a high-risk seismic zone, several events over the years have influenced
+        state preparedness and awareness.
+    </p>
+
+    <h2>Earthquake Disaster Timeline</h2>
+
+    <div class="year-block">
+        <h3>1998 – Himachal Pradesh Earthquake Tremors</h3>
+        <p>
+            • Tremors felt across Hoshiarpur, Pathankot, and Gurdaspur.<br>
+            • Minor structural cracks in older residential buildings.<br>
+            • Triggered demand for public awareness on earthquake safety.
+        </p>
+    </div>
+
+    <div class="year-block">
+        <h3>2005 – Kashmir Earthquake Aftershocks</h3>
+        <p>
+            • Noticeable shaking reported across Punjab.<br>
+            • Authorities reviewed emergency response strategies.<br>
+            • First major earthquake drill conducted in schools and hospitals.
+        </p>
+    </div>
+
+    <div class="year-block">
+        <h3>2011 – Minor Northern Shocks</h3>
+        <p>
+            • Tremors felt for a few seconds across northern Punjab.<br>
+            • No major damage, but monitoring systems were strengthened.
+        </p>
+    </div>
+
+    <div class="year-block">
+        <h3>2015 – Statewide Seismic Safety Review</h3>
+        <p>
+            • Continuous activity in northern India prompted audits of key buildings.<br>
+            • New construction guidelines introduced for government structures.
+        </p>
+    </div>
+
+    <div class="year-block">
+        <h3>2020 – Border District Tremors</h3>
+        <p>
+            • Mild earthquakes sensed in Gurdaspur and Pathankot.<br>
+            • NDRF and SDMA increased public training and awareness campaigns.
+        </p>
+    </div>
+
+    <h2>Summary</h2>
+    <p>
+        Though Punjab is relatively safe from major earthquakes, past events have helped the state improve infrastructure,
+        readiness drills, monitoring systems, and seismic safety standards. Continuous awareness and preparedness remain
+        essential for reducing risks in the future.
+    </p>
+
+</div>
+
+</body>
+</html>

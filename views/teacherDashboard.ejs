@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teacher Dashboard • Disaster Learning Hub</title>
+
+    <link rel="stylesheet" href="/css/style2.css" />
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <!-- Animated Background Particles -->
+    <style>
+      .animated-bg {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background: radial-gradient(circle at 20% 20%, #e8f8ef, #e0f5ff);
+        overflow: hidden;
+      }
+      .circle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(15, 157, 88, 0.15);
+        animation: float 8s infinite linear;
+      }
+      @keyframes float {
+        0% { transform: translateY(0); opacity: 0.6; }
+        100% { transform: translateY(-700px); opacity: 0; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Animated background circles -->
+    <div class="animated-bg">
+      <div class="circle" style="width:90px; height:90px; left:10%; top:80%;"></div>
+      <div class="circle" style="width:120px; height:120px; left:65%; top:90%;"></div>
+      <div class="circle" style="width:70px; height:70px; left:80%; top:75%;"></div>
+    </div>
+
+    <div class="layout">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <a href="/" class="sidebar-logo">
+          <img src="/assets/logo.png" alt="Logo" />
+          <span>Disaster Learning Hub</span>
+        </a>
+
+        <nav class="sidebar-nav">
+          <a href="#hero" class="active"><i class="fa fa-gauge"></i> Dashboard</a>
+          <a href="#modules"><i class="fa fa-book-open"></i> Modules</a>
+          <a href="#quizzes"><i class="fa fa-question-circle"></i> Quizzes</a>
+          <a href="#drills"><i class="fa fa-people-group"></i> Mock Drills</a>
+          <a href="#reports"><i class="fa fa-file-alt"></i> Reports</a>
+        </nav>
+
+        <button id="logoutBtn" class="sidebar-logout">
+          <i class="fa fa-sign-out-alt"></i> Logout
+        </button>
+      </aside>
+
+      <!-- Main Area -->
+      <div class="main-area">
+
+        <!-- Emergency Alert Strip -->
+        <div class="alert-strip">
+          <i class="fa-solid fa-bell"></i>
+          ⚠ National Weather Warning: Possible heavy rainfall—conduct awareness session today!
+        </div>
+
+        <!-- Hero -->
+        <section id="hero" class="dashboard-hero">
+          <div class="overlay"></div>
+          <div class="hero-content">
+            <h1>Hello, Teacher 👋</h1>
+            <p>Empower your classroom with real-life safety and preparedness education</p>
+          </div>
+        </section>
+
+        <!-- Stats 
+        <section class="stats-row">
+          <div class="stat-card"><h3>32</h3><p>Active Students</p></div>
+          <div class="stat-card"><h3>12</h3><p>Completed Modules</p></div>
+          <div class="stat-card"><h3>4</h3><p>Live Quizzes</p></div>
+          <div class="stat-card"><h3>2</h3><p>Upcoming Drills</p></div>
+        </section>-->
+
+        <!-- Dashboard Cards -->
+        <section class="dashboard-content">
+          <div class="dashboard-grid">
+
+            <div class="dashboard-card" id="modules">
+              <h2><i class="fa fa-chalkboard"></i> Teaching Modules</h2>
+              <p>Access and schedule structured lessons for disaster safety topics.</p>
+
+              <form action="/index">
+
+                <button class="cta-btn" style="border-color: white; border-radius: 0.6rem;">Open Modules</button>
+              </form>
+            </div>
+
+            <div class="dashboard-card" id="quizzes">
+              <h2><i class="fa fa-edit"></i> Create Quizzes</h2>
+              <p>Build knowledge tests and evaluate student understanding.</p>
+              <button class="cta-btn" style="border-color: white; border-radius: 0.6rem;">Start Creating</button>
+            </div>
+
+            <div class="dashboard-card" id="drills">
+              <h2><i class="fa fa-person-running"></i> Mock Drill Plans</h2>
+              <p>Detailed execution flow for emergency evacuation and drill setups.</p>
+              <button class="cta-btn" style="border-color: white; border-radius: 0.6rem;">View Plans</button>
+            </div>
+
+            <div class="dashboard-card" id="reports">
+              <h2><i class="fa fa-file"></i> Reports & Attendance</h2>
+              <p>Monitor training completion, track safety awareness and improvement.</p>
+              <button class="cta-btn" style="border-color: white; border-radius: 0.6rem;">View Analytics</button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        window.location.href = "/";
+      });
+
+      function viewModules() { alert("Modules coming soon!"); }
+      function createQuiz() { alert("Quiz builder coming soon!"); }
+      function viewDrills() { alert("Drill instructions loading..."); }
+      function viewReports() { alert("Reports dashboard coming soon!"); }
+    </script>
+
+    <!-- Extra styles -->
+    <style>
+      .alert-strip {
+        width: 100%; background:#dcfce7;
+        color:#065f46;padding:8px 12px;
+        font-size:0.9rem;display:flex;
+        align-items:center;gap:8px;
+        border-bottom:1px solid #9ae6b4;
+        font-weight:600;
+      }
+      .stats-row {
+        display:grid;grid-template-columns:repeat(4,1fr);
+        gap:1rem;padding:1rem 1.5rem;
+      }
+      .stat-card {
+        background:white;padding:0.8rem;
+        border-radius:0.7rem;text-align:center;
+        box-shadow:0 6px 18px rgba(15,157,88,.15);
+      }
+      .stat-card h3 {
+        font-size:1.6rem;color:#0f9d58;margin:0;
+      }
+      .stat-card p {font-size:0.85rem;color:#475569;}
+    </style>
+
+  </body>
+</html>
