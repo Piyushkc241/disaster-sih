@@ -4,151 +4,110 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Punjab Earthquake Disaster History</title>
-
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="/css/style2.css" />
+    
     <style>
         body {
             margin: 0;
-            font-family: "Segoe UI", Arial, sans-serif;
-            background-color: #f6f8f5;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
             color: #333;
-            display: flex;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 220px;
-            background-color: #eef3ed;
-            padding: 25px;
-            border-right: 3px solid #0f9d58;   /* Updated */
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            box-sizing: border-box;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-        }
-
-        .sidebar h3 {
-            color: #0b6e3f; /* darker match */
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            font-weight: bold;
-        }
-
-        .sidebar a {
-            text-decoration: none;
-            color: #222;
-            display: block;
-            margin: 12px 0;
-            padding: 10px 12px;
-            font-size: 1.05rem;
-            border-radius: 6px;
-            transition: 0.3s;
-        }
-
-        .sidebar a:hover {
-            background-color: #c8f3dc;   /* soft green hover */
-            border-left: 5px solid #0f9d58; /* Updated */
-            padding-left: 18px;
         }
 
         /* Main content */
-        .main-content {
-            margin-left: 0px;
+        main {
             padding: 20px 40px;
-            flex: 1;
-            animation: fadeIn 0.8s ease-in-out;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Header */
-        header {
-            background-color: #0f9d58; /* Updated */
+        .page-header {
+            background-color: #0f9d58;
             color: white;
             text-align: center;
-            padding: 25px 10px;
-            font-size: 32px;
+            padding: 20px 10px;
+            font-size: 28px;
             font-weight: bold;
             letter-spacing: 1px;
             position: relative;
-            border-radius: 10px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-
-        /* Flags */
-        header::after {
-            content: '';
-            position: absolute;
-            top: 15px;
-            width: 65px;
-            height: 45px;
-            background-image: url('https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg');
-            background-size: cover;
-        }
-        header::after { right: 15px; }
-
-        /* Headings */
-        h2 {
-            color: #0b6e3f;  /* Updated */
-            border-left: 6px solid #0f9d58; /* Updated */
-            padding-left: 12px;
-            margin-top: 25px;
-            font-size: 1.8rem;
-        }
-
-        /* Year Blocks */
-        .year-block {
-            background: #d9f5e6;  /* lighter green backdrop */
-            padding: 18px 20px;
-            border-left: 5px solid #0f9d58; /* Updated */
-            margin-bottom: 18px;
-            border-radius: 8px;
-            box-shadow: 0 2px 7px rgba(0,0,0,0.08);
-            transition: transform 0.2s;
-        }
-
-        .year-block:hover {
-            transform: translateY(-3px);
-        }
-
-        .year-block h3 {
             margin: 0;
-            color: #0b6e3f; /* Updated heading color */
-            font-size: 1.3rem;
-            margin-bottom: 8px;
+        }
+        
+        h2 {
+            color: #0f9d58;
+            border-left: 5px solid #0f9d58;
+            padding-left: 10px;
+        }
+        
+        .year-block {
+            background: #c9f2df;
+            padding: 15px;
+            border-left: 4px solid #0f9d58;
+            margin-bottom: 15px;
+            border-radius: 6px;
         }
 
-        .year-block p {
-            line-height: 1.65;
-            font-size: 1.05rem;
-        }
+        .nav-container {
+         display: flex;
+         justify-content: center; /* centers nav items */
+         align-items: center;
+         width: 100%;
+         gap: 2rem;               /* optional spacing */
+}   
 
-        /* Paragraphs */
-        .main-content p {
-            font-size: 1.1rem;
-            background: #ffffff;
-            padding: 10px 18px;
-            border-radius: 8px;
-            border-left: 4px solid #0f9d58; /* Updated */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-        }
+        .nav-links {
+         display: flex;
+         gap: 1.5rem;
+         list-style: none;
+         position: absolute;
+         left: 50%;
+         transform: translateX(-50%);          
+         }
+
+         .nav-login-btn {
+          margin-left: auto; /* push login to far right */
+}
+  
+
 
     </style>
 </head>
-
 <body>
+  <!-- ========== NAVBAR ========== -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <a href="/" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit;">
+          <img src="/assests/logo.png" alt="Disaster Learning Hub Logo" class="logo-img" />
+          <span class="logo-text">Disaster Learning Hub</span>
+        </a>
+      </div>
+      
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+  
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="/firehistory">Fire</a></li>
+        <li><a href="/earthquakehistory">Earthquake</a></li>
+        <li><a href="/floodhistory">Flood</a></li>
+        <li><a href="/report">Report Incident</a></li>
+      </ul>
+        <!-- LOGIN BUTTON -->
+        <a href="/chooselogin" class="btn nav-login-btn">
+            <i class="fa-solid fa-user"></i> Login
+          </a>
+    </div>
+  </header>
 
-<div class="main-content">
-
-    <header>
-         Earthquake Disaster History
-    </header>
+  <main>
+    <div class="page-header">Earthquake Disaster History</div>
 
     <p>
         Punjab occasionally experiences mild tremors due to seismic activity in northern India, especially Himachal
@@ -206,8 +165,6 @@
         readiness drills, monitoring systems, and seismic safety standards. Continuous awareness and preparedness remain
         essential for reducing risks in the future.
     </p>
-
-</div>
-
+  </main>
 </body>
 </html>

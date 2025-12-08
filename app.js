@@ -149,7 +149,7 @@ app.get("/studentdashboard", (req, res) => {
 });
 
 app.get("/studentpending",(req,res)=>{
-  res.sender("studentPendingApproval");
+  res.render("studentPendingApproval");
 });
 
 
@@ -179,7 +179,7 @@ app.get("/teacherdashboard", (req, res) => {
 });
 
 app.get("/teacherapproval",(req,res)=>{
-  res.sender("teacherPendingApproval");
+  res.render("teacherPendingApproval");
 });
 
 

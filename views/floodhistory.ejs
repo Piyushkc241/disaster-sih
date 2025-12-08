@@ -4,52 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Punjab Disaster Management – Flood History (1988–Present)</title>
+    
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="/css/style2.css" />
+    
     <style>
         body {
             margin: 0;
             font-family: Arial, sans-serif;
             background-color: #ffffff;
             color: #333;
-            display: flex;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            width: 200px;
-            background-color: #f0f0f0;
-            padding: 20px;
-            border-right: 2px solid #0f9d58;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            box-sizing: border-box;
-        }
-        .sidebar h3 {
-            color: #0f9d58;
-            margin-bottom: 10px;
-        }
-        .sidebar a {
-            text-decoration: none;
-            color: #333;
-            display: block;
-            margin: 10px 0;
-            padding: 5px;
-            border-left: 4px solid transparent;
-        }
-        .sidebar a:hover {
-            border-left: 4px solid #0f9d58;
-            background-color: #d7f3e5;
         }
 
         /* Main content */
-        .main-content {
-            margin-left: 0px;
+        main {
             padding: 20px 40px;
-            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        header {
+        .page-header {
             background-color: #0f9d58;
             color: white;
             text-align: center;
@@ -58,14 +35,15 @@
             font-weight: bold;
             letter-spacing: 1px;
             position: relative;
+            margin: 0;
         }
-
+        
         h2 {
             color: #0f9d58;
             border-left: 5px solid #0f9d58;
             padding-left: 10px;
         }
-
+        
         .year-block {
             background: #c9f2df;
             padding: 15px;
@@ -74,25 +52,39 @@
             border-radius: 6px;
         }
 
-        /* India flags */
-         header::after {
-            content: '';
-            position: absolute;
-            top: 10px;
-            width: 60px;
-            height: 40px;
-            background-image: url('https://upload.wikimedia.org/wikipedia/en/4/41/Flag_of_India.svg');
-            background-size: cover;
-        }
-        header::after { right: 10px; }
     </style>
 </head>
 <body>
+  <!-- ========== NAVBAR ========== -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <a href="/" style="display: flex; align-items: center; gap: 0.5rem; text-decoration: none; color: inherit;">
+          <img src="/assets/logo.png" alt="Disaster Learning Hub Logo" class="logo-img" />
+          <span class="logo-text">Disaster Learning Hub</span>
+        </a>
+      </div>
+      
+      <div class="menu-toggle" id="menuToggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+  
+      <ul class="nav-links" id="navLinks">
+        <li><a href="/">Home</a></li>
+        <li><a href="/firehistory">Fire</a></li>
+        <li><a href="/earthquakehistory">Earthquake</a></li>
+        <li><a href="/floodhistory">Flood</a></li>
+        <li><a href="/report">Report Incident</a></li>
+      </ul>
+        <!-- LOGIN BUTTON -->
+        <a href="/chooselogin" class="btn nav-login-btn">
+            <i class="fa-solid fa-user"></i> Login
+          </a>
+    </div>
+  </header>
 
-<div class="main-content">
-    <header>
-        Punjab Disaster Management – Flood History
-    </header>
+  <main>
+    <div class="page-header">Flood History</div>
 
     <p>
         Punjab has faced multiple natural and man-made disasters since 1988. These events led to the evolution of a formal, structured disaster management system in the state, culminating in the establishment of SDMA Punjab after the Disaster Management Act, 2005.
@@ -196,9 +188,9 @@
 
     <h2>Summary</h2>
     <p>
-        Punjab’s journey from reactive relief to advanced disaster preparedness highlights its commitment to early warnings, flood forecasting, and multi-hazard planning.
+        Punjab's journey from reactive relief to advanced disaster preparedness highlights its commitment to early warnings, flood forecasting, and multi-hazard planning.
     </p>
-</div>
+  </main>
 
 </body>
 </html>
