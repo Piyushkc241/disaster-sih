@@ -7,11 +7,10 @@ const User = require("./models/user");
 const Teacher = require("./models/teacher");
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
+// Static Files
 app.use(express.static("public"));
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static(path.join(__dirname, "/public/css")));
-app.use(express.static(path.join(__dirname, "/public/js")));
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
 
@@ -72,6 +71,10 @@ app.get("/", (req, res) => {
 
 app.get("/report", (req, res) => {
   res.render("report",{idx:index,msg:alerts[index]});
+});
+
+app.get("/ar-tools", (req, res) => {
+  res.render("ar-tools",{idx:index,msg:alerts[index]});
 });
 
 app.get("/chooselogin", (req, res) => {
@@ -291,6 +294,104 @@ app.get("/overview", (req, res) => {
 
 app.get("/quiz", (req, res) => {
   res.render("quiz",{idx:index,msg:alerts[index]});
+});
+
+// ===== API Routes (AFTER all GET/POST routes) =====
+
+// Test route
+app.get("/api/test", (req, res) => {
+  res.json({ message: "API is working!" });
+});
+
+// Chatbot API
+app.post("/api/chat", async (req, res) => {
+  try {
+    const { message } = req.body;
+    if (!message) {
+      return res.status(400).json({ error: 'Message is required' });
+    }
+
+    const apiKey = process.env.GEMINI_API_KEY;
+    if (!apiKey || apiKey === 'your_gemini_api_key_here') {
+      return res.status(500).json({
+        error: 'API key not configured. Please add valid GEMINI_API_KEY to .env file'
+      });
+    }
+
+    console.log('Sending message to Gemini:', message.substring(0, 50));
+
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=${apiKey}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{
+              text: message
+            }]
+          }]
+        })
+      }
+    );
+
+    const responseText = await response.text();
+    
+    console.log('Gemini response status:', response.status);
+    console.log('Gemini response:', responseText.substring(0, 200));
+
+    if (!response.ok) {
+      console.error('Gemini API error:', responseText);
+      
+      // Check if it's a quota error (429)
+      if (response.status === 429) {
+        console.log('Quota exceeded - using fallback response');
+        const fallbackResponses = [
+          "I'm currently experiencing high demand. Here's some helpful information: Always have an emergency kit ready with water, food, first aid supplies, and important documents.",
+          "API quota temporarily exceeded. Quick tip: During natural disasters, stay calm and follow official evacuation orders. Keep your phone charged and have multiple communication methods.",
+          "Service temporarily unavailable. Safety reminder: Know your evacuation routes in advance and have a family communication plan prepared.",
+          "Currently at capacity. Disaster safety tip: Secure heavy furniture and objects that could fall during earthquakes or storms.",
+          "High demand right now. Remember: In a flood, move to higher ground immediately and never try to drive through flooded areas."
+        ];
+        const randomResponse = fallbackResponses[Math.floor(Math.random() * fallbackResponses.length)];
+        return res.json({ reply: randomResponse });
+      }
+      
+      return res.status(response.status).json({
+        error: `API Error: ${response.status} - Check console for details`
+      });
+    }
+
+    let data;
+    try {
+      data = JSON.parse(responseText);
+    } catch (e) {
+      console.error('Failed to parse response:', responseText);
+      return res.status(500).json({ error: 'Invalid API response format' });
+    }
+
+    if (!data.candidates || data.candidates.length === 0) {
+      return res.status(500).json({ error: 'No response from Gemini' });
+    }
+    
+    const candidate = data.candidates[0];
+    const reply = candidate.content?.parts?.[0]?.text;
+    
+    if (!reply) {
+      console.error('No text in response:', candidate);
+      return res.status(500).json({ 
+        error: `Response incomplete. Reason: ${candidate.finishReason || 'unknown'}` 
+      });
+    }
+    
+    console.log('Sending reply:', reply.substring(0, 100));
+    res.json({ reply });
+  } catch (error) {
+    console.error('Chatbot API error:', error.message);
+    res.status(500).json({ error: error.message || 'Internal server error' });
+  }
 });
 
 app.listen(port, () => {

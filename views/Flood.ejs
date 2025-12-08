@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Flood Preparedness Module</title>
   <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/chatbot.css" />
 </head>
 <body>
 
@@ -318,6 +319,11 @@ document.getElementById("langSelect").addEventListener("change", function () {
 });
 </script>
 
+<!-- Chatbot Widget -->
+<%- include('chatbot-widget') %>
+
+<!-- Chatbot Script -->
+<script src="/js/chatbot.js"></script>
 
 </body>
 </html>

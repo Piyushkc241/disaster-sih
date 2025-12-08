@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AR Safety Tools | Disaster Learning Hub</title>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <link rel="stylesheet" href="/css/ar.css" />
+  <link rel="stylesheet" href="/css/chatbot.css" />
+  <style>
+    model-viewer {
+      width: 100%;
+      height: 500px;
+      background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+      border-radius: 8px;
+      display: block;
+    }
+  </style>
+  <script type="module">
+    import 'https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js';
+  </script>
+</head>
+<body>
+  <header class="ar-header">
+    <div class="brand">
+      <div>
+        <p class="brand-sub">Augmented Reality</p>
+        <h1 class="brand-title">Safety Tools Lab</h1>
+      </div>
+    </div>
+    <nav class="ar-nav">
+      <a href="/" class="link">Home</a>
+      <a href="/alldisaster" class="link">Learn</a>
+      <a href="/report" class="link">Report</a>
+    </nav>
+  </header>
+
+  <main class="ar-layout">
+    <section class="hero">
+      <div>
+        <p class="pill"><i class="fa-solid fa-glasses"></i> View life-size tools</p>
+        <h2>Practice with emergency gear in your own space.</h2>
+        <p class="lede">
+          Place critical disaster safety tools on any flat surface to understand size, handling, and spacing before an actual emergency.
+        </p>
+        <div class="hero-actions">
+          <a class="primary" href="#ar-grid">Open AR tools</a>
+        </div>
+        <ul class="hero-list">
+          <li><i class="fa-solid fa-check"></i> Works on WebXR-capable Android (Scene Viewer) and AR-friendly browsers.</li>
+          <li><i class="fa-solid fa-check"></i> Use indoors with good lighting for better surface detection.</li>
+          <li><i class="fa-solid fa-check"></i> 3D controls remain available if AR is not supported.</li>
+        </ul>
+      </div>
+      <div class="hero-card">
+        <div class="badge"><i class="fa-solid fa-mobile-screen-button"></i> AR ready</div>
+        <p class="hero-note">Tap "View in AR" to place a virtual safety tool on the floor or table. Rotate and scale to understand clearances.</p>
+        <div class="mini-callout">
+          <i class="fa-solid fa-lightbulb"></i>
+          <div>
+            <p class="callout-title">Tip</p>
+            <p class="callout-body">Stand 1–2 meters from a flat surface and move your phone side-to-side to help the scanner lock on.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ar-grid" class="ar-grid">
+      <article class="ar-card">
+        <div class="card-head">
+          <p class="label">Water Safety</p>
+          <h3>Life Jacket</h3>
+          <p class="meta">Learn proper fit and wear for flood and water emergencies; know sizing for family.</p>
+        </div>
+        <div class="viewer-shell">
+          <model-viewer
+            id="lifejacket-viewer"
+            src="/assets/ar-assets/life_vest__life_jacket_low_poly.glb"
+            alt="Life Jacket"
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            camera-controls
+            auto-rotate
+            disable-zoom="false"
+          >
+          </model-viewer>
+          <button class="ar-button" onclick="openAR('lifejacket-viewer')">
+            <i class="fa-solid fa-vr-cardboard"></i>
+            View in AR
+          </button>
+          <p class="model-hint">💡 Drag to rotate • Scroll to zoom • Double-tap to reset</p>
+        </div>
+        <ul class="checklist">
+          <li>Wear during flood evacuation by vehicle or boat</li>
+          <li>Check straps and buckles annually</li>
+          <li>Keep near water-prone exits in monsoon season</li>
+        </ul>
+      </article>
+
+      <article class="ar-card">
+        <div class="card-head">
+          <p class="label">Fire Safety</p>
+          <h3>Fire Extinguisher</h3>
+          <p class="meta">Know where to place and practice safe distance and spray technique for small fires.</p>
+        </div>
+        <div class="viewer-shell">
+          <model-viewer
+            id="extinguisher-viewer"
+            src="/assets/ar-assets/fire_extinguisher.glb"
+            alt="Fire Extinguisher"
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            camera-controls
+            auto-rotate
+            disable-zoom="false"
+          >
+          </model-viewer>
+          <button class="ar-button" onclick="openAR('extinguisher-viewer')">
+            <i class="fa-solid fa-vr-cardboard"></i>
+            View in AR
+          </button>
+          <p class="model-hint">💡 Drag to rotate • Scroll to zoom • Double-tap to reset</p>
+        </div>
+        <ul class="checklist">
+          <li>Keep 2m away from exit; easily accessible</li>
+          <li>Check pressure gauge monthly</li>
+          <li>PASS rule: Pull, Aim, Squeeze, Sweep</li>
+        </ul>
+      </article>
+
+      <article class="ar-card">
+        <div class="card-head">
+          <p class="label">Medical Response</p>
+          <h3>First Aid Kit</h3>
+          <p class="meta">Understand contents and placement; practice basic bandaging and CPR setup spaces.</p>
+        </div>
+        <div class="viewer-shell">
+          <model-viewer
+            id="firstaid-viewer"
+            src="/assets/ar-assets/ammunition_and_first_aid_kit_pack.glb"
+            alt="First Aid Kit"
+            ar
+            ar-modes="webxr scene-viewer quick-look"
+            camera-controls
+            auto-rotate
+            disable-zoom="false"
+          >
+          </model-viewer>
+          <button class="ar-button" onclick="openAR('firstaid-viewer')">
+            <i class="fa-solid fa-vr-cardboard"></i>
+            View in AR
+          </button>
+          <p class="model-hint">💡 Drag to rotate • Scroll to zoom • Double-tap to reset</p>
+        </div>
+        <ul class="checklist">
+          <li>Keep at home, workplace, and vehicle</li>
+          <li>Check expiry dates quarterly</li>
+          <li>Learn CPR and basic wound care</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="how">
+      <div>
+        <p class="pill"><i class="fa-solid fa-circle-info"></i> How to use</p>
+        <h3>Make the most of AR training</h3>
+        <ol class="steps">
+          <li><strong>Scan the floor:</strong> Move your phone in a slow figure-8 to help detect planes.</li>
+          <li><strong>Place once stable:</strong> Tap when grids/dots appear to anchor the tool.</li>
+          <li><strong>Rotate & scale:</strong> Pinch/drag to check clearance near doors and corridors.</li>
+          <li><strong>Snapshot learnings:</strong> Take a photo and note where to keep real gear.</li>
+        </ol>
+      </div>
+      <div class="cta-box">
+        <p class="cta-title">Disaster safety tools ready?</p>
+        <p class="cta-body">Inspect equipment quarterly and train your family on proper usage.</p>
+        <div class="cta-actions">
+          <a class="primary" href="/report">Report hazard</a>
+          <a class="ghost" href="/alldisaster">Review safety steps</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function openAR(viewerId) {
+      const viewer = document.getElementById(viewerId);
+      if (!viewer) {
+        console.error('Viewer not found:', viewerId);
+        return;
+      }
+
+      if (!viewer.canActivateAR) {
+        alert('AR not supported on this device. Use 3D controls instead.');
+        return;
+      }
+
+      viewer.enterAR().catch((error) => {
+        console.error('Could not enter AR:', error);
+        alert('Could not activate AR. Try a different device or browser.');
+      });
+    }
+
+    // Log when models load
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('model-viewer').forEach((viewer) => {
+        viewer.addEventListener('load', () => {
+          console.log(`✅ Model loaded: ${viewer.id}`);
+        });
+
+        viewer.addEventListener('error', (e) => {
+          console.error(`❌ Error loading model ${viewer.id}:`, e);
+        });
+      });
+    });
+  </script>
+  
+  <!-- Chatbot Widget -->
+  <%- include('chatbot-widget') %>
+  
+  <!-- Chatbot Script -->
+  <script src="/js/chatbot.js"></script>
+</body>
+</html>

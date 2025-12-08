@@ -16,6 +16,7 @@
 
   <!-- Main stylesheet -->
   <link rel="stylesheet" href="/css/style2.css" />
+  <link rel="stylesheet" href="/css/chatbot.css" />
 </head>
 <body>
   <!-- ========== NAVBAR ========== -->
@@ -33,6 +34,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a data-target="home" href="/">Home</a></li>
         <li><a data-target="about">About Us</a></li>
+        <li><a href="/ar-tools">AR Tools</a></li>
         <li><a data-target="response">Response</a></li>
         <li class="dropdown">
           <a data-target="past-crisis">Past Crisis</a>
@@ -411,6 +413,12 @@
   
 
   <!-- Main script -->
-  <script src="/assets/script2.js"></script>
+  <script src="/js/script2.js"></script>
+  
+  <!-- Chatbot Widget -->
+  <%- include('chatbot-widget') %>
+  
+  <!-- Chatbot Script -->
+  <script src="/js/chatbot.js"></script>
 </body>
 </html>

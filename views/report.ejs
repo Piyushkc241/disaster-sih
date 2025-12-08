@@ -6,6 +6,7 @@
   <title>Report an Incident - Disaster Management Portal</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="/css/chatbot.css" />
 
   <style>
     /* ===== Base ===== */
@@ -708,6 +709,12 @@
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
   </script>
+  
+  <!-- Chatbot Widget -->
+  <%- include('chatbot-widget') %>
+  
+  <!-- Chatbot Script -->
+  <script src="/js/chatbot.js"></script>
 </body>
 </html>
 
