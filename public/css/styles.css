@@ -8,7 +8,7 @@
 :root {
   --bg: #f5f7fb;
   --bg-alt: #ffffff;
-  --primary: #559729;
+  --primary: #0f9d58;
   --accent: #ff9800;
   --text: #1f2933;
   --muted: #6b7280;
@@ -58,6 +58,7 @@ body {
   display: flex;
   justify-content: space-between;
   padding: 0.8rem 0;
+  align-items: center;
 }
 
 .nav-links a {
@@ -74,15 +75,22 @@ body {
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
-.logo-mark {
+/*.logo-mark {
   background: var(--primary);
   color: white;
   padding: 6px 9px;
   border-radius: 8px;
   font-weight: 700;
+}*/
+
+.logo-mark img {
+  width: 50px;      
+  height: auto;
+
+
 }
 
 /* HERO */
@@ -104,6 +112,7 @@ body {
   display: grid;
   grid-template-columns: 1.8fr 1fr;
   gap: 2rem;
+  
 }
 
 .hero-text h1 {
@@ -212,7 +221,7 @@ body {
 /* EXPLORE BUTTON */
 .btn-explore {
   margin-top: 16px;
-  background: #559729;
+  background: #0f9d58;
   color: #ffffff;
   padding: 8px 15px;
   border-radius: 20px;
@@ -248,7 +257,7 @@ body {
 }
 
 .view-all-btn {
-  background: #559729;
+  background: #0f9d58;
   color: #fff;
   padding: 10px 20px;
   font-size: 0.95rem;
@@ -615,3 +624,4 @@ body.high-contrast input[type="radio"] {
   box-shadow: 0 3px 10px rgba(0,0,0,0.15);
 }
 
+/*translator*/

@@ -1,3 +1,7 @@
+document.querySelectorAll(".caption").forEach(cap => {
+  cap.setAttribute("data-key", cap.getAttribute("data-key"));
+});
+
 console.log("Educational Modules Loaded Successfully");
 let slideIndex = 0;
 autoSlide();
@@ -23,3 +27,4 @@ function autoSlide() {
   setTimeout(autoSlide, 3000); // Change slide every 3 seconds
 }
 
+/*translator*/

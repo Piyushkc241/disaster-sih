@@ -3,68 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Educational Modules | Disaster Learning Hub</title>
+  <title data-key="site_name">Disaster Learning Hub</title>
+
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet"
-  />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
 </head>
 
 <body>
-  <!-- TOP NAV -->
-  <header class="top-nav">
-    <a href="/" style="text-decoration: none; color: black;">
 
-      <div class="container nav-content">
-        <div class="logo">
-          <span class="logo-mark">DL</span>
-          <span class="logo-text">Disaster Learning Hub</span>
-        </div>
-      </a>
-        <nav class="nav-links">
-        <a href="#topics">Disaster Modules</a>
-        <a href="/quiz">Quiz</a>
-        <a href="#alerts-preview">Alerts</a>
-      </nav>
+<!-- TOP NAV -->
+<header class="top-nav">
+  <div class="container nav-content">
+    <div class="logo">
+      <span class="logo-mark">
+        <img src="/assets/DL logo.jpg" alt="DL Logo">
+      </span>
+      <span class="logo-text" data-key="site_name">Disaster Learning Hub</span>
     </div>
-  </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-content">
-      <div class="hero-text">
-        <h1>Educational Modules for Safer Campuses</h1>
-        <p>
-          Learn about various disasters through text, images, animations, sign-language videos, and audio explanations.
-        </p>
+    <nav class="nav-links">
+      <a href="#topics" data-key="nav_modules">Disaster Modules</a>
+      <a href="/quiz" data-key="nav_quiz">Quiz</a>
+      <a href="#alerts-preview" data-key="nav_alerts">Alerts</a>
+    </nav>
 
-        <div class="hero-actions">
-          <a href="#topics" class="btn primary">Start Learning</a>
-        </div>
+    <!-- 🌐 CUSTOM LANGUAGE SWITCHER -->
+    <div id="custom-lang-switcher">
+      🌐 
+      <select id="languageSelect">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="pa">ਪੰਜਾਬੀ</option>
+      </select>
+    </div>
+  </div>
+</header>
 
-      <!--  <div class="hero-meta">
-          <span>✔ Curriculum Aligned</span>
-          <span>✔ Inclusive & Accessible</span>
-          <span>✔ Ready for Mock Drills</span>
-        </div> -->
-      </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-text">
 
-      <div class="hero-illustration">
-        <img src="/assets/learning image.jpg" class="hero-image" alt="Disaster Safety Image">
+      <h1 data-key="hero_title">Educational Modules for Safer Campuses</h1>
 
+      <p data-key="hero_subtitle">
+        Learn about various disasters through text, images, animations, sign-language videos, and audio explanations.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#topics" class="btn primary" data-key="start_learning">Start Learning</a>
       </div>
     </div>
-  </section>
 
-<!-- DISASTER MODULES (MAIN SECTION) -->
+    <div class="hero-illustration">
+      <img src="/assets/learning image.jpg" class="hero-image" alt="Disaster Safety Image">
+    </div>
+  </div>
+</section>
+
+<!-- DISASTER MODULES -->
 <section id="topics" class="section">
   <div class="container">
     <div class="section-header">
-      <h2>Explore Disaster Learning Modules</h2>
-      <p>
+      <h2 data-key="explore_modules_title">Explore Disaster Learning Modules</h2>
+      <p data-key="explore_modules_subtitle">
         Each module includes text, images, animations, sign-language videos, and audio explanations.
       </p>
     </div>
@@ -75,9 +80,11 @@
       <article class="topic-card">
         <img src="/assets/earthquake.jpg" class="topic-img" alt="Earthquake">
         <div class="topic-content">
-          <h3>Earthquake Safety</h3>
-          <p>Learn causes, intensity scales, building safety & the Drop-Cover-Hold technique.</p>
-          <a href="/earthquake" class="btn-explore">Explore Learning</a>
+          <h3 data-key="eq_title">Earthquake Safety</h3>
+          <p data-key="eq_desc">
+            Learn causes, intensity scales, building safety & the Drop-Cover-Hold technique.
+          </p>
+          <a href="/earthquake" class="btn-explore" data-key="explore_btn">Explore Learning</a>
         </div>
       </article>
 
@@ -85,9 +92,9 @@
       <article class="topic-card">
         <img src="/assets/flood.jpg" class="topic-img" alt="Flood">
         <div class="topic-content">
-          <h3>Flood Preparedness</h3>
-          <p>Understand warnings, flood levels, evacuation steps & rescue measures.</p>
-          <a href="/flood" class="btn-explore">Explore Learning</a>
+          <h3 data-key="flood_title">Flood Preparedness</h3>
+          <p data-key="flood_desc">Understand warnings, flood levels, evacuation steps & rescue measures.</p>
+          <a href="Flood.html" class="btn-explore" data-key="explore_btn">Explore Learning</a>
         </div>
       </article>
 
@@ -95,9 +102,9 @@
       <article class="topic-card">
         <img src="/assets/fire.jpg" class="topic-img" alt="Fire">
         <div class="topic-content">
-          <h3>Fire & Industrial Hazards</h3>
-          <p>Fire classes, extinguisher usage, electrical fire handling & lab safety.</p>
-          <a href="/fire" class="btn-explore">Explore Learning</a>
+          <h3 data-key="fire_title">Fire & Industrial Hazards</h3>
+          <p data-key="fire_desc">Fire classes, extinguisher usage, electrical fire handling & lab safety.</p>
+          <a href="/fire" class="btn-explore" data-key="explore_btn">Explore Learning</a>
         </div>
       </article>
 
@@ -106,33 +113,33 @@
 </section>
 
 <div class="view-all-container">
-  <a href="/alldisaster" class="view-all-btn">View All Disasters →</a>
+  <a href="/alldisaster" class="view-all-btn" data-key="view_all_disasters">View All Disasters →</a>
 </div>
 
-<!-- ACCESSIBLE FEATURE SLIDER -->
+<!-- SLIDER -->
 <section class="feature-slider-section">
-  <h2 class="slider-title">Inclusive Learning Features</h2>
+  <h2 class="slider-title" data-key="inclusive_title">Inclusive Learning Features</h2>
 
   <div class="slider-container">
 
     <div class="slide fade">
       <video src="/assets/Flood_Video.mp4" autoplay muted loop></video>
-      <div class="caption">Flood</div>
+      <div class="caption" data-key="flood_caption">Flood</div>
     </div>
 
     <div class="slide fade">
       <img src="/assets/EQ_SL.webp" alt="Animated Safety Clip">
-      <div class="caption">Earthquake</div>
+      <div class="caption" data-key="eq_caption">Earthquake</div>
     </div>
 
     <div class="slide fade">
-    <video src="/assets/Forest_Fire_Video.mp4" autoplay muted loop></video>
-    <div class="caption">Forest Fire</div>
+      <video src="/assets/Forest_Fire_Video.mp4" autoplay muted loop></video>
+      <div class="caption" data-key="forest_caption">Forest Fire</div>
     </div>
 
     <div class="slide fade">
       <img src="/assets/nepal_EQ.jpg" alt="Accessible Learning">
-      <div class="caption">Nepal Earthquake</div>
+      <div class="caption" data-key="nepal_caption">Nepal Earthquake</div>
     </div>
 
   </div>
@@ -145,81 +152,84 @@
   </div>
 </section>
 
+<!-- QUIZ PREVIEW -->
+<section id="quiz-preview" class="section section-alt">
+  <div class="container quiz-preview">
+    <div>
+      <h2 data-key="quiz_title">Test Your Understanding</h2>
+      <p data-key="quiz_subtitle">Attempt quizzes and track your score on the leaderboard.</p>
 
-  <!-- QUIZ PREVIEW -->
-  <section id="quiz-preview" class="section section-alt">
-    <div class="container quiz-preview">
-      <div>
-        <h2>Test Your Understanding</h2>
-        <p>
-          Attempt quizzes and track your score on the leaderboard.
-        </p>
-        <ul class="card-list">
-          <li>Normal MCQ quizzes</li>
-          <li>Audio-based questions</li>
-          <li>Sign-language quizzes</li>
-          <li>Leaderboard & badges</li>
-        </ul>
-        <a href="/quiz" class="btn primary">Go to Quiz</a>
-      </div>
+      <ul class="card-list">
+        <li data-key="quiz_mcq">Normal MCQ quizzes</li>
+        <li data-key="quiz_audio">Audio-based questions</li>
+        <li data-key="quiz_sign">Sign-language quizzes</li>
+        <li data-key="quiz_badges">Leaderboard & badges</li>
+      </ul>
 
-      <div class="quiz-preview-card">
-        <p class="quiz-label">Sample Question</p>
-        <p class="quiz-question">What should you do during an earthquake?</p>
-        <ul class="quiz-options">
-          <li>Run towards staircase</li>
-          <li>Stand near windows</li>
-          <li>Drop, Cover & Hold</li>
-          <li>Use the elevator</li>
-        </ul>
-      </div>
+      <a href="#" class="btn primary" data-key="go_to_quiz">Go to Quiz</a>
     </div>
-  </section>
 
-  <!-- ALERTS PREVIEW -->
-  <section id="alerts-preview" class="section">
-    <div class="container alerts-preview">
-      <div class="section-header">
-        <h2>Alerts & Evacuation Overview</h2>
-        <p>
-          Learn how sensor-based alerts and smart evacuation routes help during emergencies.
-        </p>
-      </div>
+    <div class="quiz-preview-card">
+      <p class="quiz-label" data-key="sample_question_label">Sample Question</p>
+      <p class="quiz-question" data-key="sample_question">What should you do during an earthquake?</p>
 
-      <div class="grid grid-3">
-        <article class="card mini-alert">
-          <h3>Live Alert Status</h3>
-          <p>Fire, flood & earthquake alerts will appear here.</p>
-<span  class="badge badge-safe">Status: Normal</span>
-        </article>
-
-        <article class="card mini-alert">
-          <h3>Evacuation Route Demo</h3>
-          <p>Explore routes based on school / college building layout.</p>
-          <a href="#" class="link">View Route →</a>
-        </article>
-
-        <article class="card mini-alert">
-          <h3>AR/VR Mock Drills</h3>
-          <p>Train using immersive AR & VR safety simulations.</p>
-          <a href="#" class="link">Learn More →</a>
-        </article>
-      </div>
+      <ul class="quiz-options">
+        <li data-key="opt_stairs">Run towards staircase</li>
+        <li data-key="opt_windows">Stand near windows</li>
+        <li data-key="opt_dch">Drop, Cover & Hold</li>
+        <li data-key="opt_elevator">Use the elevator</li>
+      </ul>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container footer-content">
-      <p>© 2025 Disaster Learning Hub – Educational Modules</p>
-      <div class="footer-links">
-        <a href="#">About</a>
-        <a href="#">Team</a>
-        <a href="#">Contact</a>
-      </div>
-    </div>z
-  </footer>
+<!-- ALERTS PREVIEW -->
+<section id="alerts-preview" class="section">
+  <div class="container alerts-preview">
+    <div class="section-header">
+      <h2 data-key="alerts_title">Alerts & Evacuation Overview</h2>
+      <p data-key="alerts_desc">
+        Learn how sensor-based alerts and smart evacuation routes help during emergencies.
+      </p>
+    </div>
 
-  <script src="/js/script.js"></script>
+    <div class="grid grid-3">
+      <article class="card mini-alert">
+        <h3 data-key="status_title">Live Alert Status</h3>
+        <p data-key="status_desc">Fire, flood & earthquake alerts will appear here.</p>
+        <span class="badge badge-safe" data-key="status_normal">Status: Normal</span>
+      </article>
+
+      <article class="card mini-alert">
+        <h3 data-key="evac_title">Evacuation Route Demo</h3>
+        <p data-key="evac_desc">Explore routes based on school / college building layout.</p>
+        <a href="#" class="link" data-key="evac_view">View Route →</a>
+      </article>
+
+      <article class="card mini-alert">
+        <h3 data-key="arvr_title">AR/VR Mock Drills</h3>
+        <p data-key="arvr_desc">Train using immersive AR & VR safety simulations.</p>
+        <a href="#" class="link" data-key="arvr_more">Learn More →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container footer-content">
+    <p data-key="footer_text">© 2025 Disaster Learning Hub – Educational Modules</p>
+    <div class="footer-links">
+      <a href="#" data-key="footer_about">About</a>
+      <a href="#" data-key="footer_team">Team</a>
+      <a href="#" data-key="footer_contact">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="/js/script.js"></script>
+<script src="/js/Translate.js"></script>
+
 </body>
 </html>
