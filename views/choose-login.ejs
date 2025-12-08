@@ -9,15 +9,23 @@
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
     body {
-      background: url("bg.png") no-repeat center center fixed;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 1rem;
-      font-family: system-ui, sans-serif;
-    }
+  background: url("/assets/bg.png") center/cover no-repeat fixed;
+  width: 100vw;
+  min-height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: system-ui, sans-serif;
+}
+
 
     .login-select-wrapper {
       background: #ffffff;
