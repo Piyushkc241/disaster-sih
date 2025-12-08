@@ -3,3 +3,4 @@ node_modules/
 public/assets/
 
 .env
+.env2
