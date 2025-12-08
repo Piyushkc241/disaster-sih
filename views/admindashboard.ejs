@@ -326,16 +326,25 @@
       </div>
 
       <nav class="admin-nav">
-        <button class="active">
-          <i class="fa-solid fa-gauge-high"></i> Dashboard
-        </button>
+        <form action="/admindashboard">
 
-        <button>
-          <i class="fa-solid fa-chalkboard-teacher"></i> Teachers
-        </button>
-        <button>
-          <i class="fa-solid fa-user-graduate"></i> Students
-        </button>
+          <button class="active">
+            <i class="fa-solid fa-gauge-high"></i> Dashboard
+          </button>
+        </form>
+
+        <form action="/admin/teacherinfo">
+
+          <button>
+            <i class="fa-solid fa-chalkboard-teacher"></i> Teachers
+          </button>
+        </form>
+        <form action="/admin/studentinfo">
+
+          <button>
+            <i class="fa-solid fa-user-graduate"></i> Students
+          </button>
+        </form>
         <button>
           <i class="fa-solid fa-triangle-exclamation"></i> Incidents
         </button>
