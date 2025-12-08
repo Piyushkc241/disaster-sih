@@ -6,9 +6,13 @@ const teacherSchema= new Schema({
         type:String,
         required:true,
     },
+    uniqueId: {
+        type: String,
+    },
     email : {
         type:String,
-        required:true
+        required:true,
+        unique: true,
     },
     role:{
         type:String,
@@ -19,12 +23,10 @@ const teacherSchema= new Schema({
         required:true,
     },
     number :{
-        type : Number,
-        // required : true,
+        type : String,
     },
     institute:{
         type:String,
-        //required:true
     },
     
 });

@@ -5,9 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>All Disaster Modules</title>
   <link rel="stylesheet" href="/css/styles.css" />
+  <style>
+    .alert-toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
+      color: #fff;
+      padding: 16px 24px;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(255, 107, 107, 0.3);
+      font-size: 1rem;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateX(-50%) translateY(-20px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+      z-index: 9999;
+      max-width: 90%;
+      word-wrap: break-word;
+      border-left: 4px solid rgba(255, 255, 255, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .alert-toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+    .alert-toast::before {
+      content: "⚠️";
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+  </style>
 </head>
 
 <body>
+  <div id="alertToast" class="alert-toast"></div>
 
   <section class="section">
 
@@ -186,8 +221,15 @@
 
 <% if (typeof index !== "undefined" && index != 0) { %>
 <script>
-alert("<%= msg %>. Be safe!");
-
+  (function() {
+    const msg = "<%- msg %>";
+    const alertToast = document.getElementById("alertToast");
+    if (msg && alertToast) {
+      alertToast.textContent = msg + ". Be safe!";
+      alertToast.classList.add("show");
+      setTimeout(() => alertToast.classList.remove("show"), 5000);
+    }
+  })();
 </script>
 <% } %>
 

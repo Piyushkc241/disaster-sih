@@ -128,7 +128,7 @@ app.post("/studentregister", async (req, res) => {
 });
 
 app.get("/studentlogin", (req, res) => {
-  res.render("studentlogin");
+  res.render("studentlogin", { idx:index, msg:null });
 });
 app.post("/studentlogin", async (req, res) => {
   let studentDetails = req.body;
@@ -140,7 +140,7 @@ app.post("/studentlogin", async (req, res) => {
   if (exists) {
     res.render("studentDashboard",{idx:index,msg:alerts[index]});
   } else {
-    res.render("choose-login",{idx:index,msg:alerts[index]});
+    res.status(401).render("studentlogin", { idx:index, msg:"Wrong credentials. Please try again." });
   }
 });
 
@@ -155,7 +155,7 @@ app.get("/studentpending",(req,res)=>{
 
 //teacher
 app.get("/teacherlogin", (req, res) => {
-  res.render("teacherlogin",{idx:index,msg:alerts[index]});
+  res.render("teacherlogin",{idx:index,msg:null});
 });
 app.post("/teacherlogin", async (req, res) => {
   let teacherDetails = req.body;
@@ -167,12 +167,38 @@ app.post("/teacherlogin", async (req, res) => {
   if (exists) {
     res.render("teacherDashboard",{idx:index,msg:alerts[index]});
   } else {
-    res.render("choose-login",{idx:index,msg:alerts[index]});
+    res.status(401).render("teacherlogin",{idx:index,msg:"Wrong credentials. Please try again."});
   }
 });
 
 app.get("/teacherregister", (req, res) => {
   res.render("teacherregister",{idx:index,msg:alerts[index]});
+});
+app.post("/teacherregister", async (req, res) => {
+  try {
+    const { name, uniqueId, email, number, institute, password, confirmPassword } = req.body;
+
+    if (!name || !email || !password) {
+      return res.status(400).render("teacherregister", { idx:index, msg:"Please fill all required fields" });
+    }
+
+    if (password !== confirmPassword) {
+      return res.status(400).render("teacherregister", { idx:index, msg:"Passwords do not match" });
+    }
+
+    const existingTeacher = await Teacher.findOne({ email });
+    if (existingTeacher) {
+      return res.status(400).render("teacherlogin", { idx:index, msg:"Account already exists. Please login." });
+    }
+
+    const newTeacher = new Teacher({ name, uniqueId, email, number, institute, password });
+    await newTeacher.save();
+
+    return res.render("teacherPendingApproval", { idx:index, msg:alerts[index] });
+  } catch (error) {
+    console.error("Teacher registration error:", error.message);
+    return res.status(500).render("teacherregister", { idx:index, msg:"Registration failed. Please try again." });
+  }
 });
 app.get("/teacherdashboard", (req, res) => {
   res.render("teacherDashboard",{idx:index,msg:alerts[index]});
