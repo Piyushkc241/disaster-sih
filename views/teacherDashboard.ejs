@@ -28,6 +28,131 @@
         0% { transform: translateY(0); opacity: 0.6; }
         100% { transform: translateY(-700px); opacity: 0; }
       }
+      /* SECTIONS */
+    .admin-section {
+      background: #ffffff;
+      border-radius: 1rem;
+      padding: 1.2rem 1.3rem;
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+      border: 1px solid #e5e7eb;
+    }
+
+    .admin-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+      gap: 0.5rem;
+    }
+
+    .admin-section-header h2 {
+      margin: 0;
+      font-size: 1.02rem;
+      color: #111827;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .admin-section-header h2 i {
+      color: #0f9d58;
+    }
+
+    .admin-section-header small {
+      font-size: 0.8rem;
+      color: #6b7280;
+    }
+
+    /* TABLES */
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .admin-table th,
+    .admin-table td {
+      padding: 0.55rem 0.4rem;
+      border-bottom: 1px solid #e5e7eb;
+      text-align: left;
+    }
+
+    .admin-table th {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      color: #6b7280;
+      background: #f9fafb;
+    }
+
+    .status-pill {
+      padding: 0.1rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    .status-pending {
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .status-approved {
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .status-rejected {
+      background: #fee2e2;
+      color: #b91c1c;
+    }
+
+    .btn-xs {
+      font-size: 0.75rem;
+      padding: 0.28rem 0.6rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-approve {
+      background: #16a34a;
+      color: #ffffff;
+    }
+
+    .btn-reject {
+      background: #e5e7eb;
+      color: #111827;
+      margin-left: 0.25rem;
+    }
+
+    .btn-approve:hover {
+      background: #15803d;
+    }
+
+    .btn-reject:hover {
+      background: #d1d5db;
+    }
+
+    @media (max-width: 800px) {
+      .admin-layout {
+        grid-template-columns: 1fr;
+      }
+      .admin-sidebar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.8rem 1rem;
+      }
+      .admin-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+      .admin-footer-note {
+        display: none;
+      }
+    }
     </style>
   </head>
 
@@ -108,13 +233,70 @@
               <button class="cta-btn" onclick="viewDrills()">View Plans</button>
             </div>
 
-            <div class="dashboard-card" id="reports">
-              <h2><i class="fa fa-file"></i> Reports & Attendance</h2>
-              <p>Monitor training completion, track safety awareness and improvement.</p>
-              <button class="cta-btn" onclick="viewReports()">View Analytics</button>
+            <div class="dashboard-card" id="reports" >
+              <h2><i class="fa fa-file"></i>Student List</h2>
+              <p> Students approved under you</p>
+              <button class="cta-btn" onclick="viewReports()">View </button>
             </div>
           </div>
         </section>
+        <section class="admin-section" id="teacherSection">
+          <div class="admin-section-header">
+            <div>
+              <h2><i class="fa-solid fa-chalkboard-teacher"></i> Pending Student Approvals</h2>
+              <small>Review and approve teachers before they can access the teaching portal.</small>
+            </div>
+          </div>
+          <!--table-->
+          <table class="admin-table" id="teacherTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Unique ID</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Status</th>
+                <th style="width:120px;">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Example rows -->
+              <tr data-status="pending">
+                <td>Rajesh Kumar</td>
+                <td>TCH-2025-001</td>
+                <td>rajesh@gniet.edu</td>
+                <td>9876543210</td>
+                <td><span class="status-pill status-pending">Pending</span></td>
+                <td>
+                  <button class="btn-xs btn-approve">Approve</button>
+                  <button class="btn-xs btn-reject">Reject</button>
+                </td>
+              </tr>
+              <tr data-status="pending">
+                <td>Priya Singh</td>
+                <td>TCH-2025-002</td>
+                <td>priya@glbajaj.edu</td>
+                <td>9876501234</td>
+                <td><span class="status-pill status-pending">Pending</span></td>
+                <td>
+                  <button class="btn-xs btn-approve">Approve</button>
+                  <button class="btn-xs btn-reject">Reject</button>
+                </td>
+              </tr>
+              <tr data-status="approved">
+                <td>Amit Verma</td>
+                <td>TCH-2024-018</td>
+                <td>amit@sharda.edu</td>
+                <td>9812345678</td>
+                <td><span class="status-pill status-approved">Approved</span></td>
+                <td>
+                  <button class="btn-xs btn-reject">Block</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+  
 
       </div>
     </div>
