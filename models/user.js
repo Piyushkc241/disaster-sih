@@ -13,12 +13,23 @@ const userSchema= new Schema({
     role:{
         type:String,
         default:"student",
-        set:(v)=>v === ""? "student" :v,
     },
     password:{
         type:String,
         required:true,
     },
+    roll : {
+        type:Number,
+        // required:true,
+    },
+    number :{
+        type:Number,
+        // required:true,
+    },
+    institue:{
+        type:String,
+        // required:true
+    }
 });
 
 const User=mongoose.model("User",userSchema);

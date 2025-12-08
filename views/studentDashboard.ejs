@@ -22,16 +22,16 @@
         </a>
 
         <nav class="sidebar-nav">
-          <a href="#hero" class="active">
+          <a href="/studentdashboard" class="active">
             <i class="fa fa-gauge"></i> Dashboard
           </a>
-          <a href="#modules">
+          <a href="/alldisaster">
             <i class="fa fa-book"></i> Modules
           </a>
-          <a href="#Quizz">
+          <a href="/quiz">
             <i class="fa fa-gamepad"></i> Quizz
           </a>
-          <a href="#chatbot">
+          <a href="/chatbot">
             <i class="fa fa-robot"></i> Chatbot
           </a>
         </nav>
@@ -64,11 +64,8 @@
                 Learn disaster safety step-by-step with structured modules,
                 activity sheets, and real-life survival examples.
               </p>
-              <form action="/index">
-
-                <button class="cta-btn" style="border-color: white; border-radius: 0.5rem;" >View Modules</button>
-              </form>
-              </div>
+              <button class="cta-btn" onclick="openModules()">View Modules</button>
+            </div>
 
             <!-- Quiz Card -->
             <div class="dashboard-card" id="Quizz">
@@ -77,12 +74,8 @@
                 Make learning exciting with interactive quizzes that test real-life
                 decision-making during emergencies.
               </p>
-
-              <form action="/quiz">
-
-                <button class="cta-btn" style="border-radius: 0.6rem; border-color: white;">Start Quizz</button>
-              </form>
-              </div>
+              <button class="cta-btn" onclick="startQuize()">Start Quizz</button>
+            </div>
 
             <!-- Chatbot -->
             <div class="dashboard-card chatbot-full" id="chatbot">
@@ -157,3 +150,5 @@
     </script>
   </body>
 </html>
+
+

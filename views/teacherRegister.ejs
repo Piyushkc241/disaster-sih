@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Teacher Registration • Disaster Learning Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="/css/style2.css" />
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    body {
+      background: radial-gradient(#bbf7d0 0, #ffffff 50%, #d8f3ff 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1rem;
+      font-family: system-ui, sans-serif;
+    }
+
+    .register-wrapper {
+      background: #ffffff;
+      width: 100%;
+      max-width: 560px;
+      padding: 2rem;
+      border-radius: 1.2rem;
+      box-shadow: 0 18px 50px rgba(15, 23, 42, 0.18);
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      text-align: center;
+    }
+
+    .register-title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: #0f9d58;
+      margin-bottom: 0.6rem;
+    }
+
+    .register-subtitle {
+      font-size: 0.9rem;
+      color: #475569;
+      margin-bottom: 1.4rem;
+    }
+
+    .reg-form .form-group {
+      text-align: left;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .reg-form label {
+      font-weight: 600;
+      color: #374151;
+    }
+
+    .reg-form input, .reg-form select {
+      width: 100%;
+      margin-top: 0.25rem;
+      padding: 0.55rem 0.75rem;
+      font-size: 0.92rem;
+      border-radius: 8px;
+      border: 1px solid #9ca3af;
+      outline: none;
+      background: #ffffff;
+    }
+
+    .register-btn {
+      width: 100%;
+      padding: 0.85rem;
+      background: #0f9d58;
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 0.6rem;
+    }
+
+    .register-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(15, 157, 88, 0.35);
+    }
+
+    .login-link {
+      margin-top: 0.9rem;
+      font-size: 0.9rem;
+      color: #374151;
+    }
+
+    .login-link a {
+      color: #0f9d58;
+      font-weight: 600;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="register-wrapper">
+    <h1 class="register-title">Teacher Registration</h1>
+    <p class="register-subtitle">Register to become an instructor (Pending Admin Approval)</p>
+
+    <form id="registerForm" class="reg-form">
+
+      <div class="form-group">
+        <label>Full Name</label>
+        <input type="text" id="regName" placeholder="Enter your name" required />
+      </div>
+
+      <!-- NEW UNIQUE ID FIELD -->
+      <div class="form-group">
+        <label>Unique ID / Faculty Code</label>
+        <input type="text" id="regUniqueId" placeholder="Enter your unique teacher ID" required />
+      </div>
+
+      <div class="form-group">
+        <label>Email Address</label>
+        <input type="email" id="regEmail" placeholder="example@gmail.com" required />
+      </div>
+
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" id="regPhone" placeholder="Enter phone number" pattern="[0-9]{10}" required />
+      </div>
+
+      <div class="form-group">
+        <label>College / Institution Name</label>
+        <select id="regCollege" required>
+          <option value="">Select your college</option>
+          <option value="Accurate Institute of Management and Technology">Accurate Institute of Management and Technology</option>
+          <option value="AKM Institute Of Technology & Management">AKM Institute Of Technology & Management</option>
+          <option value="Bennett University">Bennett University</option>
+          <option value="Delhi Technical Campus">Delhi Technical Campus</option>
+          <option value="Dronacharya Group of Institutions">Dronacharya Group of Institutions</option>
+          <option value="Galgotias College of Engineering and Technology">Galgotias College of Engineering and Technology</option>
+          <option value="Galgotias University">Galgotias University</option>
+          <option value="Gautam Buddha University">Gautam Buddha University</option>
+          <option value="GL Bajaj Institute of Technology and Management">GL Bajaj Institute of Technology and Management</option>
+          <option value="Greater Noida Institute of Technology (GNIOT)">Greater Noida Institute of Technology (GNIOT)</option>
+          <option value="IEC College of Engineering & Technology">IEC College of Engineering & Technology</option>
+          <option value="IILM University Greater Noida">IILM University Greater Noida</option>
+          <option value="ITS Engineering College">ITS Engineering College</option>
+          <option value="Lloyd Institute of Engineering and Technology">Lloyd Institute of Engineering and Technology</option>
+          <option value="Noida Institute of Engineering and Technology (NIET)">Noida Institute of Engineering and Technology (NIET)</option>
+          <option value="Sharda University">Sharda University</option>
+          <option value="Shiv Nadar University">Shiv Nadar University</option>
+          <option value="Vishveshwarya Group of Institutions">Vishveshwarya Group of Institutions</option>
+          <option value="Other">Other / Not listed</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="regPassword" placeholder="Enter password" required />
+      </div>
+
+      <div class="form-group">
+        <label>Confirm Password</label>
+        <input type="password" id="regConfirmPassword" placeholder="Re-enter password" required />
+      </div>
+
+      <button type="submit" class="register-btn">
+        <i class="fa-solid fa-user-plus"></i> Register as Teacher
+      </button>
+
+      <p id="registerStatus" style="margin-top: 0.5rem; font-size: 0.85rem;"></p>
+
+      <p class="login-link">Already registered?
+        <a href="/chooselogin">Login here</a>
+      </p>
+
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("registerForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const pass = document.getElementById("regPassword").value;
+      const confirm = document.getElementById("regConfirmPassword").value;
+      const status = document.getElementById("registerStatus");
+
+      if (pass !== confirm) {
+        status.textContent = "Passwords do not match!";
+        status.style.color = "#dc2626";
+        return;
+      }
+
+      status.textContent = "Request submitted! Waiting for admin approval...";
+      status.style.color = "#0f62fe";
+
+      setTimeout(() => {
+        window.location.href = "pending-approval.html";
+      }, 1500);
+    });
+  </script>
+
+</body>
+</html>

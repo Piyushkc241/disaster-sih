@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Disaster Learning Module</title>
-  <link rel="stylesheet" href="/css/styles.css" />
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title data-translate>Disaster Learning Module</title>
+<link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
 
 <!-- HEADER / Breadcrumb -->
 <header class="subpage-header">
   <div class="container sub-header-inner">
-    <a href="/index" class="breadcrumb-link">← Back to Modules</a>
-    <span class="badge-soft">Student Module</span>
+
+    <div class="left-side">
+      <a href="/index" class="breadcrumb-link" data-translate>← Back to Modules</a>
+      <span class="badge-soft" data-translate>Student Module</span>
+    </div>
+
+    <div class="lang-right">
+      🌐
+      <select id="langSelect" class="lang-dropdown">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="pa">ਪੰਜਾਬੀ</option>
+      </select>
+    </div>
+
   </div>
 </header>
 
@@ -22,8 +36,9 @@
     
     <!-- LEFT SIDE TEXT -->
     <div class="hero-left">
-      <h1 id="moduleTitle">Earthquake Safety</h1>
-      <p id="moduleIntro">
+      <h1 id="moduleTitle" data-translate>Earthquake Safety</h1>
+
+      <p id="moduleIntro" data-translate>
         Earthquakes are sudden shaking events caused by the movement of tectonic plates beneath the Earth's surface.
         Learn causes, warning signs, safety steps and emergency actions. 
       </p>
@@ -31,7 +46,7 @@
       <!-- Accessibility Buttons -->
       <div class="accessibility-tools">
         <button id="ttsBtn" class="pill-btn">🔊 Text to Speech</button>
-         <button id="ttsStopBtn" class="pill-btn">⛔ Stop Reading</button>
+        <button id="ttsStopBtn" class="pill-btn">⛔ Stop Reading</button>
         <button id="largeTextBtn" class="pill-btn">A↕ Increase Text Size</button>
         <button id="contrastBtn" class="pill-btn">◑ High Contrast</button>
       </div>
@@ -55,13 +70,15 @@
 
 <!-- ABOUT EARTHQUAKES -->
 <article class="content-card">
-  <h2>About Earthquakes</h2>
-  <p>
+  <h2 data-translate>About Earthquakes</h2>
+
+  <p data-translate>
     Earthquakes are sudden shaking events caused by the movement of tectonic plates beneath the Earth's surface.
     This movement releases energy as seismic waves, causing the ground to shake. Earthquake intensity is measured
     on the Richter Scale or Moment Magnitude Scale (Mw).
   </p>
-  <p>
+
+  <p data-translate>
     These events can cause severe destruction: collapsing structures, ground ruptures, landslides, and even tsunamis.
     Proper training and preparedness greatly reduce the risk of injury and loss.
   </p>
@@ -69,170 +86,234 @@
 
 <!-- PREPAREDNESS SECTION -->
 <article class="content-card">
-  <h2>Preparedness Before an Earthquake</h2>
+  <h2 data-translate>Preparedness Before an Earthquake</h2>
+
   <ul>
-    <li>Secure heavy furniture, shelves, and appliances to walls.</li>
-    <li>Prepare an emergency kit with water, food, flashlight, medicines, and documents.</li>
-    <li>Identify safe spots in rooms — under sturdy tables or against interior walls.</li>
-    <li>Practice the <strong>Drop–Cover–Hold</strong> technique frequently.</li>
-    <li>Know how to turn off your building’s gas, electricity, and water supply.</li>
-    <li>Create a family/school emergency communication plan.</li>
+    <li data-translate>Secure heavy furniture, shelves, and appliances to walls.</li>
+    <li data-translate>Prepare an emergency kit with water, food, flashlight, medicines, and documents.</li>
+    <li data-translate>Identify safe spots in rooms — under sturdy tables or against interior walls.</li>
+    <li data-translate>Practice the <strong>Drop–Cover–Hold</strong> technique frequently.</li>
+    <li data-translate>Know how to turn off your building’s gas, electricity, and water supply.</li>
+    <li data-translate>Create a family/school emergency communication plan.</li>
   </ul>
 </article>
 
 <!-- RESPONSE DURING EARTHQUAKE -->
 <article class="content-card">
-  <h2>How to Respond During an Earthquake</h2>
+  <h2 data-translate>How to Respond During an Earthquake</h2>
+
   <ul>
-    <li><strong>DROP</strong> to the ground.</li>
-    <li><strong>COVER</strong> your head and neck under a sturdy table.</li>
-    <li><strong>HOLD ON</strong> until the shaking stops.</li>
-    <li>Avoid windows, glass, elevators, and heavy objects.</li>
-    <li>If outdoors, move to open areas away from buildings and electric poles.</li>
-    <li>If driving, stop safely without blocking the road.</li>
+    <li data-translate><strong>DROP</strong> to the ground.</li>
+    <li data-translate><strong>COVER</strong> your head and neck under a sturdy table.</li>
+    <li data-translate><strong>HOLD ON</strong> until the shaking stops.</li>
+    <li data-translate>Avoid windows, glass, elevators, and heavy objects.</li>
+    <li data-translate>If outdoors, move to open areas away from buildings and electric poles.</li>
+    <li data-translate>If driving, stop safely without blocking the road.</li>
   </ul>
 </article>
 
 <!-- HELPING OTHERS -->
 <article class="content-card">
-  <h2>How to Help Others After an Earthquake</h2>
+  <h2 data-translate>How to Help Others After an Earthquake</h2>
+
   <ul>
-    <li>Check for your own injuries first, then help others.</li>
-    <li>Assist elderly people, children, and persons with disabilities.</li>
-    <li>Provide basic first aid for minor injuries.</li>
-    <li>Avoid moving seriously injured people unless they are in danger.</li>
-    <li>Help create safe evacuation paths.</li>
-    <li>Calm others and help prevent panic.</li>
-    <li>Report damaged electricity, gas leaks, or structural cracks.</li>
+    <li data-translate>Check for your own injuries first, then help others.</li>
+    <li data-translate>Assist elderly people, children, and persons with disabilities.</li>
+    <li data-translate>Provide basic first aid for minor injuries.</li>
+    <li data-translate>Avoid moving seriously injured people unless they are in danger.</li>
+    <li data-translate>Help create safe evacuation paths.</li>
+    <li data-translate>Calm others and help prevent panic.</li>
+    <li data-translate>Report damaged electricity, gas leaks, or structural cracks.</li>
   </ul>
 </article>
 
-      <!-- Sign Language -->
-      <article class="content-card">
-        <h2>Sign Language Support</h2>
-        <video controls muted class="sign-video">
-          <source src="/assets/SL_EQ.mp4" type="video/mp4" />
-        </video>
-        <p class="media-caption">Sign language explanation for special students.</p>
-      </article>
-
-
-    </div>
-
-    <!-- RIGHT SIDEBAR -->
-    <aside class="module-side">
-
-            <!-- Image / Animation Section -->
-      <article class="content-card">
-        <h2>Animation</h2>
-        <video src="/assets/EQ_Animation.mp4" autoplay muted loop></video>
-        <p class="media-caption">Animation explaining disaster behavior.</p>
-      </article>
-
-      <!-- Audio Explanation 
-      <article class="content-card">
-        <h3>Audio Explanation</h3>
-        <audio controls>
-          <source src="assets/audio_placeholder.mp3" type="audio/mp3" />
-        </audio>
-      </article> -->
-
-      <!-- Quick Summary Points -->
-      <article class="content-card">
-        <h3>Quick Summary</h3>
-        <ul>
-          <li>What causes the disaster</li>
-          <li>Warning signs</li>
-          <li>Safety steps</li>
-          <li>Evacuation guidelines</li>
-        </ul>
-      </article>
-
-      <article class="content-card">
-  <h3>Emergency Checklist</h3>
-  <ul>
-    <li>Water & food supplies</li>
-    <li>Flashlight & batteries</li>
-    <li>Important documents</li>
-    <li>First-aid kit</li>
-    <li>Emergency contacts list</li>
-  </ul>
-</article>
-
+<!-- SIGN LANGUAGE -->
 <article class="content-card">
-  <h3>Earthquake Do’s & Don’ts</h3>
+  <h2 data-translate>Sign Language Support</h2>
+
+  <video controls muted class="sign-video">
+    <source src="/assets/SL_EQ.mp4" type="video/mp4" />
+  </video>
+
+  <p class="media-caption" data-translate>Sign language explanation for special students.</p>
+</article>
+
+</div>
+
+<!-- RIGHT SIDEBAR -->
+<aside class="module-side">
+
+<!-- Animation -->
+<article class="content-card">
+  <h2 data-translate>Animation</h2>
+  <video src="/assets/EQ_Animation.mp4" autoplay muted loop></video>
+  <p class="media-caption" data-translate>Animation explaining disaster behavior.</p>
+</article>
+
+<!-- Quick Summary -->
+<article class="content-card">
+  <h3 data-translate>Quick Summary</h3>
   <ul>
-    <li>✔ Drop–Cover–Hold</li>
-    <li>✔ Stay calm and protect your head</li>
-    <li>❌ Do NOT run outside</li>
-    <li>❌ Do NOT use elevators</li>
-    <li>✔ Stay away from glass & heavy items</li>
+    <li data-translate>What causes the disaster</li>
+    <li data-translate>Warning signs</li>
+    <li data-translate>Safety steps</li>
+    <li data-translate>Evacuation guidelines</li>
   </ul>
 </article>
 
-<!-- Earthquake-Prone Zones Map 
+<!-- Checklist -->
 <article class="content-card">
-  <h3>Earthquake Prone Zones in India</h3>
-  <img src="assets/EQ_Map.webp" alt="Earthquake Prone Zones Map India" class="map-img">
-  <p class="media-caption">India’s seismic zones showing high-risk states.</p>
-</article>-->
+  <h3 data-translate>Emergency Checklist</h3>
+  <ul>
+    <li data-translate>Water & food supplies</li>
+    <li data-translate>Flashlight & batteries</li>
+    <li data-translate>Important documents</li>
+    <li data-translate>First-aid kit</li>
+    <li data-translate>Emergency contacts list</li>
+  </ul>
+</article>
 
-    </aside>
+<!-- Do's and Don'ts -->
+<article class="content-card">
+  <h3 data-translate>Earthquake Do’s & Don’ts</h3>
+  <ul>
+    <li data-translate>✔ Drop–Cover–Hold</li>
+    <li data-translate>✔ Stay calm and protect your head</li>
+    <li data-translate>❌ Do NOT run outside</li>
+    <li data-translate>❌ Do NOT use elevators</li>
+    <li data-translate>✔ Stay away from glass & heavy items</li>
+  </ul>
+</article>
 
-  </div>
+</aside>
+
+</div>
 </section>
 
 <!-- QUIZ SECTION -->
 <section class="quiz-section">
   <div class="container quiz-grid">
 
-    <!-- LEFT SIDE: QUIZ -->
-    <div class="quiz-left">
-      <h2>Quick Quiz</h2>
-      <p>Check what you learned from this module.</p>
+<!-- LEFT SIDE QUIZ -->
+<div class="quiz-left">
+  <h2 data-translate>Quick Quiz</h2>
+  <p data-translate>Check what you learned from this module.</p>
 
-      <form id="quizForm" class="quiz-form">
+  <form id="quizForm" class="quiz-form">
 
-        <div class="quiz-question">
-          <p>1. What should you do first during an earthquake?</p>
-          <label><input type="radio" name="q1" value="a"> Run outside</label>
-          <label><input type="radio" name="q1" value="b"> Drop–Cover–Hold</label>
-          <label><input type="radio" name="q1" value="c"> Stand near glass</label>
-        </div>
-
-        <div class="quiz-question">
-          <p>2. Which places are safest indoors?</p>
-          <label><input type="radio" name="q2" value="a"> Under a strong table</label>
-          <label><input type="radio" name="q2" value="b"> Near windows</label>
-          <label><input type="radio" name="q2" value="c"> Next to heavy cabinets</label>
-        </div>
-
-        <div class="quiz-question">
-          <p>3. What should you avoid during any disaster?</p>
-          <label><input type="radio" name="q3" value="a"> Panic</label>
-          <label><input type="radio" name="q3" value="b"> Follow safety steps</label>
-          <label><input type="radio" name="q3" value="c"> Listen to announcements</label>
-        </div>
-
-        <button type="submit" class="submit-quiz-btn">Submit Quiz</button>
-      </form>
-
-      <p id="quizResult" class="quiz-result"></p>
+    <div class="quiz-question">
+      <p data-translate>1. What should you do first during an earthquake?</p>
+      <label data-translate><input type="radio" name="q1" value="a"> Run outside</label>
+      <label data-translate><input type="radio" name="q1" value="b"> Drop–Cover–Hold</label>
+      <label data-translate><input type="radio" name="q1" value="c"> Stand near glass</label>
     </div>
 
-    <!-- RIGHT SIDE: MAP -->
-    <div class="quiz-right">
-      <article class="content-card">
-        <h3>Earthquake Prone Zones of India</h3>
-        <img src="/assets/EQ_Map.webp" class="map-img" alt="Earthquake Zone Map">
-        <p class="media-caption">India’s seismic zones showing high-risk states.</p>
-      </article>
+    <div class="quiz-question">
+      <p data-translate>2. Which places are safest indoors?</p>
+      <label data-translate><input type="radio" name="q2" value="a"> Under a strong table</label>
+      <label data-translate><input type="radio" name="q2" value="b"> Near windows</label>
+      <label data-translate><input type="radio" name="q2" value="c"> Next to heavy cabinets</label>
     </div>
 
-  </div>
+    <div class="quiz-question">
+      <p data-translate>3. What should you avoid during any disaster?</p>
+      <label data-translate><input type="radio" name="q3" value="a"> Panic</label>
+      <label data-translate><input type="radio" name="q3" value="b"> Follow safety steps</label>
+      <label data-translate><input type="radio" name="q3" value="c"> Listen to announcements</label>
+    </div>
+
+    <button type="submit" class="submit-quiz-btn" data-translate>Submit Quiz</button>
+  </form>
+
+  <p id="quizResult" class="quiz-result" data-translate></p>
+</div>
+
+<!-- RIGHT SIDE MAP -->
+<div class="quiz-right">
+  <article class="content-card">
+    <h3 data-translate>Earthquake Prone Zones of India</h3>
+    <img src="/assets/EQ_Map.webp" class="map-img" alt="Earthquake Zone Map">
+    <p class="media-caption" data-translate>India’s seismic zones showing high-risk states.</p>
+  </article>
+</div>
+
+</div>
 </section>
 
-
 <script src="/js/module.js"></script>
-</body>
-</html>
+
+<!-- translator -->
+<script>
+async function fetchTranslation(text, lang) {
+    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|${lang}`;
+    const res = await fetch(url);
+
+    if (!res.ok) throw new Error("Translation failed: " + res.status);
+
+    const data = await res.json();
+    return data.responseData?.translatedText || text;
+}
+
+async function translatePage(lang) {
+    const elements = document.querySelectorAll("[data-translate]");
+
+    document.body.style.opacity = "0"; // hide page safely
+
+    let cache = {};
+    try {
+        cache = JSON.parse(localStorage.getItem("translations_" + lang)) || {};
+    } catch {
+        cache = {};
+    }
+
+    const tempResults = {};
+
+    try {
+        // translate all text in advance
+        for (let el of elements) {
+            const original = el.getAttribute("data-original") || el.innerText;
+            el.setAttribute("data-original", original);
+
+            if (!cache[original]) {
+                cache[original] = await fetchTranslation(original, lang);
+            }
+
+            tempResults[original] = cache[original];
+        }
+
+        // save updated translations
+        localStorage.setItem("translations_" + lang, JSON.stringify(cache));
+
+        // apply all translations at once
+        for (let el of elements) {
+            const original = el.getAttribute("data-original");
+            el.innerText = tempResults[original];
+        }
+    } catch (err) {
+        console.error("Translation error:", err);
+        alert("Translation failed, showing original text.");
+
+        // fallback → restore English
+        for (let el of elements) {
+            const original = el.getAttribute("data-original");
+            if (original) el.innerText = original;
+        }
+    } finally {
+        // make page visible ALWAYS
+        document.body.style.opacity = "1";
+    }
+}
+
+document.getElementById("langSelect").addEventListener("change", function () {
+    const lang = this.value;
+
+    if (lang === "en") {
+        document.querySelectorAll("[data-translate]").forEach(el => {
+            el.innerText = el.getAttribute("data-original");
+        });
+        return;
+    }
+
+    translatePage(lang);
+});
+</script>

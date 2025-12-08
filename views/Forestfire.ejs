@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Forest Fire Safety Module</title>
+  <title>Hailstorm Safety Module</title>
   <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body>
@@ -11,21 +11,33 @@
 <!-- HEADER -->
 <header class="subpage-header">
   <div class="container sub-header-inner">
-    <a href="/index" class="breadcrumb-link">← Back to Modules</a>
-    <span class="badge-soft">Student Module</span>
+
+    <div class="left-side">
+      <a href="/index" class="breadcrumb-link" data-translate>← Back to Modules</a>
+      <span class="badge-soft" data-translate>Student Module</span>
+    </div>
+
+    <div class="lang-right">
+      🌐
+      <select id="langSelect" class="lang-dropdown">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="pa">ਪੰਜਾਬੀ</option>
+      </select>
+    </div>
+
   </div>
 </header>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <section class="module-hero">
   <div class="container hero-content">
 
-    <!-- LEFT -->
     <div class="hero-left">
-      <h1 id="moduleTitle">Forest Fire Safety</h1>
-      <p id="moduleIntro">
-        Forest fires or wildfires occur when vegetation in forests catches fire due to heat, lightning, or human activities.
-        They spread rapidly and can destroy wildlife, homes, and the environment. Learn how they start and how to stay safe.
+      <h1 id="moduleTitle" data-translate>Hailstorm Safety</h1>
+      <p id="moduleIntro" data-translate>
+        Hailstorms occur when powerful updrafts in thunderstorms lift raindrops into extremely cold areas of the atmosphere,
+        forming ice balls called hail. Learn how they form and how to stay safe during severe hailstorms.
       </p>
 
       <div class="accessibility-tools">
@@ -36,154 +48,147 @@
       </div>
     </div>
 
-    <!-- RIGHT IMAGE -->
     <div class="hero-right">
-      <img src="/assets/Forestfire.jpeg" class="hero-img" alt="Forest Fire Image">
+      <img src="/assets/Hailstorm.jpeg" class="hero-img" alt="Hailstorm Image" />
     </div>
 
   </div>
 </section>
 
-
-<!-- MAIN SECTION -->
+<!-- MAIN CONTENT -->
 <section class="section">
   <div class="container module-layout">
 
-    <!-- LEFT MAIN CONTENT -->
     <div class="module-main">
 
-
-<!-- ABOUT FOREST FIRE -->
+<!-- ABOUT -->
 <article class="content-card">
-  <h2>About Forest Fires</h2>
-  <p>
-    A forest fire is an uncontrolled fire that spreads rapidly through vegetation.
-    They may be caused naturally (like lightning) or through human activities such as campfires,
-    burning waste, or discarded cigarette butts.
+  <h2 data-translate>About Hailstorms</h2>
+  <p data-translate>
+    A hailstorm is a weather event where chunks of ice (hailstones) fall from the sky.
+    They can range from small pellets to large stones capable of damaging property,
+    crops, vehicles, and even causing injury.
   </p>
-  <p>
-    India faces forest fires in Uttarakhand, Himachal Pradesh, Madhya Pradesh, Chhattisgarh,
-    Odisha, Maharashtra, and Northeastern states.
+  <p data-translate>
+    Hailstorms are common in northern and central India such as Punjab, Haryana, Uttar Pradesh, Madhya Pradesh, and Maharashtra.
   </p>
 </article>
 
 <!-- CAUSES -->
 <article class="content-card">
-  <h2>Causes of Forest Fires</h2>
+  <h2 data-translate>How Hailstorms Form</h2>
   <ul>
-    <li>Lightning strikes.</li>
-    <li>Extreme heat and drought conditions.</li>
-    <li>Human negligence (cigarettes, campfires, fireworks).</li>
-    <li>Burning agricultural residue near forests.</li>
-    <li>Fallen power lines or electrical sparks.</li>
+    <li data-translate>Strong thunderstorms with powerful updrafts.</li>
+    <li data-translate>Moist air rising rapidly into cold upper atmosphere.</li>
+    <li data-translate>Raindrops freeze, fall, and get pushed up repeatedly.</li>
+    <li data-translate>More layers of ice form → creating larger hailstones.</li>
   </ul>
 </article>
 
 <!-- WARNING SIGNS -->
 <article class="content-card">
-  <h2>Warning Signs of a Forest Fire</h2>
+  <h2 data-translate>Warning Signs</h2>
   <ul>
-    <li>Smell of burning or smoke in the air.</li>
-    <li>Dry leaves and vegetation catching fire easily.</li>
-    <li>Orange glow in the distance.</li>
-    <li>Crackling sound from burning wood.</li>
-    <li>Animals fleeing from forest areas.</li>
+    <li data-translate>Dark, rotating thunderclouds.</li>
+    <li data-translate>Sudden drop in temperature.</li>
+    <li data-translate>Strong winds before rainfall.</li>
+    <li data-translate>Thunder & lightning intensifying.</li>
+    <li data-translate>Weather apps/IMD alerts showing severe thunderstorms.</li>
   </ul>
 </article>
 
 <!-- PREPAREDNESS -->
 <article class="content-card">
-  <h2>Preparedness Before a Forest Fire</h2>
+  <h2 data-translate>Preparedness Before a Hailstorm</h2>
   <ul>
-    <li>Stay updated with IMD fire alerts.</li>
-    <li>Avoid campfires or burning waste near forests.</li>
-    <li>Keep surroundings clean of dry leaves.</li>
-    <li>Create fire lines to stop spread (for forest communities).</li>
-    <li>Carry a wet cloth or mask to avoid inhaling smoke.</li>
+    <li data-translate>Keep vehicles under shelter or cover with blankets.</li>
+    <li data-translate>Stay indoors during severe weather alerts.</li>
+    <li data-translate>Reinforce weak windows with curtains or shutters.</li>
+    <li data-translate>Bring pets indoors.</li>
+    <li data-translate>Secure outdoor items like plants and furniture.</li>
   </ul>
 </article>
 
 <!-- DOs & DON'Ts -->
 <article class="content-card">
-  <h2>Do’s & Don’ts</h2>
+  <h2 data-translate>Do’s & Don’ts</h2>
 
-  <h3>✔ Do’s</h3>
+  <h3 data-translate>✔ Do’s</h3>
   <ul>
-    <li>Evacuate early if fire is approaching.</li>
-    <li>Cover nose and mouth with a wet cloth.</li>
-    <li>Move to open, non-vegetated areas.</li>
-    <li>Help animals escape and avoid panic.</li>
+    <li data-translate>Stay away from windows.</li>
+    <li data-translate>Protect your head with helmets if outdoors.</li>
+    <li data-translate>Use sturdy shelter like a concrete building.</li>
+    <li data-translate>Listen to IMD weather warnings.</li>
   </ul>
 
-  <h3>❌ Don’ts</h3>
+  <h3 data-translate>❌ Don’ts</h3>
   <ul>
-    <li>Do NOT burn leaves or garbage during dry seasons.</li>
-    <li>Do NOT stay near forest edges during heat waves.</li>
-    <li>Do NOT try to outrun fast-moving fires.</li>
-    <li>Do NOT return until authorities announce safety.</li>
+    <li data-translate>Do NOT stay in open fields.</li>
+    <li data-translate>Do NOT stand under trees (lightning risk).</li>
+    <li data-translate>Do NOT drive during heavy hail unless necessary.</li>
+    <li data-translate>Do NOT ignore early thunderstorm warnings.</li>
   </ul>
 </article>
 
 <!-- HELPING OTHERS -->
 <article class="content-card">
-  <h2>How to Help Others</h2>
+  <h2 data-translate>How to Help Others</h2>
   <ul>
-    <li>Inform neighbors and local communities immediately.</li>
-    <li>Assist elderly or disabled persons in evacuation.</li>
-    <li>Help move livestock to safer areas.</li>
-    <li>Report fires to emergency helplines quickly.</li>
+    <li data-translate>Assist injured people safely.</li>
+    <li data-translate>Check roofs, windows, and trees for dangerous damage.</li>
+    <li data-translate>Provide shelter to pets and livestock.</li>
+    <li data-translate>Inform others about IMD severe thunderstorm/hail alerts.</li>
   </ul>
 </article>
 
-<!-- SIGN LANGUAGE SUPPORT -->
+<!-- SIGN LANGUAGE -->
 <article class="content-card">
-  <h2>Sign Language Support</h2>
+  <h2 data-translate>Sign Language Support</h2>
   <video controls muted class="sign-video">
     <source src="/assets/Coming_Soon.mp4" type="video/mp4">
   </video>
-  <p class="media-caption">Forest fire safety explained in sign language.</p>
+  <p class="media-caption" data-translate>Hailstorm safety explained in sign language.</p>
 </article>
 
     </div>
-
 
     <!-- RIGHT SIDEBAR -->
     <aside class="module-side">
 
       <article class="content-card">
-        <h2>Animation</h2>
-        <video src="/assets/Forestfire_animation.mp4" autoplay muted loop></video>
-        <p class="media-caption">How forest fires spread.</p>
+        <h2 data-translate>Animation</h2>
+        <video src="/assets/Hailstorm_Animation.mp4" autoplay muted loop></video>
+        <p class="media-caption">Hailstorm</p>
       </article>
 
       <article class="content-card">
-        <h3>Quick Summary</h3>
+        <h3 data-translate>Quick Summary</h3>
         <ul>
-          <li>Fire causes</li>
-          <li>Warning signs</li>
-          <li>Evacuation</li>
-          <li>Indoor & outdoor safety</li>
+          <li data-translate>What are hailstorms?</li>
+          <li data-translate>Warning signs</li>
+          <li data-translate>Indoor & outdoor safety</li>
+          <li data-translate>Emergency actions</li>
         </ul>
       </article>
 
       <article class="content-card">
-        <h3>Emergency Checklist</h3>
+        <h3 data-translate>Emergency Checklist</h3>
         <ul>
-          <li>Mask/wet cloth</li>
-          <li>Drinking water</li>
-          <li>Torch & whistle</li>
-          <li>Basic medicines</li>
-          <li>Emergency contacts</li>
+          <li data-translate>Emergency torch</li>
+          <li data-translate>Helmet / head protection</li>
+          <li data-translate>Thick blankets</li>
+          <li data-translate>Emergency numbers</li>
+          <li data-translate>Weather alert app</li>
         </ul>
       </article>
 
       <article class="content-card">
-        <h3>Forest Fire Do’s & Don’ts</h3>
+        <h3 data-translate>Hailstorm Do’s & Don’ts</h3>
         <ul>
-          <li>✔ Evacuate early</li>
-          <li>✔ Avoid inhaling smoke</li>
-          <li>❌ No burning dry waste</li>
-          <li>❌ Don’t stay close to forest areas</li>
+          <li data-translate>✔ Stay indoors</li>
+          <li data-translate>✔ Protect vehicles</li>
+          <li data-translate>❌ Don't stand near windows</li>
+          <li data-translate>❌ Don't stay outdoors</li>
         </ul>
       </article>
 
@@ -193,51 +198,51 @@
 </section>
 
 
-<!-- QUIZ SECTION -->
+<!-- QUIZ -->
 <section class="quiz-section">
   <div class="container quiz-grid">
 
-    <!-- QUIZ LEFT -->
+    <!-- LEFT QUIZ -->
     <div class="quiz-left">
-      <h2>Quick Quiz</h2>
-      <p>Check your understanding of forest fire safety.</p>
+      <h2 data-translate>Quick Quiz</h2>
+      <p data-translate>Check what you learned from this module.</p>
 
       <form id="quizForm" class="quiz-form">
 
         <div class="quiz-question">
-          <p>1. What commonly causes forest fires?</p>
-          <label><input type="radio" name="q1" value="a"> Thunderstorms</label>
-          <label><input type="radio" name="q1" value="b"> Cigarettes & campfires</label>
-          <label><input type="radio" name="q1" value="c"> Snowfall</label>
+          <p data-translate>1. What causes hailstones?</p>
+          <label><input type="radio" name="q1" value="a" data-translate> Light rainfall</label>
+          <label><input type="radio" name="q1" value="b" data-translate> Strong thunderstorm updrafts</label>
+          <label><input type="radio" name="q1" value="c" data-translate> Sunshine</label>
         </div>
 
         <div class="quiz-question">
-          <p>2. What should you do if smoke is approaching?</p>
-          <label><input type="radio" name="q2" value="a"> Go deeper into the forest</label>
-          <label><input type="radio" name="q2" value="b"> Cover nose with wet cloth and evacuate</label>
-          <label><input type="radio" name="q2" value="c"> Stand under a tree</label>
+          <p data-translate>2. What should you avoid during a hailstorm?</p>
+          <label><input type="radio" name="q2" value="a" data-translate> Staying indoors</label>
+          <label><input type="radio" name="q2" value="b" data-translate> Standing under trees</label>
+          <label><input type="radio" name="q2" value="c" data-translate> Closing windows</label>
         </div>
 
         <div class="quiz-question">
-          <p>3. Which area is safest?</p>
-          <label><input type="radio" name="q3" value="a"> Dense forest</label>
-          <label><input type="radio" name="q3" value="b"> Open, non-vegetated ground</label>
-          <label><input type="radio" name="q3" value="c"> Inside bushes</label>
+          <p data-translate>3. Which area is safer during a hailstorm?</p>
+          <label><input type="radio" name="q3" value="a" data-translate> Open field</label>
+          <label><input type="radio" name="q3" value="b" data-translate> Inside a concrete building</label>
+          <label><input type="radio" name="q3" value="c" data-translate> On a bike or scooter</label>
         </div>
 
-        <button type="submit" class="submit-quiz-btn">Submit Quiz</button>
+        <button type="submit" class="submit-quiz-btn" data-translate>Submit Quiz</button>
       </form>
 
       <p id="quizResult" class="quiz-result"></p>
     </div>
 
-    <!-- MAP RIGHT -->
+    <!-- RIGHT MAP -->
     <div class="quiz-right">
       <article class="content-card">
-        <h3>Forest Fire Prone Areas of India</h3>
-        <img src="/assets/Forest_Fire_Map.png" class="map-img" alt="Forest Fire Map">
-        <p class="media-caption">
-          Forest fire incidents are highest in Uttarakhand, Himachal Pradesh, MP, Odisha, Chhattisgarh, and Northeast India.
+        <h3 data-translate>Hailstorm Prone Areas of India</h3>
+        <img src="/assets/Hailstorm_Map.png" class="map-img" alt="Hailstorm Map">
+        <p class="media-caption" data-translate>
+          Northern and central states like Punjab, Haryana, UP, MP, and Maharashtra face frequent hailstorms.
         </p>
       </article>
     </div>
@@ -246,5 +251,82 @@
 </section>
 
 <script src="/js/module.js"></script>
+
+<!--Translation-->
+<script>
+async function fetchTranslation(text, lang) {
+    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|${lang}`;
+    const res = await fetch(url);
+
+    if (!res.ok) throw new Error("Translation failed: " + res.status);
+
+    const data = await res.json();
+    return data.responseData?.translatedText || text;
+}
+
+async function translatePage(lang) {
+    const elements = document.querySelectorAll("[data-translate]");
+
+    document.body.style.opacity = "0"; // hide page safely
+
+    let cache = {};
+    try {
+        cache = JSON.parse(localStorage.getItem("translations_" + lang)) || {};
+    } catch {
+        cache = {};
+    }
+
+    const tempResults = {};
+
+    try {
+        // translate all text in advance
+        for (let el of elements) {
+            const original = el.getAttribute("data-original") || el.innerText;
+            el.setAttribute("data-original", original);
+
+            if (!cache[original]) {
+                cache[original] = await fetchTranslation(original, lang);
+            }
+
+            tempResults[original] = cache[original];
+        }
+
+        // save updated translations
+        localStorage.setItem("translations_" + lang, JSON.stringify(cache));
+
+        // apply all translations at once
+        for (let el of elements) { 
+            const original = el.getAttribute("data-original");
+            el.innerText = tempResults[original];
+        }
+    } catch (err) {
+        console.error("Translation error:", err);
+        alert("Translation failed, showing original text.");
+
+        // fallback → restore English
+        for (let el of elements) {
+            const original = el.getAttribute("data-original");
+            if (original) el.innerText = original;
+        }
+    } finally {
+        // make page visible ALWAYS
+        document.body.style.opacity = "1";
+    }
+}
+
+document.getElementById("langSelect").addEventListener("change", function () {
+    const lang = this.value;
+
+    if (lang === "en") {
+        document.querySelectorAll("[data-translate]").forEach(el => {
+            el.innerText = el.getAttribute("data-original");
+        });
+        return;
+    }
+
+    translatePage(lang);
+});
+</script>
+
 </body>
 </html>

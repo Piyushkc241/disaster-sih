@@ -31,15 +31,15 @@
       </div>
   
       <ul class="nav-links" id="navLinks">
-        <li><a data-target="home"href="/" >Home</a></li>
-        <li><a data-target="about" >About Us</a></li>
+        <li><a data-target="home" href="/">Home</a></li>
+        <li><a data-target="about">About Us</a></li>
         <li><a data-target="response">Response</a></li>
         <li class="dropdown">
           <a data-target="past-crisis">Past Crisis</a>
           <ul class="dropdown-menu">
-            <li><a href="/firehistory">Fire</a></li>
-            <li><a href="/earthquakehistory">Earthquake</a></li>
-            <li><a href="/floodhistory">Flood</a></li>
+            <li><a href="/fire">Fire</a></li>
+            <li><a href="/earthquake">Earthquake</a></li>
+            <li><a href="/flood">Flood</a></li>
           </ul>
         </li>
       
@@ -62,55 +62,74 @@
   <!-- ========== MAIN CONTENT ========== -->
   <main>
     <!-- HOME / HERO -->
-    <section id="home">
-      <div class="section-card hero-card">
-        <div class="hero-text">
-          <div class="badge">
-            <span class="badge-dot"></span>
-            Live Disaster Monitoring & Response
+    <section id="home" class="hero-section">
+      <div class="hero-overlay"></div>
+    
+      <div class="hero-content">
+        <h1>Disaster Preparedness & Response Portal</h1>
+        <p>
+          The Disaster Preparedness & Response Portal is a comprehensive platform designed 
+          to empower communities with real-time information and safety training. 
+          Be prepared before disaster strikes — Learn, Act & Save Lives.
+        </p>
+    
+        <button class="btn btn-outline" data-target="response">
+          <i class="fa-solid fa-book-open"></i>
+          View Safety Steps
+        </button>
+    
+        <div class="hero-stats">
+          <div class="hero-stat-card">
+            <strong><i class="fa-solid fa-clock"></i> 24/7 Monitoring</strong>
+            Real-time alerts and coordination.
           </div>
-          <h1>Disaster Preparedness & Response Portal</h1>
-          <p>
-            Be prepared before disaster strikes. This portal connects citizens, volunteers,
-            and authorities for faster coordination during emergencies like floods,
-            earthquakes, fires and industrial accidents.
-          </p>
-          <p>
-            Learn what to do, follow verified guidelines, and instantly report incidents
-            from your area.
-          </p>
-
-          <div class="hero-buttons">
-          
-            <button class="btn btn-outline" data-target="response">
-              <i class="fa-solid fa-book-open"></i>
-              View Safety Steps
-            </button>
-          </div>
-
-          <div class="hero-stats">
-            <div class="hero-stat-card">
-              <strong><i class="fa-solid fa-clock"></i> 24/7 Monitoring</strong>
-              Central control room tracks alerts and coordinates response teams.
-            </div>
-            <div class="hero-stat-card">
-              <strong><i class="fa-solid fa-people-group"></i> 5000+ Volunteers</strong>
-              Trained responders and local volunteers ready to assist on ground.
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-image-box">
-          <!-- Main disaster response image -->
-          <img src="https://images.pexels.com/photos/929382/pexels-photo-929382.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Disaster response team" />
-          <div class="hero-caption">
-            <i class="fa-solid fa-location-dot"></i>
-            Coordinated response teams working across regions.
+          <div class="hero-stat-card">
+            <strong><i class="fa-solid fa-people-group"></i> 500+ Volunteers</strong>
+            Trained responders ready to act.
           </div>
         </div>
       </div>
     </section>
+    
+    <section id="about">
+      <div class="section-card about-card">
+        <div>
+          <div class="section-header">
+            <i class="fa-solid fa-circle-info"></i>
+            <h2>About Us</h2>
+          </div>
+          <p>
+            Our Disaster Preparedness & Response (DPR) cell acts as a bridge between
+            government agencies, NGOs, and the community. We focus on preparedness,
+            real-time emergency response, and Students don’t just read – they practice. Games, quizzes, and simulations teach
+            exactly what to do before, during, and after a disaster..
+          </p>
+          <br />
+          <ul>
+            <li>Real-time incident reporting and alert broadcasting</li>
+            <li>Integrated teams for rescue, medical aid, and logistics support</li>
+            <li>Verified information to reduce rumours and panic</li>
+            <li>Training programs in schools, colleges, and communities</li>
+          </ul>
+        </div>
 
+        <div class="about-info-card">
+          <h3><i class="fa-solid fa-bullseye"></i> Our Mission</h3>
+          <p>
+            To protect lives, reduce damage, and restore normalcy quickly through
+            timely and coordinated disaster response.
+          </p>
+          <br />
+          <h3><i class="fa-solid fa-list-check"></i> What We Do</h3>
+          <ul>
+            <li>Monitor early warning systems and risk indicators.</li>
+            <li>Issue alerts and safety instructions to the public.</li>
+            <li>Coordinate shelters, relief camps, and supply chains.</li>
+            <li>Support post-disaster rehabilitation and counselling.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
     <!-- READINESS SLIDER (COLD WAVES & FLOODS) -->
     <section id="readiness">
@@ -286,46 +305,6 @@
       </div>
     </section>
 
-    <!-- ABOUT US -->
-    <section id="about">
-      <div class="section-card about-card">
-        <div>
-          <div class="section-header">
-            <i class="fa-solid fa-circle-info"></i>
-            <h2>About Us</h2>
-          </div>
-          <p>
-            Our Disaster Preparedness & Response (DPR) cell acts as a bridge between
-            government agencies, NGOs, and the community. We focus on preparedness,
-            real-time emergency response, and Students don’t just read – they practice. Games, quizzes, and simulations teach
-            exactly what to do before, during, and after a disaster..
-          </p>
-          <br />
-          <ul>
-            <li>Real-time incident reporting and alert broadcasting</li>
-            <li>Integrated teams for rescue, medical aid, and logistics support</li>
-            <li>Verified information to reduce rumours and panic</li>
-            <li>Training programs in schools, colleges, and communities</li>
-          </ul>
-        </div>
-
-        <div class="about-info-card">
-          <h3><i class="fa-solid fa-bullseye"></i> Our Mission</h3>
-          <p>
-            To protect lives, reduce damage, and restore normalcy quickly through
-            timely and coordinated disaster response.
-          </p>
-          <br />
-          <h3><i class="fa-solid fa-list-check"></i> What We Do</h3>
-          <ul>
-            <li>Monitor early warning systems and risk indicators.</li>
-            <li>Issue alerts and safety instructions to the public.</li>
-            <li>Coordinate shelters, relief camps, and supply chains.</li>
-            <li>Support post-disaster rehabilitation and counselling.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
 
    
 <!--FOOTER-->
@@ -352,9 +331,9 @@
             <li>
               <a data-target="past-crisis">Past Crisis</a>
               <ul class="dropdown-menu">
-                <li><a href="/firehistory">Fire</a></li>
-                <li><a href="/earthquakehistroy">Earthquake</a></li>
-                <li><a href="/floodhistory">Flood</a></li>
+                <li><a href="/fire">Fire</a></li>
+                <li><a href="/earthquake">Earthquake</a></li>
+                <li><a href="/flood">Flood</a></li>
               </ul>
             </li> 
             <li><a href="/report">Report Incident</a></li>
@@ -432,6 +411,6 @@
   
 
   <!-- Main script -->
-  <script src="/js/script.js"></script>
+  <script src="/assets/script2.js"></script>
 </body>
 </html>

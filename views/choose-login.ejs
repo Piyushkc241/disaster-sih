@@ -10,7 +10,7 @@
 
   <style>
     body {
-      background: radial-gradient(circle at top left, #bbf7d0 0, #ffffff 50%, #d8f3ff 100%);
+      background: url("bg.png") no-repeat center center fixed;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -88,16 +88,16 @@
     .register-text a:hover {
       text-decoration: underline;
     }
+
   </style>
 </head>
 
 <body>
-
   <div class="login-select-wrapper">
     <h1 class="select-title">Choose Your Login</h1>
     <p class="select-subtitle">Access disaster learning resources and dashboards</p>
 
-    <a href="teacherlogin" class="select-btn teacher">
+    <a href="/teacherlogin" class="select-btn teacher">
       <i class="fa-solid fa-chalkboard-user"></i> Login as Teacher
     </a>
 
@@ -106,7 +106,7 @@
     </a>
 
     <p class="register-text">
-      New here? <a href="/register">Register an account</a>
+      <a href="/adminlogin">Login as admin</a>
     </p>
 
   </div>

@@ -10,6 +10,7 @@
 <body>
 
   <section class="section">
+
     <div class="container">
       
       <div class="section-header">
@@ -183,5 +184,13 @@
     </div>
   </section>
 
+<% if (typeof index !== "undefined" && index != 0) { %>
+<script>
+alert("<%= msg %>. Be safe!");
+
+</script>
+<% } %>
+
 </body>
 </html>
+

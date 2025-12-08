@@ -6,7 +6,10 @@
 <title><h1>Disaster Management — Level-by-Level Advanced Quiz</h1></title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+
 <style>
+  
   :root{
     --bg:#071226; --card:#0b1220; --muted:#94a3b8; --accent:#6ee7b7; --danger:#ff6b6b;
     --glass: rgba(255,255,255,0.03);
@@ -68,6 +71,41 @@
     .question-card{grid-template-columns:1fr; }
     .q-right{order:2}
   }
+  body{
+    margin:0; 
+    min-height:100vh;
+
+    /* 🔥 New background image + dark overlay */
+    background: 
+      linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.78)),
+      url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1920&auto=format&fit=crop") no-repeat center/cover;
+
+    color:#e6eef8;
+    -webkit-font-smoothing:antialiased;
+    padding:28px;
+
+    display:flex; 
+    justify-content:center; 
+    align-items:flex-start;
+}
+.container {
+    width: 100%;
+    max-width: 1100px;
+    background: black; /* added black background */
+    border-radius: 20px; /* optional: match card styling */
+    padding: 20px;       /* optional: spacing inside container */
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5); /* optional: subtle shadow */
+}
+.answer-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.45);
+    background: linear-gradient(180deg, rgba(34,197,94,0.2), rgba(34,197,94,0.1)); /* green hover */
+    border-color: rgba(34,197,94,0.5); /* optional: green border */
+    color: #22c55e; /* optional: text color */
+}
+
+
+
 </style>
 </head>
 <body>
@@ -230,19 +268,19 @@ const LEVELS = [
     questions: [
       { q: "What is the primary goal of disaster management?", ans: 1,
         options: ["To respond only","To reduce loss of life and property","To avoid rain","None"],
-        image: "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=0f3d99d3d2ea8a44b5f280c8c8a6f3c0",
+        image: "https://media.istockphoto.com/id/1549585648/photo/aerial-view-of-wildfire-damage.jpg?s=2048x2048&w=is&k=20&c=myvBzH-lzBVMsLqDSsscJOOeHpEPWP0bSLGtkg39QAs=",
         explanation: "Disaster management aims to reduce loss of life and property through preparedness, mitigation, response and recovery."
       },
       { q: "Which of the following is a natural disaster?", ans: 2,
         options: ["Terror attack","Industrial fire","Earthquake","Road accident"],
-        image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=62ff4c9a3b5094f7a13e2cd7d8b98421",
+        image: "https://media.istockphoto.com/id/96470791/photo/southern-california-brush-fire-near-houses.jpg?s=612x612&w=0&k=20&c=Serfgi3uHJ227pVBtTqcJgzA_KcXxjbGQv9gQXQHro4=",
         explanation: "Earthquakes are natural geophysical events, while the others are man-made incidents."
       },
      {
   q: "Which of the following is a geological disaster?",
   ans: 1,
   options: ["Drought", "Landslide", "Forest fire", "Chemical spill"],
-  image: "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop",
+  image: "https://image.slidesharecdn.com/group3-160527110134/75/Geological-Disaster-1-2048.jpg",
   explanation: "Landslides occur due to slope failure caused by natural geological processes."
 },
 
@@ -250,7 +288,7 @@ const LEVELS = [
   q: "What is the most reliable indicator of an approaching cyclone?",
   ans: 0,
   options: ["Rapid drop in atmospheric pressure", "Increase in humidity", "Rise in temperature", "Clear sky"],
-  image: "https://images.unsplash.com/photo-1500674425229-f692875b0ab7?q=80&w=1200&auto=format&fit=crop",
+  image: "https://cdn.britannica.com/44/76744-050-E5B32AD5/view-cross-section-cyclone.jpg",
   explanation: "Cyclones are always preceded by a sudden drop in atmospheric pressure."
 },
 
@@ -258,7 +296,7 @@ const LEVELS = [
   q: "Which disaster is most commonly associated with aftershocks?",
   ans: 2,
   options: ["Forest fire", "Flood", "Earthquake", "Tsunami"],
-  image: "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=1200&auto=format&fit=crop",
+  image: "https://images.ctfassets.net/mrbo2ykgx5lt/20135/324cbcb58d52eba606e514559da35ea9/frontiers-in-built-environment-earthquake-losses-secondary-dollar.jpg?&w=912&fm=webp&q=80",
   explanation: "Aftershocks are smaller earthquakes that follow the main quake."
 },
 
@@ -266,7 +304,7 @@ const LEVELS = [
   q: "Which of these disasters can create a tsunami?",
   ans: 3,
   options: ["Heatwave", "Drought", "Wildfire", "Underwater earthquake"],
-  image: "https://images.unsplash.com/photo-1476610182048-b716b8518aae?q=80&w=1200&auto=format&fit=crop",
+  image: "https://appliedsciences.nasa.gov/sites/default/files/styles/social_media_share/public/2021-03/tsunami-hires.jpg.webp?itok=TpCQ_VnQ",
   explanation: "Most tsunamis are generated by seismic activity beneath the ocean floor."
 },
 
@@ -838,5 +876,3 @@ window.LEVELS = LEVELS;
 </script>
 </body>
 </html>
-
-

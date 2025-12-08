@@ -10,102 +10,75 @@
 </head>
 <body class="auth-page">
 
-    <!-- LEFT: Main form -->
-    <div class="auth-main">
-      <div class="auth-tag">
-        <i class="fa-solid fa-graduation-cap"></i>
-        Student Access
-      </div>
-
-      <h1 class="auth-title">Student Login</h1>
-      <p class="auth-subtitle">
-        Log in to access disaster readiness lessons, quizzes, and activity
-        tasks assigned by your teachers.
-      </p>
-
-      <form id="studentLoginForm" class="auth-form" method="post" action="/studentlogin">
-        <div class="form-group">
-          <label for="studentId">Student Email</label>
-          <input
-            type="text"
-            id="studentId"
-            placeholder="e.g., 21CS001"
-            name="email"
-            required
-          />
-        </div>
-
-        <div class="form-group">
-          <label for="studentPassword">Password</label>
-          <input
-            type="password"
-            id="studentPassword"
-            placeholder="Enter your password"
-            name="password"
-            required
-          />
-        </div>
-
-        <div class="auth-actions">
-          <label class="auth-remember">
-            <input type="checkbox" id="studentRemember" />
-            Keep me signed in
-          </label>
-
-          <a href="#" class="auth-link">Forgot password?</a>
-        </div>
-
-        <button type="submit" class="btn btn-primary" style="margin-top: 0.9rem;">
-          <i class="fa-solid fa-right-to-bracket"></i>
-          Log in as Student
-        </button>
-
-        <p class="auth-status" id="studentLoginStatus"></p>
-
-        <p style="margin-top: 0.6rem; font-size: 0.8rem;">
-          Are you a teacher? <a href="/teacherlogin" class="auth-link">Log in as teacher</a>
-        </p>
-        <p style="margin-top: 0.2rem; font-size: 0.8rem;">
-          <a href="/" class="auth-link">← Back to main portal</a>
-        </p>
-      </form>
+  <!-- LEFT: Main form -->
+  <div class="auth-main">
+    <div class="auth-tag">
+      <i class="fa-solid fa-graduation-cap"></i>
+      Student Access
     </div>
 
-  
+    <h1 class="auth-title">Student Login</h1>
+    <p class="auth-subtitle">
+      Log in to access disaster readiness lessons, quizzes, and activity
+      tasks assigned by your teachers.
+    </p>
+
+    <form id="studentLoginForm" class="auth-form">
+      
+      <div class="form-group">
+        <label for="studentId">Student ID / Roll No.</label>
+        <input
+          type="text"
+          id="studentId"
+          placeholder="e.g., 21CS001"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="studentPassword">Password</label>
+        <input
+          type="password"
+          id="studentPassword"
+          placeholder="Enter your password"
+          required
+        />
+      </div>
+
+      <div class="auth-actions">
+        <label class="auth-remember">
+          <input type="checkbox" id="studentRemember" />
+          Keep me signed in
+        </label>
+
+        <a href="#" class="auth-link">Forgot password?</a>
+      </div>
+
+      <!-- LOGIN + SIGNUP SIDE BY SIDE -->
+      <div style="display:flex; gap:0.7rem; margin-top:1rem;">
+        <button type="submit" class="btn btn-primary" style="flex:1;">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          Login
+        </button>
+
+        <button type="button" class="btn btn-outline" style="flex:1;"
+                onclick="window.location.href='registerstudent.html'">
+          <i class="fa-solid fa-user-plus"></i>
+          Sign Up
+        </button>
+      </div>
+
+      <p class="auth-status" id="studentLoginStatus"></p>
+
+      <p style="margin-top: 0.8rem; font-size: 0.85rem;">
+        Are you a teacher? <a href="/teacherlogin" class="auth-link">Log in as Teacher</a>
+      </p>
+
+      <p style="margin-top: 0.2rem; font-size: 0.85rem;">
+        <a href="/" class="auth-link">← Back to main portal</a>
+      </p>
+    </form>
   </div>
-
-  <!--<script>
-    const studentForm = document.getElementById("studentLoginForm");
-    const studentStatus = document.getElementById("studentLoginStatus");
-
-    if (studentForm) {
-      studentForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const studentId = document.getElementById("studentId").value.trim();
-        const password = document.getElementById("studentPassword").value.trim();
-
-        if (!studentId || !password) {
-          studentStatus.textContent = "Please enter both ID and password.";
-          studentStatus.className = "auth-status error";
-          return;
-        }
-
-        studentStatus.textContent = "Checking details...";
-        studentStatus.className = "auth-status";
-
-        setTimeout(() => {
-          studentStatus.textContent = "Login successful (demo). Redirecting to student dashboard...";
-          studentStatus.className = "auth-status success";
-
-          setTimeout(() => {
-            // TODO: change to your real student dashboard path
-            window.location.href = "dashboard.html";
-          }, 900);
-        }, 700);
-      });
-    }
-  </script>-->
 
 </body>
 </html>

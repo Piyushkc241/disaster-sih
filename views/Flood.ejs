@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Flood Preparedness Module</title>
@@ -11,10 +12,24 @@
 <!-- HEADER / Breadcrumb -->
 <header class="subpage-header">
   <div class="container sub-header-inner">
-    <a href="/index" class="breadcrumb-link">← Back to Modules</a>
-    <span class="badge-soft">Student Module</span>
+
+    <div class="left-side">
+      <a href="/index" class="breadcrumb-link" data-translate>← Back to Modules</a>
+      <span class="badge-soft" data-translate>Student Module</span>
+    </div>
+
+    <div class="lang-right">
+      🌐
+      <select id="langSelect" class="lang-dropdown">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="pa">ਪੰਜਾਬੀ</option>
+      </select>
+    </div>
+
   </div>
 </header>
+
 
 <!-- HERO SECTION -->
 <section class="module-hero">
@@ -22,8 +37,8 @@
     
     <!-- LEFT SIDE TEXT -->
     <div class="hero-left">
-      <h1 id="moduleTitle">Flood Preparedness</h1>
-      <p id="moduleIntro">
+      <h1 id="moduleTitle" data-translate>Flood Preparedness</h1>
+      <p id="moduleIntro" data-translate>
         Floods occur when overflowing water submerges normally dry land. Learn causes, warning levels,
         evacuation steps, and Punjab-specific flood risks.
       </p>
@@ -55,70 +70,70 @@
 
 <!-- ABOUT FLOODS -->
 <article class="content-card">
-  <h2>About Floods</h2>
-  <p>
+  <h2 data-translate>About Floods</h2>
+  <p data-translate>
     Floods happen when heavy rainfall, overflowing rivers, or poor drainage causes water to cover land
     that is normally dry. Punjab faces frequent flooding due to monsoon rains, river overflow
     (Sutlej, Beas, Ravi, Ghaggar), and urban drainage issues.
   </p>
-  <p>
+  <p data-translate>
     Low-lying areas in Punjab such as Ropar, Jalandhar, Ferozepur, Patiala, and Gurdaspur are highly vulnerable.
   </p>
 </article>
 
 <!-- PREPAREDNESS SECTION -->
 <article class="content-card">
-  <h2>Preparedness Before a Flood</h2>
+  <h2 data-translate>Preparedness Before a Flood</h2>
   <ul>
-    <li>Keep important documents in waterproof bags.</li>
-    <li>Prepare an emergency kit with water, food, medicines, flashlight, and radio.</li>
-    <li>Know flood shelters and evacuation routes in your locality.</li>
-    <li>Move animals and vehicles to higher ground.</li>
-    <li>Avoid disposing garbage in drains and rivers.</li>
-    <li>Stay updated with IMD and Punjab disaster alerts.</li>
+    <li data-translate>Keep important documents in waterproof bags.</li>
+    <li data-translate>Prepare an emergency kit with water, food, medicines, flashlight, and radio.</li>
+    <li data-translate>Know flood shelters and evacuation routes in your locality.</li>
+    <li data-translate>Move animals and vehicles to higher ground.</li>
+    <li data-translate>Avoid disposing garbage in drains and rivers.</li>
+    <li data-translate>Stay updated with IMD and Punjab disaster alerts.</li>
   </ul>
 </article>
 
 <!-- DOs & DON’Ts -->
 <article class="content-card">
-  <h2>Do’s & Don’ts During Flood</h2>
+  <h2 data-translate>Do’s & Don’ts During Flood</h2>
 
-  <h3>✔ Do’s</h3>
+  <h3 data-translate>✔ Do’s</h3>
   <ul>
-    <li>Move immediately to higher ground.</li>
-    <li>Turn off electricity and gas supply before evacuating.</li>
-    <li>Take your emergency kit and essential medicines.</li>
-    <li>Help children, elderly, and persons with disabilities.</li>
+    <li data-translate>Move immediately to higher ground.</li>
+    <li data-translate>Turn off electricity and gas supply before evacuating.</li>
+    <li data-translate>Take your emergency kit and essential medicines.</li>
+    <li data-translate>Help children, elderly, and persons with disabilities.</li>
   </ul>
 
-  <h3>❌ Don’ts</h3>
+  <h3 data-translate>❌ Don’ts</h3>
   <ul>
-    <li>Do NOT walk or drive through moving floodwater.</li>
-    <li>Do NOT touch electric poles, transformers, or wet wires.</li>
-    <li>Do NOT drink untreated water.</li>
-    <li>Do NOT spread rumors or panic.</li>
+    <li data-translate>Do NOT walk or drive through moving floodwater.</li>
+    <li data-translate>Do NOT touch electric poles, transformers, or wet wires.</li>
+    <li data-translate>Do NOT drink untreated water.</li>
+    <li data-translate>Do NOT spread rumors or panic.</li>
   </ul>
 </article>
 
 <!-- HELPING OTHERS -->
 <article class="content-card">
-  <h2>How to Help Others After a Flood</h2>
+  <h2 data-translate>How to Help Others After a Flood</h2>
   <ul>
-    <li>Rescue and assist children, elderly, and people with disabilities.</li>
-    <li>Provide clean drinking water and food.</li>
-    <li>Give first aid to injured individuals.</li>
-    <li>Report damaged electrical lines and contaminated water.</li>
-    <li>Help in community cleanup activities.</li>
+    <li data-translate>Rescue and assist children, elderly, and people with disabilities.</li>
+    <li data-translate>Provide clean drinking water and food.</li>
+    <li data-translate>Give first aid to injured individuals.</li>
+    <li data-translate>Report damaged electrical lines and contaminated water.</li>
+    <li data-translate>Help in community cleanup activities.</li>
   </ul>
 </article>
 
 <!-- SIGN LANGUAGE -->
 <article class="content-card">
-  <h2>Sign Language Support</h2>
+  <h2 data-translate>Sign Language Support</h2>
   <video controls muted class="sign-video">
     <source src="/assets/Flood_SL.mp4" type="video/mp4" />
   </video>
-  <p class="media-caption">Sign language explanation for flood awareness.</p>
+  <p class="media-caption" data-translate>Sign language explanation for flood awareness.</p>
 </article>
 
     </div>
@@ -128,42 +143,42 @@
 
       <!-- Animation Section -->
       <article class="content-card">
-        <h2>Animation</h2>
+        <h2 data-translate>Animation</h2>
         <video src="/assets/Flood_Video.mp4" autoplay muted loop></video>
-        <p class="media-caption">Animation explaining how floods occur.</p>
+        <p class="media-caption" data-translate>Animation explaining how floods occur.</p>
       </article>
 
       <!-- Quick Summary Points -->
       <article class="content-card">
-        <h3>Quick Summary</h3>
+        <h3 data-translate>Quick Summary</h3>
         <ul>
-          <li>Causes of floods</li>
-          <li>Warning levels</li>
-          <li>Safety steps</li>
-          <li>Evacuation guidelines</li>
+          <li data-translate>Causes of floods</li>
+          <li data-translate>Warning levels</li>
+          <li data-translate>Safety steps</li>
+          <li data-translate>Evacuation guidelines</li>
         </ul>
       </article>
 
       <!-- Emergency Checklist -->
       <article class="content-card">
-        <h3>Emergency Checklist</h3>
+        <h3 data-translate>Emergency Checklist</h3>
         <ul>
-          <li>Water, food & medicines</li>
-          <li>Flashlight & batteries</li>
-          <li>Waterproof bag for documents</li>
-          <li>First-aid kit</li>
-          <li>Emergency contact list</li>
+          <li data-translate>Water, food & medicines</li>
+          <li data-translate>Flashlight & batteries</li>
+          <li data-translate>Waterproof bag for documents</li>
+          <li data-translate>First-aid kit</li>
+          <li data-translate>Emergency contact list</li>
         </ul>
       </article>
 
       <!-- Do's & Don'ts Quick Card -->
       <article class="content-card">
-        <h3>Flood Do’s & Don’ts</h3>
+        <h3 data-translate>Flood Do’s & Don’ts</h3>
         <ul>
-          <li>✔ Move to higher ground</li>
-          <li>✔ Carry emergency kit</li>
-          <li>❌ Avoid floodwater</li>
-          <li>❌ Stay away from electric poles</li>
+          <li data-translate>✔ Move to higher ground</li>
+          <li data-translate>✔ Carry emergency kit</li>
+          <li data-translate>❌ Avoid floodwater</li>
+          <li data-translate>❌ Stay away from electric poles</li>
         </ul>
       </article>
 
@@ -179,33 +194,33 @@
 
     <!-- LEFT SIDE: QUIZ -->
     <div class="quiz-left">
-      <h2>Quick Quiz</h2>
-      <p>Check what you learned from this module.</p>
+      <h2 data-translate>Quick Quiz</h2>
+      <p translate>Check what you learned from this module.</p>
 
       <form id="quizForm" class="quiz-form">
 
         <div class="quiz-question">
-          <p>1. What should you do first during a flood warning?</p>
-          <label><input type="radio" name="q1" value="a"> Stay near the river</label>
-          <label><input type="radio" name="q1" value="b"> Move to higher ground</label>
-          <label><input type="radio" name="q1" value="c"> Ignore warnings</label>
+          <p data-translate>1. What should you do first during a flood warning?</p>
+          <label data-translate><input type="radio" name="q1" value="a"> Stay near the river</label>
+          <label data-translate><input type="radio" name="q1" value="b"> Move to higher ground</label>
+          <label data-translate><input type="radio" name="q1" value="c"> Ignore warnings</label>
         </div>
 
         <div class="quiz-question">
-          <p>2. Which areas in Punjab are most flood-prone?</p>
-          <label><input type="radio" name="q2" value="a"> Hilly areas</label>
-          <label><input type="radio" name="q2" value="b"> Low-lying river districts</label>
-          <label><input type="radio" name="q2" value="c"> Desert areas</label>
+          <p data-translate>2. Which areas in Punjab are most flood-prone?</p>
+          <label data-translate><input type="radio" name="q2" value="a"> Hilly areas</label>
+          <label data-translate><input type="radio" name="q2" value="b"> Low-lying river districts</label>
+          <label data-translate><input type="radio" name="q2" value="c"> Desert areas</label>
         </div>
 
         <div class="quiz-question">
-          <p>3. What should you avoid during floods?</p>
-          <label><input type="radio" name="q3" value="a"> Walking in water</label>
-          <label><input type="radio" name="q3" value="b"> Listening to alerts</label>
-          <label><input type="radio" name="q3" value="c"> Helping neighbors</label>
+          <p data-translate>3. What should you avoid during floods?</p>
+          <label data-translate><input type="radio" name="q3" value="a"> Walking in water</label>
+          <label data-translate><input type="radio" name="q3" value="b"> Listening to alerts</label>
+          <label data-translate><input type="radio" name="q3" value="c"> Helping neighbors</label>
         </div>
 
-        <button type="submit" class="submit-quiz-btn">Submit Quiz</button>
+        <button type="submit" class="submit-quiz-btn" data-translate>Submit Quiz</button>
       </form>
 
       <p id="quizResult" class="quiz-result"></p>
@@ -214,9 +229,9 @@
     <!-- RIGHT SIDE: MAP -->
     <div class="quiz-right">
       <article class="content-card">
-        <h3>Flood Prone Zones of Punjab</h3>
+        <h3 data-translate>Flood Prone Zones of Punjab</h3>
         <img src="/assets/Punjab_Map.webp" class="map-img" alt="Punjab Flood Map">
-        <p class="media-caption">
+        <p class="media-caption" data-translate>
           Punjab’s high-risk districts include: Ropar, Jalandhar, Ferozepur, Patiala, Gurdaspur & Tarn Taran.
         </p>
       </article>
@@ -226,8 +241,85 @@
 </section>
 
 <script src="/js/module.js"></script>
+
+<!--Translation-->
+<script>
+async function fetchTranslation(text, lang) {
+    const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=en|${lang}`;
+    const res = await fetch(url);
+
+    if (!res.ok) throw new Error("Translation failed: " + res.status);
+
+    const data = await res.json();
+    return data.responseData?.translatedText || text;
+}
+
+async function translatePage(lang) {
+    const elements = document.querySelectorAll("[data-translate]");
+
+    document.body.style.opacity = "0"; // hide page safely
+
+    let cache = {};
+    try {
+        cache = JSON.parse(localStorage.getItem("translations_" + lang)) || {};
+    } catch {
+        cache = {};
+    }
+
+    const tempResults = {};
+
+    try {
+        // translate all text in advance
+        for (let el of elements) {
+            const original = el.getAttribute("data-original") || el.innerText;
+            el.setAttribute("data-original", original);
+
+            if (!cache[original]) {
+                cache[original] = await fetchTranslation(original, lang);
+            }
+
+            tempResults[original] = cache[original];
+        }
+
+        // save updated translations
+        localStorage.setItem("translations_" + lang, JSON.stringify(cache));
+
+        // apply all translations at once
+        for (let el of elements) {
+            const original = el.getAttribute("data-original");
+            el.innerText = tempResults[original];
+        }
+    } catch (err) {
+        console.error("Translation error:", err);
+        alert("Translation failed, showing original text.");
+
+        // fallback → restore English
+        for (let el of elements) {
+            const original = el.getAttribute("data-original");
+            if (original) el.innerText = original;
+        }
+    } finally {
+        // make page visible ALWAYS
+        document.body.style.opacity = "1";
+    }
+}
+
+document.getElementById("langSelect").addEventListener("change", function () {
+    const lang = this.value;
+
+    if (lang === "en") {
+        document.querySelectorAll("[data-translate]").forEach(el => {
+            el.innerText = el.getAttribute("data-original");
+        });
+        return;
+    }
+
+    translatePage(lang);
+});
+</script>
+
+
 </body>
 </html>
-
 
 

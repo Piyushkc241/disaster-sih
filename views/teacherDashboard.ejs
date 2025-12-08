@@ -48,11 +48,11 @@
         </a>
 
         <nav class="sidebar-nav">
-          <a href="#hero" class="active"><i class="fa fa-gauge"></i> Dashboard</a>
-          <a href="#modules"><i class="fa fa-book-open"></i> Modules</a>
-          <a href="#quizzes"><i class="fa fa-question-circle"></i> Quizzes</a>
+          <a href="/teacherdashboard" class="active"><i class="fa fa-gauge"></i> Dashboard</a>
+          <a href="/alldisaster"><i class="fa fa-book-open"></i> Modules</a>
+          <a href="/quiz"><i class="fa fa-question-circle"></i> Quizzes</a>
           <a href="#drills"><i class="fa fa-people-group"></i> Mock Drills</a>
-          <a href="#reports"><i class="fa fa-file-alt"></i> Reports</a>
+          <a href="/report"><i class="fa fa-file-alt"></i> Reports</a>
         </nav>
 
         <button id="logoutBtn" class="sidebar-logout">
@@ -93,29 +93,25 @@
             <div class="dashboard-card" id="modules">
               <h2><i class="fa fa-chalkboard"></i> Teaching Modules</h2>
               <p>Access and schedule structured lessons for disaster safety topics.</p>
-
-              <form action="/index">
-
-                <button class="cta-btn" style="border-color: white; border-radius: 0.6rem;">Open Modules</button>
-              </form>
+              <button class="cta-btn" onclick="viewModules()">Open Modules</button>
             </div>
 
             <div class="dashboard-card" id="quizzes">
               <h2><i class="fa fa-edit"></i> Create Quizzes</h2>
               <p>Build knowledge tests and evaluate student understanding.</p>
-              <button class="cta-btn" style="border-color: white; border-radius: 0.6rem;">Start Creating</button>
+              <button class="cta-btn" onclick="createQuiz()">Start Creating</button>
             </div>
 
             <div class="dashboard-card" id="drills">
               <h2><i class="fa fa-person-running"></i> Mock Drill Plans</h2>
               <p>Detailed execution flow for emergency evacuation and drill setups.</p>
-              <button class="cta-btn" style="border-color: white; border-radius: 0.6rem;">View Plans</button>
+              <button class="cta-btn" onclick="viewDrills()">View Plans</button>
             </div>
 
             <div class="dashboard-card" id="reports">
               <h2><i class="fa fa-file"></i> Reports & Attendance</h2>
               <p>Monitor training completion, track safety awareness and improvement.</p>
-              <button class="cta-btn" style="border-color: white; border-radius: 0.6rem;">View Analytics</button>
+              <button class="cta-btn" onclick="viewReports()">View Analytics</button>
             </div>
           </div>
         </section>
