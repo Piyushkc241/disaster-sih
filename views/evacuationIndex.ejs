@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Evacuation Path | Disaster Learning Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- TEMPLATE BASE STYLES -->
+  <link rel="stylesheet" href="/css/evacuation.css">
+
+  <style>
+    /* TEMPLATE NAVBAR */
+    .navbar {
+      width: 100%;
+      padding: 18px 8%;
+      background: #ffffff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #111827;
+    }
+
+    .nav-links a {
+      margin-left: 24px;
+      text-decoration: none;
+      font-weight: 500;
+      color: #374151;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: #111827;
+    }
+
+    /* GLOBAL CONTAINER */
+    .container {
+      width: 100%;
+      max-width: 1250px;
+      margin: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ================= TEMPLATE NAVBAR ================= -->
+<header class="navbar">
+  <div class="nav-logo">Disaster Learning Hub</div>
+</header>
+
+
+<!-- ================= HERO ================= -->
+<section class="hero container">
+
+  <div class="hero-text">
+    <h1>Smart Evacuation Path Guidance</h1>
+    <p>
+      During a disaster, the nearest exit may be blocked. Our module
+      clearly shows primary and alternate evacuation routes for each
+      floor of a building.
+    </p>
+    <button id="explore-demo-btn" class="hero-btn">Explore Office Floor Demo</button>
+  </div>
+
+</section>
+
+
+
+<!-- ================= WHY IT MATTERS ================= -->
+<section class="why container">
+  <h2>Why Evacuation Mapping Matters</h2>
+
+  <div class="why-grid">
+    <div class="why-card">
+      <h3>Clear Navigation</h3>
+      <p>People instantly understand where to go—no confusion.</p>
+    </div>
+
+    <div class="why-card">
+      <h3>Blocked Exit Handling</h3>
+      <p>When the permanent exit is blocked, alternate safe routes appear automatically.</p>
+    </div>
+
+    <div class="why-card">
+      <h3>Floor-wise Planning</h3>
+      <p>Each building floor has its own evacuation structure and safe paths.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ================= EVACUATION SIMULATION INSIGHTS ================= -->
+<section class="simulation-section container">
+
+  <h2>Evacuation Simulation Insights</h2>
+  <p class="sim-intro">
+    Real-world evacuation simulations help us understand human movement, crowd density,
+    congestion points, and alternate escape routes. These insights guide safer building designs
+    and effective emergency planning.
+  </p>
+
+  <div class="sim-block">
+    <img src="/assets/media/main_architecture.jpg" class="sim-img">
+    <div class="sim-text">
+      <h3>1. Floor Architecture</h3>
+      <p>
+        Development consist of three different facilities with central courtyard.
+        It helps to detect the best possible routes during the time of disaster.
+        It helps to find the alternative routes when emergency route is block.
+      </p>
+    </div>
+  </div>
+
+  <div class="sim-block">
+    <img src="/assets/media/floor_architecture.jpg" class="sim-img">
+    <div class="sim-text">
+      <h3>2. Multi-Floor Evacuation Modeling</h3>
+      <p>
+        This multi-floor simulation visualizes building-wide evacuation, displaying movement from each floor to the assembly point.
+        It highlights how exits must handle synchronized crowd flow from multiple levels during emergencies.
+      </p>
+    </div>
+  </div>
+
+  <div class="sim-block">
+    <img src="/assets/media/ss1.jpg" class="sim-img">
+    <div class="sim-text">
+      <h3>3. Crowd Movement Visualization</h3>
+      <p>
+        This simulation demonstrates how people naturally move toward exits during an emergency.
+        Blue areas show lower density, while red spots indicate crowd buildup.  
+        Understanding these patterns helps optimize corridor width and exit placements.
+      </p>
+    </div>
+  </div>
+
+  <div class="sim-block">
+    <img src="/assets/media/ss2.jpg" class="sim-img">
+    <div class="sim-text">
+      <h3>4. Heatmap-Based Density Detection</h3>
+      <p>
+        The density heatmap highlights high-traffic regions inside the building.  
+        This data is crucial for predicting stampede risks and ensuring adequate evacuation flow.
+        The color bar on the right shows crowd pressure per square meter.
+      </p>
+    </div>
+  </div>
+
+  <div class="sim-block">
+    <img src="/assets/media/ss3.jpg" class="sim-img">
+    <div class="sim-text">
+      <h3>5. Staircase Evacuation Flow</h3>
+      <p>
+        Staircases are the most critical evacuation paths.  
+        This stair-flow simulation shows how quickly congestion forms on narrow stairs.
+        Color gradients help analyze crowd density and walking speed differences across floors.
+      </p>
+    </div>
+  </div>
+
+</section>
+
+
+
+<!-- ================= OFFICE FLOOR DEMO ================= -->
+<section class="demo container" id="demo-section">
+  <h2>Office Floor Evacuation Demo</h2>
+  <p>This example shows how the system reveals evacuation routes only when needed and adapts during a blocked exit scenario.</p>
+
+  <button class="toggle-btn" id="showRoutesBtn">Show Evacuation Routes</button>
+
+  <button class="toggle-btn blocked-btn" id="toggleScenarioBtn" style="display:none;">
+    Show Blocked Exit Scenario
+  </button>
+
+  <div class="demo-wrapper">
+
+    <!-- FLOOR PLAN -->
+    <div class="floor">
+      <div class="room room-office1">Office 1</div>
+      <div class="room room-office2">Office 2</div>
+      <div class="room room-office3">Office 3</div>
+
+      <div class="corridor">Corridor</div>
+
+      <div class="room room-reception">Reception</div>
+      <div class="room room-meeting">Meeting Room</div>
+      <div class="room room-pantry">Pantry</div>
+
+      <div class="exit-main">Main Exit (Stairs)</div>
+      <div class="exit-emergency">Emergency Exit</div>
+
+      <div class="hazard-area hidden" id="hazardArea"></div>
+      <div class="blocked-icon hidden" id="blockedIcon">✖</div>
+
+      <div class="route primary pr1 hidden"></div>
+      <div class="route primary pr2 hidden"></div>
+      <div class="route primary pr3 hidden"></div>
+
+      <div class="route alt ar1 hidden"></div>
+      <div class="route alt ar2 hidden"></div>
+      <div class="route alt ar3 hidden"></div>
+
+      <div class="person-dot hidden" id="personDot"></div>
+
+    </div>
+
+      <div class="demo-text">
+      <h3>How to use this demo</h3>
+      <ul>
+        <li>By default, only the architecture is visible.</li>
+        <li>Click <b>“Show Evacuation Routes”</b> to reveal the glowing green primary route.</li>
+        <li>Then click <b>“Show Blocked Exit Scenario”</b> to see the red hazard and blue alternate safe route.</li>
+        <li>The moving dot represents a person navigating to safety.</li>
+      </ul>
+      <p>This flow exactly represents how real buildings behave during disasters.</p>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <p>© 2025 Disaster Learning Hub</p>
+</footer>
+
+
+<script src="/js/evacuation.js"></script>
+</body>
+</html>
