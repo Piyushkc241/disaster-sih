@@ -6,6 +6,9 @@ const mongoose = require("mongoose");
 const User = require("./models/user");
 const Teacher = require("./models/teacher");
 const Admin = require("./models/admin");
+const PendingTeacher = require("./models/pendingTeacher");
+const PendingStudent = require("./models/pendingStudent");
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -103,9 +106,36 @@ app.post("/adminlogin",async (req,res)=>{
   res.redirect("/admindashboard");
 });
 
-app.get("/admindashboard",(req,res)=>{
-  res.render("adminDashboard");
+app.get("/admindashboard", async (req, res) => {
+
+    const msg = req.query.msg ?? null;
+
+    const totalTeachers = await Teacher.countDocuments({});
+    const approvedTeachers = await Teacher.countDocuments({ approval: "approved" });
+    const pendingTeachers = await PendingTeacher.countDocuments({ });
+
+    const totalStudents = await User.countDocuments({});
+    const approvedStudents = await User.countDocuments({ approval: "approved" });
+
+    const totalIncidents = 18;
+
+    const pendingTeachersList = await PendingTeacher.find({});
+    const studentList = await User.find({});
+
+    res.render("adminDashboard", {
+        msg,
+        totalTeachers,
+        approvedTeachers,
+        pendingTeachers,
+        totalStudents,
+        approvedStudents,
+        totalIncidents,
+        pendingTeachersList,
+        studentList
+    });
 });
+
+
 
 app.get("/admin/studentinfo", async (req, res) => {
   const students = await User.find({});
@@ -117,6 +147,44 @@ app.get("/admin/teacherinfo", async (req, res) => {
   res.render("teacherinfo", { teachers });
 });
 
+// APPROVE TEACHER
+app.post("/admin/teacher/approve/:id", async (req, res) => {
+    const pending = await PendingTeacher.findById(req.params.id);
+
+    if (!pending) return res.redirect("/admindashboard?msg=error");
+
+    await new Teacher({
+        name: pending.name,
+        uniqueId: pending.uniqueId,
+        email: pending.email,
+        password: pending.password,
+        phone: pending.phone,
+        institute: pending.institute,
+        approval: "approved"
+    }).save();
+
+    await PendingTeacher.findByIdAndDelete(req.params.id);
+
+    res.redirect("/admindashboard?msg=approved");
+});
+
+
+
+app.post("/admin/teacher/reject/:id", async (req, res) => {
+    await PendingTeacher.findByIdAndDelete(req.params.id);
+    res.redirect("/admindashboard?msg=rejected");
+});
+
+
+
+// BLOCK TEACHER
+app.post("/admin/teacher/block/:id", async (req, res) => {
+  await Teacher.findByIdAndUpdate(req.params.id, { approval: "blocked" });
+  res.redirect("/admindashboard");
+});
+
+
+
 
 //teacher
 
@@ -125,49 +193,53 @@ app.get("/teacherregister", (req, res) => {
 });
 
 app.post("/teacherregister", async (req, res) => {
-  let newTeacher = new Teacher(req.body.teacher);
-  await newTeacher.save();
-  res.render("teacherDashboard",{idx:index,msg:alerts[index]});
+    const newTeacher = new PendingTeacher(req.body.teacher);
+    await newTeacher.save();
+
+    res.render("teacherPendingApproval", {
+        message: "Your request has been sent to admin!"
+    });
 });
+
+
+
 
 app.get("/teacherlogin", (req, res) => {
   res.render("teacherlogin",{idx:index,msg:null});
 });
 app.post("/teacherlogin", async (req, res) => {
-  let rollNum = req.body.roll;
-  let clgName = req.body.clg;
-  let pass = req.body.password;
+  const { roll, clg, password } = req.body;
 
-  let teacher = await Teacher.findOne({
-    uniqueId: rollNum,
-    institute: clgName,
-    password: pass
+  const teacher = await Teacher.findOne({
+    uniqueId: roll,
+    institute: clg,
+    password: password
   });
 
   if (!teacher) {
-    return res.redirect("/teacherregister");
+    return res.send("Teacher not registered.");
   }
 
-  // IMPORTANT: prevent access for pending/rejected/blocked
-  if (teacher.approval === "pending") {
-    return res.render("teacherPendingApproval");
-  }
-
-  if (teacher.approval === "rejected") {
-    return res.send("Your registration was rejected by admin.");
-  }
-
-  if (teacher.approval === "blocked") {
-    return res.send("Your account is blocked. Contact admin.");
-  }
-
-  // Only approved teacher can enter
-  res.render("teacherDashboard");
+  return res.redirect("/teacherdashboard"); // ✅ FIXED
 });
 
-app.get("/teacherdashboard", (req, res) => {
-  res.render("teacherDashboard",{idx:index,msg:alerts[index]});
+
+
+app.get("/teacherdashboard", async (req, res) => {
+
+  const msg = req.query.msg || null;
+
+  const pendingStudents = await PendingStudent.find({});
+
+
+  res.render("teacherDashboard", {
+    pendingStudents,
+    msg,
+    idx: index
+  });
 });
+
+
 
 app.get("/teacherapproval",(req,res)=>{
   res.render("teacherPendingApproval");
@@ -179,38 +251,39 @@ app.get("/teacher/studentinfo", async (req, res) => {
 
 // STUDENT APPROVE
 app.post("/teacher/student/approve/:id", async (req, res) => {
-  await User.findByIdAndUpdate(req.params.id, { approval: "approved" });
-  res.redirect("/teacher/studentinfo");
-});
+    const pending = await PendingStudent.findById(req.params.id);
 
-// STUDENT REJECT
-app.post("/teacher/student/reject/:id", async (req, res) => {
-  await User.findByIdAndUpdate(req.params.id, { approval: "rejected" });
-  res.redirect("/teacher/studentinfo");
-});
+    if (!pending) return res.redirect("/teacherdashboard?msg=error");
+
+    await new User({
+        name: pending.name,
+        email: pending.email,
+        uniqueId: pending.uniqueId,
+        phone: pending.phone,
+        password: pending.password,
+        institute: pending.institute,
+        approval: "approved"
+    }).save();
+
+    await PendingStudent.findByIdAndDelete(req.params.id);
+
+    res.redirect("/teacherdashboard?msg=approved");
+    
+  });
+  
+  
+  app.post("/teacher/student/reject/:id", async (req, res) => {
+    await PendingStudent.findByIdAndDelete(req.params.id);
+    res.redirect("/teacherdashboard?msg=rejected");
+  });
+
 
 // STUDENT BLOCK
 app.post("/teacher/student/block/:id", async (req, res) => {
   await User.findByIdAndUpdate(req.params.id, { approval: "blocked" });
   res.redirect("/teacher/studentinfo");
 });
-// APPROVE
-app.post("/admin/teacher/approve/:id", async (req, res) => {
-  await Teacher.findByIdAndUpdate(req.params.id, { approval: "approved" });
-  res.redirect("/admin/teacherinfo");
-});
 
-// REJECT
-app.post("/admin/teacher/reject/:id", async (req, res) => {
-  await Teacher.findByIdAndUpdate(req.params.id, { approval: "rejected" });
-  res.redirect("/admin/teacherinfo");
-});
-
-// BLOCK
-app.post("/admin/teacher/block/:id", async (req, res) => {
-  await Teacher.findByIdAndUpdate(req.params.id, { approval: "blocked" });
-  res.redirect("/admin/teacherinfo");
-});
 
 
 
@@ -220,10 +293,15 @@ app.get("/studentregister", (req, res) => {
 });
 
 app.post("/studentregister", async (req, res) => {
-  let newUser = new User(req.body.student);
-  await newUser.save();
-  res.render("studentPendingApproval");
+    const newStudent = new PendingStudent({
+        ...req.body.student,
+        approval: "pending"
+    });
+
+    await newStudent.save();
+    res.render("studentPendingApproval");
 });
+
 
 app.get("/studentlogin", (req, res) => {
   res.render("studentlogin", { idx:index, msg:alerts[index] });
@@ -249,9 +327,6 @@ app.get("/studentpending",(req,res)=>{
 
 
 //teacher
-
-
-
 
 
 //evacuation
@@ -290,7 +365,6 @@ app.get("/alldisaster", (req, res) => {
   });
 
 });
-
 
 
 app.get("/avalanches", (req, res) => {

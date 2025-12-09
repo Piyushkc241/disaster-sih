@@ -1,537 +1,554 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Admin Dashboard • Disaster Learning Hub</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard • Disaster Learning Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Main stylesheet -->
-  <link rel="stylesheet" href="/css/style2.css" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="/css/style2.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
 
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f1f5f9;
-    }
+    <style>
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: #f1f5f9;
+      }
 
-    .admin-layout {
-      display: grid;
-      grid-template-columns: 250px 1fr;
-      min-height: 100vh;
-    }
-
-    /* SIDEBAR */
-    .admin-sidebar {
-      background: #0f172a;
-      color: #e5e7eb;
-      padding: 1.5rem 1.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .admin-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .admin-brand img {
-      width: 40px;
-      height: 40px;
-      border-radius: 999px;
-      object-fit: cover;
-    }
-
-    .admin-brand h2 {
-      font-size: 1rem;
-      margin: 0;
-      line-height: 1.1;
-    }
-
-    .admin-nav {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
-      margin-top: 1rem;
-    }
-
-    .admin-nav button {
-      background: transparent;
-      border: none;
-      color: #e5e7eb;
-      text-align: left;
-      padding: 0.55rem 0.6rem;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      font-size: 0.92rem;
-    }
-
-    .admin-nav button.active,
-    .admin-nav button:hover {
-      background: #111827;
-    }
-
-    .admin-footer-note {
-      margin-top: auto;
-      font-size: 0.75rem;
-      color: #9ca3af;
-    }
-
-    /* MAIN AREA */
-    .admin-main {
-      padding: 1.5rem 1.75rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.4rem;
-    }
-
-    .admin-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .admin-header-title {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .admin-header-title h1 {
-      margin: 0;
-      font-size: 1.5rem;
-      color: #111827;
-    }
-
-    .admin-header-title span {
-      font-size: 0.85rem;
-      color: #6b7280;
-    }
-
-    .admin-header-actions {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-
-    .admin-avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 999px;
-      background: #0f9d58;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 0.9rem;
-    }
-
-    .btn-outline-sm {
-      border-radius: 999px;
-      border: 1px solid #cbd5f5;
-      background: #ffffff;
-      padding: 0.4rem 0.9rem;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .btn-outline-sm:hover {
-      background: #eff6ff;
-    }
-
-    /* STATS */
-    .admin-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
-    }
-
-    .stat-card {
-      background: #ffffff;
-      border-radius: 1rem;
-      padding: 1rem 1.1rem;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
-      border: 1px solid #e5e7eb;
-    }
-
-    .stat-card h3 {
-      margin: 0;
-      font-size: 0.9rem;
-      color: #6b7280;
-    }
-
-    .stat-card strong {
-      display: block;
-      font-size: 1.4rem;
-      margin-top: 0.15rem;
-      color: #111827;
-    }
-
-    .stat-sub {
-      font-size: 0.78rem;
-      color: #9ca3af;
-      margin-top: 0.1rem;
-    }
-
-    /* SECTIONS */
-    .admin-section {
-      background: #ffffff;
-      border-radius: 1rem;
-      padding: 1.2rem 1.3rem;
-      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
-      border: 1px solid #e5e7eb;
-    }
-
-    .admin-section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.8rem;
-      gap: 0.5rem;
-    }
-
-    .admin-section-header h2 {
-      margin: 0;
-      font-size: 1.02rem;
-      color: #111827;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .admin-section-header h2 i {
-      color: #0f9d58;
-    }
-
-    .admin-section-header small {
-      font-size: 0.8rem;
-      color: #6b7280;
-    }
-
-    /* TABLES */
-    .admin-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.88rem;
-    }
-
-    .admin-table th,
-    .admin-table td {
-      padding: 0.55rem 0.4rem;
-      border-bottom: 1px solid #e5e7eb;
-      text-align: left;
-    }
-
-    .admin-table th {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-      color: #6b7280;
-      background: #f9fafb;
-    }
-
-    .status-pill {
-      padding: 0.1rem 0.55rem;
-      border-radius: 999px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      display: inline-block;
-    }
-
-    .status-pending {
-      background: #fef3c7;
-      color: #92400e;
-    }
-
-    .status-approved {
-      background: #dcfce7;
-      color: #166534;
-    }
-
-    .status-rejected {
-      background: #fee2e2;
-      color: #b91c1c;
-    }
-
-    .btn-xs {
-      font-size: 0.75rem;
-      padding: 0.28rem 0.6rem;
-      border-radius: 999px;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-approve {
-      background: #16a34a;
-      color: #ffffff;
-    }
-
-    .btn-reject {
-      background: #e5e7eb;
-      color: #111827;
-      margin-left: 0.25rem;
-    }
-
-    .btn-approve:hover {
-      background: #15803d;
-    }
-
-    .btn-reject:hover {
-      background: #d1d5db;
-    }
-
-    @media (max-width: 800px) {
       .admin-layout {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        min-height: 100vh;
       }
+
+      /* SIDEBAR */
       .admin-sidebar {
-        flex-direction: row;
+        background: #0f172a;
+        color: #e5e7eb;
+        padding: 1.5rem 1.2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .admin-brand {
+        display: flex;
         align-items: center;
-        justify-content: space-between;
-        padding: 0.8rem 1rem;
+        gap: 0.75rem;
       }
+
+      .admin-brand img {
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        object-fit: cover;
+      }
+
+      .admin-brand h2 {
+        font-size: 1rem;
+        margin: 0;
+        line-height: 1.1;
+      }
+
       .admin-nav {
-        flex-direction: row;
-        flex-wrap: wrap;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        margin-top: 1rem;
       }
+
+      .admin-nav button {
+        background: transparent;
+        border: none;
+        color: #e5e7eb;
+        text-align: left;
+        padding: 0.55rem 0.6rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        font-size: 0.92rem;
+      }
+
+      .admin-nav button.active,
+      .admin-nav button:hover {
+        background: #111827;
+      }
+
       .admin-footer-note {
-        display: none;
+        margin-top: auto;
+        font-size: 0.75rem;
+        color: #9ca3af;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <div class="admin-layout">
-    <!-- ========== SIDEBAR ========== -->
-    <aside class="admin-sidebar">
-      <div class="admin-brand">
-        <img src="/assets/logo.png" alt="Disaster Learning Hub Logo" />
-        <h2>
-          Disaster<br />
-          Admin Panel
-        </h2>
-      </div>
+      /* MAIN AREA */
+      .admin-main {
+        padding: 1.5rem 1.75rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1.4rem;
+      }
 
-      <nav class="admin-nav">
-        <form action="/admindashboard">
+      .admin-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+      }
 
-          <button class="active">
-            <i class="fa-solid fa-gauge-high"></i> Dashboard
-          </button>
-        </form>
+      .admin-header-title {
+        display: flex;
+        flex-direction: column;
+      }
 
-        <form action="/admin/teacherinfo">
+      .admin-header-title h1 {
+        margin: 0;
+        font-size: 1.5rem;
+        color: #111827;
+      }
 
-          <button>
-            <i class="fa-solid fa-chalkboard-teacher"></i> Teachers
-          </button>
-        </form>
-        <form action="/admin/studentinfo">
+      .admin-header-title span {
+        font-size: 0.85rem;
+        color: #6b7280;
+      }
 
-          <button>
-            <i class="fa-solid fa-user-graduate"></i> Students
-          </button>
-        </form>
-        <button>
-          <i class="fa-solid fa-triangle-exclamation"></i> Incidents
-        </button>
-      </nav>
+      .admin-header-actions {
+        display: flex;
+        align-items: center;
+        gap: 0.7rem;
+      }
 
-      <p class="admin-footer-note">
-        Logged in as <strong>Super Admin</strong><br />
-        Disaster Preparedness & Response Portal
-      </p>
-    </aside>
+      .admin-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 999px;
+        background: #0f9d58;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
 
-    <!-- ========== MAIN CONTENT ========== -->
-    <main class="admin-main">
-      <!-- HEADER -->
-      <div class="admin-header">
-        <div class="admin-header-title">
-          <h1><i class="fa-solid fa-user-shield"></i> Admin Dashboard</h1>
-          <span>Manage teachers, students and institutional participation.</span>
+      .btn-outline-sm {
+        border-radius: 999px;
+        border: 1px solid #cbd5f5;
+        background: #ffffff;
+        padding: 0.4rem 0.9rem;
+        font-size: 0.85rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .btn-outline-sm:hover {
+        background: #eff6ff;
+      }
+
+      /* STATS */
+      .admin-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+      }
+
+      .stat-card {
+        background: #ffffff;
+        border-radius: 1rem;
+        padding: 1rem 1.1rem;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.08);
+        border: 1px solid #e5e7eb;
+      }
+
+      .stat-card h3 {
+        margin: 0;
+        font-size: 0.9rem;
+        color: #6b7280;
+      }
+
+      .stat-card strong {
+        display: block;
+        font-size: 1.4rem;
+        margin-top: 0.15rem;
+        color: #111827;
+      }
+
+      .stat-sub {
+        font-size: 0.78rem;
+        color: #9ca3af;
+        margin-top: 0.1rem;
+      }
+
+      /* SECTIONS */
+      .admin-section {
+        background: #ffffff;
+        border-radius: 1rem;
+        padding: 1.2rem 1.3rem;
+        box-shadow: 0 10px 25px rgba(15, 23, 42, 0.06);
+        border: 1px solid #e5e7eb;
+      }
+
+      .admin-section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.8rem;
+        gap: 0.5rem;
+      }
+
+      .admin-section-header h2 {
+        margin: 0;
+        font-size: 1.02rem;
+        color: #111827;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .admin-section-header h2 i {
+        color: #0f9d58;
+      }
+
+      .admin-section-header small {
+        font-size: 0.8rem;
+        color: #6b7280;
+      }
+
+      /* TABLES */
+      .admin-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.88rem;
+      }
+
+      .admin-table th,
+      .admin-table td {
+        padding: 0.55rem 0.4rem;
+        border-bottom: 1px solid #e5e7eb;
+        text-align: left;
+      }
+
+      .admin-table th {
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        color: #6b7280;
+        background: #f9fafb;
+      }
+
+      .status-pill {
+        padding: 0.1rem 0.55rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        display: inline-block;
+      }
+
+      .status-pending {
+        background: #fef3c7;
+        color: #92400e;
+      }
+
+      .status-approved {
+        background: #dcfce7;
+        color: #166534;
+      }
+
+      .status-rejected {
+        background: #fee2e2;
+        color: #b91c1c;
+      }
+
+      .btn-xs {
+        font-size: 0.75rem;
+        padding: 0.28rem 0.6rem;
+        border-radius: 999px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-approve {
+        background: #16a34a;
+        color: #ffffff;
+      }
+
+      .btn-reject {
+        background: #e5e7eb;
+        color: #111827;
+        margin-left: 0.25rem;
+      }
+
+      .btn-approve:hover {
+        background: #15803d;
+      }
+
+      .btn-reject:hover {
+        background: #d1d5db;
+      }
+
+      @media (max-width: 800px) {
+        .admin-layout {
+          grid-template-columns: 1fr;
+        }
+        .admin-sidebar {
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.8rem 1rem;
+        }
+        .admin-nav {
+          flex-direction: row;
+          flex-wrap: wrap;
+        }
+        .admin-footer-note {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+     <% if (msg === "approved") { %>
+    <div class="alert success">Teacher Approved Successfully</div>
+<% } %>
+
+<% if (msg === "rejected") { %>
+    <div class="alert danger">Teacher Rejected</div>
+<% } %>
+
+    <div class="admin-layout">
+      <!-- ========== SIDEBAR ========== -->
+      <aside class="admin-sidebar">
+        <div class="admin-brand">
+          <img src="/assets/logo.png" alt="Disaster Learning Hub Logo" />
+          <h2>
+            Disaster<br />
+            Admin Panel
+          </h2>
         </div>
-        <div class="admin-header-actions">
-          <form action="/">
-            <button class="btn-outline-sm">
-              <i class="fa-solid fa-house"></i> Back to Portal
+
+        <nav class="admin-nav">
+          <form action="/index">
+            <button class="active">
+              <i class="fa-solid fa-gauge-high"></i> Modules
             </button>
           </form>
-          <form action="/">
 
-            <button class="btn-outline-sm">
-              <i class="fa-solid fa-right-from-bracket"></i> Logout
+          <form action="/admin/teacherinfo">
+            <button>
+              <i class="fa-solid fa-chalkboard-teacher"></i> Teachers
             </button>
           </form>
-          <div class="admin-avatar">AD</div>
-        </div>
-      </div>
+          <form action="/admin/studentinfo">
+            <button><i class="fa-solid fa-user-graduate"></i> Students</button>
+          </form>
+          <button>
+            <i class="fa-solid fa-triangle-exclamation"></i> Incidents
+          </button>
+        </nav>
 
-      <!-- TOP STATS -->
-      <section class="admin-stats">
-        <button class="stat-card" onclick="window.location.href='/admin/teacherinfo'">
-          <h3>Teachers</h3>
-          <strong id="statTeachers">12</strong>
-          <p class="stat-sub">8 approved · 4 pending</p>
-        </button>
-      
-        <button class="stat-card" onclick="window.location.href='/admin/studentinfo'">
-          <h3>Students</h3>
-          <strong>230</strong>
-          <p class="stat-sub">Active learners across colleges</p>
-        </button>
-      
-        <button class="stat-card" onclick="window.location.href='incidents.html'">
-          <h3>Incidents Reported</h3>
-          <strong>18</strong>
-          <p class="stat-sub">Awaiting review / resolved</p>
-        </button>
-      </section>
-      
+        <p class="admin-footer-note">
+          Logged in as <strong>Super Admin</strong><br />
+          Disaster Preparedness & Response Portal
+        </p>
+      </aside>
 
-      <!-- TEACHER APPROVALS -->
-      <section class="admin-section" id="teacherSection">
-        <div class="admin-section-header">
-          <div>
-            <h2><i class="fa-solid fa-chalkboard-teacher"></i> Pending Teacher Approvals</h2>
-            <small>Review and approve teachers before they can access the teaching portal.</small>
+      <!-- ========== MAIN CONTENT ========== -->
+      <main class="admin-main">
+        <!-- HEADER -->
+        <div class="admin-header">
+          <div class="admin-header-title">
+            <h1><i class="fa-solid fa-user-shield"></i> Admin Dashboard</h1>
+            <span
+              >Manage teachers, students and institutional participation.</span
+            >
+          </div>
+          <div class="admin-header-actions">
+            <form action="/">
+              <button class="btn-outline-sm">
+                <i class="fa-solid fa-house"></i> Back to Portal
+              </button>
+            </form>
+            <form action="/">
+              <button class="btn-outline-sm">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+              </button>
+            </form>
+            <div class="admin-avatar">AD</div>
           </div>
         </div>
 
-        <table class="admin-table" id="teacherTable">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Unique ID</th>
-              <th>Email</th>
-              <th>College</th>
-              <th>Phone</th>
-              <th>Status</th>
-              <th style="width:120px;">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Example rows -->
-            <tr data-status="pending">
-              <td>Rajesh Kumar</td>
-              <td>TCH-2025-001</td>
-              <td>rajesh@gniet.edu</td>
-              <td>Greater Noida Institute of Technology (GNIOT)</td>
-              <td>9876543210</td>
-              <td><span class="status-pill status-pending">Pending</span></td>
-              <td>
-                <button class="btn-xs btn-approve">Approve</button>
-                <button class="btn-xs btn-reject">Reject</button>
-              </td>
-            </tr>
-            <tr data-status="pending">
-              <td>Priya Singh</td>
-              <td>TCH-2025-002</td>
-              <td>priya@glbajaj.edu</td>
-              <td>GL Bajaj Institute of Technology and Management</td>
-              <td>9876501234</td>
-              <td><span class="status-pill status-pending">Pending</span></td>
-              <td>
-                <button class="btn-xs btn-approve">Approve</button>
-                <button class="btn-xs btn-reject">Reject</button>
-              </td>
-            </tr>
-            <tr data-status="approved">
-              <td>Amit Verma</td>
-              <td>TCH-2024-018</td>
-              <td>amit@sharda.edu</td>
-              <td>Sharda University</td>
-              <td>9812345678</td>
-              <td><span class="status-pill status-approved">Approved</span></td>
-              <td>
-                <button class="btn-xs btn-reject">Block</button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
+        <!-- TOP STATS -->
+        <section class="admin-stats">
+          <button
+            class="stat-card"
+            onclick="window.location.href='/admin/teacherinfo'"
+          >
+            <h3>Teachers</h3>
+            <strong><%= totalTeachers %></strong>
+            <p class="stat-sub">
+              <%= approvedTeachers %> approved · <%= pendingTeachers %> pending
+            </p>
+          </button>
 
-      <!-- STUDENT LIST -->
-      <section class="admin-section" id="studentSection">
-        <div class="admin-section-header">
-          <div>
-            <h2><i class="fa-solid fa-user-graduate"></i> Registered Students</h2>
-            <small>View students participating from different colleges.</small>
+          <button
+            class="stat-card"
+            onclick="window.location.href='/admin/studentinfo'"
+          >
+            <h3>Students</h3>
+            <strong><%= totalStudents %></strong>
+            <p class="stat-sub">Active learners across colleges</p>
+          </button>
+
+          <button
+            class="stat-card"
+            onclick="window.location.href='incidents.html'"
+          >
+            <h3>Incidents Reported</h3>
+            <strong><%= totalIncidents %></strong>
+            <p class="stat-sub">Awaiting review / resolved</p>
+          </button>
+        </section>
+
+        <!-- TEACHER APPROVALS -->
+        <section class="admin-section" id="teacherSection">
+          <div class="admin-section-header">
+            <div>
+              <h2>
+                <i class="fa-solid fa-chalkboard-teacher"></i> Pending Teacher
+                Approvals
+              </h2>
+              <small
+                >Review and approve teachers before they can access the teaching
+                portal.</small
+              >
+            </div>
           </div>
-        </div>
 
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Roll No</th>
-              <th>College</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Aditi Sharma</td>
-              <td>21CS045</td>
-              <td>GL Bajaj Institute of Technology and Management</td>
-              <td>aditi@example.com</td>
-            </tr>
-            <tr>
-              <td>Mohit Pratap</td>
-              <td>22IT031</td>
-              <td>Greater Noida Institute of Technology (GNIOT)</td>
-              <td>mohit@example.com</td>
-            </tr>
-            <tr>
-              <td>Rahul Yadav</td>
-              <td>BCA23-007</td>
-              <td>Sharda University</td>
-              <td>rahul@example.com</td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-    </main>
-  </div>
+          <table class="admin-table" id="teacherTable">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Unique ID</th>
+                <th>Email</th>
+                <th>College</th>
+                <th>Phone</th>
+                <th>Status</th>
+                <th style="width: 120px">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Example rows -->
+              <% pendingTeachersList.forEach(t => { %>
+              <tr data-status="<%= t.approval %>">
+                <td><%= t.name %></td>
+                <td><%= t.uniqueId %></td>
+                <td><%= t.email %></td>
+                <td><%= t.institute %></td>
+                <td><%= t.phone %></td>
 
-  <!-- Simple demo logic for Approve / Reject buttons -->
-  <script>
-    const teacherTable = document.getElementById("teacherTable");
+                <td>
+                  <% if(t.approval === "pending"){ %>
+                  <span class="status-pill status-pending">Pending</span>
+                  <% } %>
+                </td>
 
-    teacherTable.addEventListener("click", (e) => {
-      const approveBtn = e.target.closest(".btn-approve");
-      const rejectBtn = e.target.closest(".btn-reject");
+                <td>
+                  <form
+                    action="/admin/teacher/approve/<%= t._id %>"
+                    method="POST"
+                    style="display: inline"
+                  >
+                    <button class="btn-xs btn-approve">Approve</button>
+                  </form>
 
-      if (!approveBtn && !rejectBtn) return;
+                  <form
+                    action="/admin/teacher/reject/<%= t._id %>"
+                    method="POST"
+                    style="display: inline"
+                  >
+                    <button class="btn-xs btn-reject">Reject</button>
+                  </form>
+                </td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </section>
+       
 
-      const row = e.target.closest("tr");
-      const statusCell = row.querySelector("td:nth-child(6) .status-pill");
 
-      if (approveBtn) {
-        statusCell.textContent = "Approved";
-        statusCell.className = "status-pill status-approved";
-        row.dataset.status = "approved";
-      }
+        <!-- STUDENT LIST -->
+        <section class="admin-section" id="studentSection">
+          <div class="admin-section-header">
+            <div>
+              <h2>
+                <i class="fa-solid fa-user-graduate"></i> Registered Students
+              </h2>
+              <small
+                >View students participating from different colleges.</small
+              >
+            </div>
+          </div>
 
-      if (rejectBtn) {
-        statusCell.textContent = "Rejected";
-        statusCell.className = "status-pill status-rejected";
-        row.dataset.status = "rejected";
-      }
-    });
-  </script>
-</body>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Roll No</th>
+                <th>College</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% studentList.forEach(s => { %>
+              <tr>
+                <td><%= s.name %></td>
+                <td><%= s.uniqueId %></td>
+                <td><%= s.institute %></td>
+                <td><%= s.email %></td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </section>
+      </main>
+    </div>
+
+    <!-- Simple demo logic for Approve / Reject buttons -->
+    <script>
+      const teacherTable = document.getElementById("teacherTable");
+
+      teacherTable.addEventListener("click", (e) => {
+        const approveBtn = e.target.closest(".btn-approve");
+        const rejectBtn = e.target.closest(".btn-reject");
+
+        if (!approveBtn && !rejectBtn) return;
+
+        const row = e.target.closest("tr");
+        const statusCell = row.querySelector("td:nth-child(6) .status-pill");
+
+        if (approveBtn) {
+          statusCell.textContent = "Approved";
+          statusCell.className = "status-pill status-approved";
+          row.dataset.status = "approved";
+        }
+
+        if (rejectBtn) {
+          statusCell.textContent = "Rejected";
+          statusCell.className = "status-pill status-rejected";
+          row.dataset.status = "rejected";
+        }
+      });
+    </script>
+  </body>
 </html>

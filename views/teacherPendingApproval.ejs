@@ -69,6 +69,12 @@
 </head>
 
 <body>
+<% if (typeof message !== "undefined") { %>
+  <div style="padding:10px; background:#fde047; margin-bottom:10px; border-radius:5px;">
+      <%= message %>
+  </div>
+<% } %>
+
 
   <div class="approval-box">
     <div class="approval-icon"><i class="fa-solid fa-hourglass-half"></i></div>

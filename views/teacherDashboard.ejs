@@ -157,6 +157,8 @@
   </head>
 
   <body>
+   
+
     <!-- Animated background circles -->
     <div class="animated-bg">
       <div class="circle" style="width:90px; height:90px; left:10%; top:80%;"></div>
@@ -259,41 +261,28 @@
                 <th style="width:120px;">Action</th>
               </tr>
             </thead>
-            <tbody>
-              <!-- Example rows -->
-              <tr data-status="pending">
-                <td>Rajesh Kumar</td>
-                <td>TCH-2025-001</td>
-                <td>rajesh@gniet.edu</td>
-                <td>9876543210</td>
-                <td><span class="status-pill status-pending">Pending</span></td>
-                <td>
-                  <button class="btn-xs btn-approve">Approve</button>
-                  <button class="btn-xs btn-reject">Reject</button>
-                </td>
-              </tr>
-              <tr data-status="pending">
-                <td>Priya Singh</td>
-                <td>TCH-2025-002</td>
-                <td>priya@glbajaj.edu</td>
-                <td>9876501234</td>
-                <td><span class="status-pill status-pending">Pending</span></td>
-                <td>
-                  <button class="btn-xs btn-approve">Approve</button>
-                  <button class="btn-xs btn-reject">Reject</button>
-                </td>
-              </tr>
-              <tr data-status="approved">
-                <td>Amit Verma</td>
-                <td>TCH-2024-018</td>
-                <td>amit@sharda.edu</td>
-                <td>9812345678</td>
-                <td><span class="status-pill status-approved">Approved</span></td>
-                <td>
-                  <button class="btn-xs btn-reject">Block</button>
-                </td>
-              </tr>
-            </tbody>
+<tbody>
+  <% pendingStudents.forEach(s => { %>
+    <tr>
+      <td><%= s.name %></td>
+      <td><%= s.uniqueId %></td>
+      <td><%= s.email %></td>
+      <td><%= s.phone %></td>
+      <td>
+        <span class="status-pill status-pending">Pending</span>
+      </td>
+      <td>
+        <form action="/teacher/student/approve/<%= s._id %>" method="POST" style="display:inline;">
+          <button class="btn-xs btn-approve">Approve</button>
+        </form>
+        <form action="/teacher/student/reject/<%= s._id %>" method="POST" style="display:inline;">
+          <button class="btn-xs btn-reject">Reject</button>
+        </form>
+      </td>
+    </tr>
+  <% }) %>
+</tbody>
+
           </table>
         </section>
   
