@@ -103,13 +103,34 @@ app.get("/admindashboard",(req,res)=>{
   res.render("adminDashboard");
 });
 
-app.get("/admin/studentinfo",(req,res)=>{
-  res.render("studentinfo");
+app.get("/admin/studentinfo", async (req, res) => {
+  const students = await User.find({});
+  res.render("studentinfo", { students });
+});
+// STUDENT APPROVE
+app.post("/admin/student/approve/:id", async (req, res) => {
+  await User.findByIdAndUpdate(req.params.id, { approval: "approved" });
+  res.redirect("/admin/studentinfo");
 });
 
-app.get("/admin/teacherinfo",(req,res)=>{
-  res.render("teacherinfo");
+// STUDENT REJECT
+app.post("/admin/student/reject/:id", async (req, res) => {
+  await User.findByIdAndUpdate(req.params.id, { approval: "rejected" });
+  res.redirect("/admin/studentinfo");
 });
+
+// STUDENT BLOCK
+app.post("/admin/student/block/:id", async (req, res) => {
+  await User.findByIdAndUpdate(req.params.id, { approval: "blocked" });
+  res.redirect("/admin/studentinfo");
+});
+
+
+app.get("/admin/teacherinfo", async (req, res) => {
+  const teachers = await Teacher.find({});
+  res.render("teacherinfo", { teachers });
+});
+
 
 
 //student
@@ -117,9 +138,9 @@ app.get("/studentregister", (req, res) => {
   res.render("studentRegister",{idx:index,msg:alerts[index]});
 });
 app.post("/studentregister", async (req, res) => {
-  let newStudent = new User(req.body.student);
-  await newStudent.save();
-  res.redirect("/studentpending");
+  let newUser = new User(req.body.student);
+  await newUser.save();
+  res.render("studentPendingApproval");
 });
 
 app.get("/studentlogin", (req, res) => {
@@ -160,15 +181,36 @@ app.get("/teacherlogin", (req, res) => {
 });
 app.post("/teacherlogin", async (req, res) => {
   let rollNum = req.body.roll;
-  let clgName= req.body.clg;
+  let clgName = req.body.clg;
   let pass = req.body.password;
-  let exists= await Teacher.find({ uniqueId:rollNum , institue:clgName,password:pass});
-  if(!exists==1){
-    res.redirect("/teacherregister");
-  }  
-  res.render("teacherDashboard",{idx:index,msg:alerts[index]});
- 
+
+  let teacher = await Teacher.findOne({
+    uniqueId: rollNum,
+    institute: clgName,
+    password: pass
+  });
+
+  if (!teacher) {
+    return res.redirect("/teacherregister");
+  }
+
+  // IMPORTANT: prevent access for pending/rejected/blocked
+  if (teacher.approval === "pending") {
+    return res.render("teacherPendingApproval");
+  }
+
+  if (teacher.approval === "rejected") {
+    return res.send("Your registration was rejected by admin.");
+  }
+
+  if (teacher.approval === "blocked") {
+    return res.send("Your account is blocked. Contact admin.");
+  }
+
+  // Only approved teacher can enter
+  res.render("teacherDashboard");
 });
+
 
 
 app.get("/teacherdashboard", (req, res) => {
@@ -178,6 +220,25 @@ app.get("/teacherdashboard", (req, res) => {
 app.get("/teacherapproval",(req,res)=>{
   res.render("teacherPendingApproval");
 });
+
+// APPROVE
+app.post("/admin/teacher/approve/:id", async (req, res) => {
+  await Teacher.findByIdAndUpdate(req.params.id, { approval: "approved" });
+  res.redirect("/admin/teacherinfo");
+});
+
+// REJECT
+app.post("/admin/teacher/reject/:id", async (req, res) => {
+  await Teacher.findByIdAndUpdate(req.params.id, { approval: "rejected" });
+  res.redirect("/admin/teacherinfo");
+});
+
+// BLOCK
+app.post("/admin/teacher/block/:id", async (req, res) => {
+  await Teacher.findByIdAndUpdate(req.params.id, { approval: "blocked" });
+  res.redirect("/admin/teacherinfo");
+});
+
 
 
 app.get("/index", (req, res) => {

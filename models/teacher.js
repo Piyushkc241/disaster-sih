@@ -26,11 +26,11 @@ const teacherSchema= new Schema({
         type:String,
         required:true,
     },
-    approval:{
-         type: String,
-  enum: ["approved", "rejected"],
-  default: "rejected"
-    },
+    approval: {
+        type: String,
+        enum: ["pending", "approved", "rejected", "blocked"],
+        default: "pending"
+    }
     
 });
 

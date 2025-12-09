@@ -3,74 +3,126 @@
 <head>
   <title>Manage Students</title>
   <link rel="stylesheet" href="/css/style2.css" />
-</head>
-<style>
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
 
-.table-container {
-  width: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-}
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f7f8;
+    }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 18px;
-}
+    h1 {
+      text-align: center;
+      margin-top: 20px;
+      color: #2b7a0b;
+    }
 
-th, td {
-  border: 1px solid #333;
-  padding: 12px;
-  text-align: center;
-}
+    .table-container {
+      width: 95%;
+      margin: auto;
+      margin-top: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
 
-th {
-  background-color: #4fcd3c;
-  color: #fff;
-}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 16px;
+    }
 
-button {
-  padding: 6px 12px;
-  cursor: pointer;
-}
-</style>
+    th, td {
+      border: 1px solid #eee;
+      padding: 12px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #4fcd3c;
+      color: #fff;
+    }
+
+    .status-pending { color: #cc8a00; font-weight: bold; }
+    .status-approved { color: #2b7a0b; font-weight: bold; }
+    .status-rejected { color: #b30000; font-weight: bold; }
+    .status-blocked { color: #555; font-weight: bold; }
+
+    button {
+      padding: 6px 12px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .approve-btn { background-color: green; }
+    .reject-btn  { background-color: red; margin-left: 5px; }
+    .block-btn   { background-color: gray; margin-left: 5px; }
+  </style>
 </head>
 
 <body>
-<body>
+
   <h1>Manage Students</h1>
-  <table class="data-table">
-    <table border="1" cellpadding="10" cellspacing="0">
+
+  <div class="table-container">
+    <table>
       <thead>
         <tr>
           <th>Name</th>
+          <th>Unique ID</th>
           <th>Email</th>
           <th>College</th>
+          <th>Phone</th>
           <th>Status</th>
           <th>Actions</th>
         </tr>
       </thead>
-    
+
       <tbody>
-        <tr>
-          <td>Mohit Mittal</td>
-          <td>mohit@example.com</td>
-          <td>XYZ Engineering College</td>
-          <td>Approved</td>
-          <td>
-            <button>Delete</button>
-          </td>
-        </tr>
+
+        <% students.forEach(student => { %>
+          <tr>
+            <td><%= student.name %></td>
+            <td><%= student.uniqueId %></td>
+            <td><%= student.email %></td>
+            <td><%= student.institute %></td>
+            <td><%= student.phone %></td>
+
+            <td>
+              <% if (student.approval === "pending") { %>
+                <span class="status-pending">Pending</span>
+              <% } else if (student.approval === "approved") { %>
+                <span class="status-approved">Approved</span>
+              <% } else if (student.approval === "rejected") { %>
+                <span class="status-rejected">Rejected</span>
+              <% } else if (student.approval === "blocked") { %>
+                <span class="status-blocked">Blocked</span>
+              <% } %>
+            </td>
+
+            <td>
+              <form action="/admin/student/approve/<%= student._id %>" method="POST" style="display:inline;">
+                <button class="approve-btn">Approve</button>
+              </form>
+
+              <form action="/admin/student/reject/<%= student._id %>" method="POST" style="display:inline;">
+                <button class="reject-btn">Reject</button>
+              </form>
+
+              <form action="/admin/student/block/<%= student._id %>" method="POST" style="display:inline;">
+                <button class="block-btn">Block</button>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+
       </tbody>
     </table>
-    
-    
-    <tbody id="teacherTable"></tbody>
-  </table>
+  </div>
+
 </body>
 </html>
