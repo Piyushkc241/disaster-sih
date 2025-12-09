@@ -6,43 +6,153 @@
   <title>All Disaster Modules</title>
   <link rel="stylesheet" href="/css/styles.css" />
   <style>
-    .alert-toast {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: linear-gradient(135deg, #ff6b6b 0%, #ff5252 100%);
-      color: #fff;
-      padding: 16px 24px;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(255, 107, 107, 0.3);
-      font-size: 1rem;
-      font-weight: 500;
-      opacity: 0;
-      transform: translateX(-50%) translateY(-20px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-      z-index: 9999;
-      max-width: 90%;
-      word-wrap: break-word;
-      border-left: 4px solid rgba(255, 255, 255, 0.6);
+    /* Alert Tab Styling */
+    .alert-container {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+      padding: 16px 20px;
+      margin-bottom: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 15px;
+      animation: slideDown 0.4s ease-out;
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .alert-content {
       display: flex;
       align-items: center;
       gap: 12px;
+      flex: 1;
+      min-width: 250px;
     }
-    .alert-toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-    .alert-toast::before {
-      content: "⚠️";
-      font-size: 1.2rem;
+
+    .alert-icon {
+      width: 28px;
+      height: 28px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
       flex-shrink: 0;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .alert-text {
+      color: white;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .alert-text strong {
+      font-size: 15px;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .alert-close {
+      background: rgba(255, 255, 255, 0.2);
+      border: none;
+      color: white;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .alert-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: rotate(90deg);
+    }
+
+    /* Alert Type Variants */
+    .alert-danger {
+      background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+    }
+
+    .alert-warning {
+      background: linear-gradient(135deg, #ffa500 0%, #ff8c42 100%);
+    }
+
+    .alert-success {
+      background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    }
+
+    .alert-info {
+      background: linear-gradient(135deg, #2196f3 0%, #1e88e5 100%);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .alert-container {
+        padding: 12px 15px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .alert-content {
+        width: 100%;
+      }
+
+      .alert-close {
+        align-self: flex-end;
+        margin-top: -30px;
+      }
+
+      .alert-text {
+        font-size: 13px;
+      }
     }
   </style>
 </head>
 
 <body>
-  <div id="alertToast" class="alert-toast"></div>
+
+  <!-- Alert Tab -->
+  <div class="alert-container alert-danger">
+    <div class="alert-content">
+      <div class="alert-icon">⚠️</div>
+      <div class="alert-text">
+        <strong>Active Alerts</strong>
+        <span id="alert-message">Stay informed. Check local disaster updates regularly.</span>
+      </div>
+    </div>
+    <button class="alert-close" onclick="this.parentElement.style.display='none';">×</button>
+  </div>
 
   <section class="section">
 
@@ -218,20 +328,6 @@
       </div>
     </div>
   </section>
-
-<% if (typeof index !== "undefined" && index != 0) { %>
-<script>
-  (function() {
-    const msg = "<%- msg %>";
-    const alertToast = document.getElementById("alertToast");
-    if (msg && alertToast) {
-      alertToast.textContent = msg + ". Be safe!";
-      alertToast.classList.add("show");
-      setTimeout(() => alertToast.classList.remove("show"), 5000);
-    }
-  })();
-</script>
-<% } %>
 
 </body>
 </html>
