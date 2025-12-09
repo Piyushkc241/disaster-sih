@@ -132,36 +132,35 @@
   </div>
 
   <div class="sim-block">
-    <img src="/assets/media/ss1.jpg" class="sim-img">
+    <img src="/assets/media/Office_evacuation.webp" class="sim-img">
     <div class="sim-text">
-      <h3>3. Crowd Movement Visualization</h3>
+      <h3>3. Office Evacuation Visualization</h3>
       <p>
-        This simulation demonstrates how people naturally move toward exits during an emergency.
-        Blue areas show lower density, while red spots indicate crowd buildup.  
-        Understanding these patterns helps optimize corridor width and exit placements.
+        An office evacuation plan is a formal safety strategy detailing how to safely exit a building during emergencies,
+        focusing on clear escape routes, designated assembly points, assigned roles
       </p>
     </div>
   </div>
 
   <div class="sim-block">
-    <img src="/assets/media/ss2.jpg" class="sim-img">
+    <img src="/assets/media/Fire_evacuation.jpg" class="sim-img">
     <div class="sim-text">
-      <h3>4. Heatmap-Based Density Detection</h3>
+      <h3>4. Fire Evacuation Visualization</h3>
       <p>
-        The density heatmap highlights high-traffic regions inside the building.  
-        This data is crucial for predicting stampede risks and ensuring adequate evacuation flow.
-        The color bar on the right shows crowd pressure per square meter.
+       A fire evacuation plan is a safety strategy outlining how to safely exit a building during a fire, featuring clear routes,
+       assembly points, roles for fire wardens, and procedures for accounting for everyone, emphasizing using stairs staying low in smoke,
+       closing doors, and reporting to a safe meeting spot.
       </p>
     </div>
   </div>
 
   <div class="sim-block">
-    <img src="/assets/media/ss3.jpg" class="sim-img">
+    <img src="/assets/media/archi2.png" class="sim-img">
     <div class="sim-text">
       <h3>5. Staircase Evacuation Flow</h3>
       <p>
-        Staircases are the most critical evacuation paths.  
-        This stair-flow simulation shows how quickly congestion forms on narrow stairs.
+        This shows the most critical evacuation paths.  
+        This simulation shows how quickly congestion forms on narrow stairs.
         Color gradients help analyze crowd density and walking speed differences across floors.
       </p>
     </div>
@@ -172,61 +171,68 @@
 
 
 <!-- ================= OFFICE FLOOR DEMO ================= -->
+
 <section class="demo container" id="demo-section">
   <h2>Office Floor Evacuation Demo</h2>
-  <p>This example shows how the system reveals evacuation routes only when needed and adapts during a blocked exit scenario.</p>
+  <p>This example shows how the system reveals evacuation routes and switches to alternate paths when the main exit is blocked.</p>
 
-  <button class="toggle-btn" id="showRoutesBtn">Show Evacuation Routes</button>
-
-  <button class="toggle-btn blocked-btn" id="toggleScenarioBtn" style="display:none;">
+  <!-- BUTTONS -->
+  <button class="toggle-btn" id="routesToggleBtn">Show Evacuation Routes</button>
+  <button class="toggle-btn" id="scenarioToggleBtn" style="display:none;">
     Show Blocked Exit Scenario
   </button>
 
   <div class="demo-wrapper">
 
-    <!-- FLOOR PLAN -->
     <div class="floor">
+      <!-- Rooms -->
       <div class="room room-office1">Office 1</div>
       <div class="room room-office2">Office 2</div>
       <div class="room room-office3">Office 3</div>
-
-      <div class="corridor">Corridor</div>
 
       <div class="room room-reception">Reception</div>
       <div class="room room-meeting">Meeting Room</div>
       <div class="room room-pantry">Pantry</div>
 
+      <!-- Corridor -->
+      <div class="corridor">Corridor</div>
+
+      <!-- Exits -->
       <div class="exit-main">Main Exit (Stairs)</div>
       <div class="exit-emergency">Emergency Exit</div>
 
+      <!-- Hazard + Blocked icon -->
       <div class="hazard-area hidden" id="hazardArea"></div>
       <div class="blocked-icon hidden" id="blockedIcon">✖</div>
 
+      <!-- PRIMARY ROUTE SEGMENTS -->
       <div class="route primary pr1 hidden"></div>
       <div class="route primary pr2 hidden"></div>
       <div class="route primary pr3 hidden"></div>
 
+      <!-- ALTERNATE ROUTE SEGMENTS -->
       <div class="route alt ar1 hidden"></div>
       <div class="route alt ar2 hidden"></div>
       <div class="route alt ar3 hidden"></div>
 
+      <!-- MOVING PERSON DOT -->
       <div class="person-dot hidden" id="personDot"></div>
-
     </div>
 
-      <div class="demo-text">
+    <div class="demo-text">
       <h3>How to use this demo</h3>
       <ul>
-        <li>By default, only the architecture is visible.</li>
-        <li>Click <b>“Show Evacuation Routes”</b> to reveal the glowing green primary route.</li>
-        <li>Then click <b>“Show Blocked Exit Scenario”</b> to see the red hazard and blue alternate safe route.</li>
-        <li>The moving dot represents a person navigating to safety.</li>
+        <li>Click <b>Show Evacuation Routes</b> to reveal the green primary route.</li>
+        <li>Then click <b>Show Blocked Exit Scenario</b> to switch to the blue alternate route and show the red hazard.</li>
+        <li>Click <b>Show Normal Route</b> to return to the main exit.</li>
+        <li>Click <b>Hide Evacuation Routes</b> to clear all paths.</li>
       </ul>
-      <p>This flow exactly represents how real buildings behave during disasters.</p>
+      <p>The moving dot represents one person navigating along the currently active evacuation path.</p>
     </div>
 
   </div>
 </section>
+
 
 
 

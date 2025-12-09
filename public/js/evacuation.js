@@ -1,80 +1,88 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const routesToggleBtn   = document.getElementById("routesToggleBtn");
+  const scenarioToggleBtn = document.getElementById("scenarioToggleBtn");
 
-  const showRoutesBtn = document.getElementById("showRoutesBtn");
-  const toggleScenarioBtn = document.getElementById("toggleScenarioBtn");
+  const primaryRoutes = document.querySelectorAll(".route.primary");
+  const altRoutes     = document.querySelectorAll(".route.alt");
+  const hazardArea    = document.getElementById("hazardArea");
+  const blockedIcon   = document.getElementById("blockedIcon");
+  const personDot     = document.getElementById("personDot");
 
-  const primaryRoutes = document.querySelectorAll(".primary");
-  const altRoutes = document.querySelectorAll(".alt");
-  const hazard = document.getElementById("hazardArea");
-  const blockedIcon = document.getElementById("blockedIcon");
-  const personDot = document.getElementById("personDot");
+  let routesVisible = false;   // any routes showing?
+  let blockedMode   = false;   // true = alternate (jam) route
 
-  let routesVisible = false;
-  let blocked = false;
+  function setHiddenState() {
+    primaryRoutes.forEach(r => r.classList.add("hidden"));
+    altRoutes.forEach(r     => r.classList.add("hidden"));
+    hazardArea.style.opacity = 0;
+    hazardArea.classList.add("hidden");
+    blockedIcon.classList.add("hidden");
+    personDot.classList.add("hidden");
+    personDot.classList.remove("person-alt");
+  }
 
-  // ----------------------------
-  // STEP 1: SHOW ROUTES
-  // ----------------------------
+  function setNormalState() {
+    // show primary, hide alt, no hazard
+    primaryRoutes.forEach(r => r.classList.remove("hidden"));
+    altRoutes.forEach(r     => r.classList.add("hidden"));
 
-  showRoutesBtn.addEventListener("click", () => {
-    routesVisible = !routesVisible;
+    hazardArea.style.opacity = 0;
+    hazardArea.classList.add("hidden");
+    blockedIcon.classList.add("hidden");
 
-    if (routesVisible) {
-      showRoutesBtn.textContent = "Hide Evacuation Routes";
+    personDot.classList.remove("hidden");
+    personDot.classList.remove("person-alt"); // uses primary animation
+  }
 
-      // Show primary route + person
-      primaryRoutes.forEach(r => r.classList.remove("hidden"));
-      personDot.classList.remove("hidden");
+  function setBlockedState() {
+    // hide primary, show alternate, show hazard + icon
+    primaryRoutes.forEach(r => r.classList.add("hidden"));
+    altRoutes.forEach(r     => r.classList.remove("hidden"));
 
-      // Enable blocked scenario button
-      toggleScenarioBtn.style.display = "inline-block";
+    hazardArea.classList.remove("hidden");
+    hazardArea.style.opacity = 1;
+    blockedIcon.classList.remove("hidden");
 
+    personDot.classList.remove("hidden");
+    personDot.classList.add("person-alt"); // use alternate animation
+  }
+
+  // initial: everything hidden
+  setHiddenState();
+
+  // ===== Button 1: Show / Hide Evacuation Routes =====
+  routesToggleBtn.addEventListener("click", () => {
+    if (!routesVisible) {
+      // show NORMAL routes first time
+      setNormalState();
+      routesVisible = true;
+      blockedMode = false;
+
+      routesToggleBtn.textContent = "Hide Evacuation Routes";
+      scenarioToggleBtn.style.display = "inline-block";
+      scenarioToggleBtn.textContent = "Show Blocked Exit Scenario";
     } else {
-      showRoutesBtn.textContent = "Show Evacuation Routes";
+      // hide everything
+      setHiddenState();
+      routesVisible = false;
+      blockedMode = false;
 
-      // Hide everything again
-      primaryRoutes.forEach(r => r.classList.add("hidden"));
-      altRoutes.forEach(r => r.classList.add("hidden"));
-      personDot.classList.add("hidden");
-      hazard.classList.add("hidden");
-      blockedIcon.classList.add("hidden");
-
-      toggleScenarioBtn.style.display = "none";
-      toggleScenarioBtn.textContent = "Show Blocked Exit Scenario";
-
-      blocked = false;
+      routesToggleBtn.textContent = "Show Evacuation Routes";
+      scenarioToggleBtn.style.display = "none";
     }
   });
 
-  // ----------------------------
-  // STEP 2: BLOCKED SCENARIO
-  // ----------------------------
-
-  toggleScenarioBtn.addEventListener("click", () => {
-    blocked = !blocked;
-
-    if (blocked) {
-      toggleScenarioBtn.textContent = "Show Normal Route";
-
-      // Fade primary path
-      primaryRoutes.forEach(r => r.style.opacity = "0.25");
-
-      // Show hazard + alternate route
-      hazard.classList.remove("hidden");
-      blockedIcon.classList.remove("hidden");
-      altRoutes.forEach(r => r.classList.remove("hidden"));
-
-      // Change person animation
-      personDot.classList.add("person-alt");
-
+  // ===== Button 2: switch Normal <-> Blocked scenario =====
+  scenarioToggleBtn.addEventListener("click", () => {
+    if (!blockedMode) {
+      setBlockedState();
+      blockedMode = true;
+      scenarioToggleBtn.textContent = "Show Normal Route";
     } else {
-      toggleScenarioBtn.textContent = "Show Blocked Exit Scenario";
-
-      primaryRoutes.forEach(r => r.style.opacity = "1");
-      hazard.classList.add("hidden");
-      blockedIcon.classList.add("hidden");
-      altRoutes.forEach(r => r.classList.add("hidden"));
-      personDot.classList.remove("person-alt");
+      setNormalState();
+      blockedMode = false;
+      scenarioToggleBtn.textContent = "Show Blocked Exit Scenario";
     }
   });
 });
+

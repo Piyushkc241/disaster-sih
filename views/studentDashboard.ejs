@@ -6,6 +6,8 @@
     <title>Student Dashboard - Disaster Management App</title>
 
     <link rel="stylesheet" href="/css/style2.css" />
+      <link rel="stylesheet" href="/css/chatbot.css" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -22,17 +24,17 @@
         </a>
 
         <nav class="sidebar-nav">
-          <a href="/studentdashboard" class="active">
-            <i class="fa fa-gauge"></i> Dashboard
+          <a href="/" class="active">
+            <i class="fa fa-gauge"></i> Home
           </a>
-          <a href="/alldisaster">
+          <a href="/index">
             <i class="fa fa-book"></i> Modules
           </a>
           <a href="/quiz">
             <i class="fa fa-gamepad"></i> Quizz
           </a>
-          <a href="/chatbot">
-            <i class="fa fa-robot"></i> Chatbot
+          <a href="/ar-tools">
+            <i class="fa fa-robot"></i> Ar-tools
           </a>
         </nav>
 
@@ -64,7 +66,7 @@
                 Learn disaster safety step-by-step with structured modules,
                 activity sheets, and real-life survival examples.
               </p>
-              <button class="cta-btn" onclick="openModules()">View Modules</button>
+              <button class="cta-btn" onclick="window.location.href='/index'">View Modules</button>
             </div>
 
             <!-- Quiz Card -->
@@ -74,11 +76,11 @@
                 Make learning exciting with interactive quizzes that test real-life
                 decision-making during emergencies.
               </p>
-              <button class="cta-btn" onclick="startQuize()">Start Quizz</button>
+              <button class="cta-btn" onclick="window.location.href='/quiz'">Start Quizz</button>
             </div>
 
             <!-- Chatbot -->
-            <div class="dashboard-card chatbot-full" id="chatbot">
+            <!-- <div class="dashboard-card chatbot-full" id="chatbot">
               <h2><i class="fa fa-robot"></i> Chatbot Assistant</h2>
               <p>Ask questions about disasters and get quick safety tips.</p>
 
@@ -105,12 +107,15 @@
                   </button>
                 </div>
               </div>
-            </div>
+            </div> -->
 
           </div>
         </section>
       </div>
     </div>
+
+    <!-- Chatbot Widget -->
+  <%- include('chatbot-widget') %>
 
     <!-- ========== SCRIPT ========== -->
     <script>
@@ -148,6 +153,7 @@
 
       // (Bot response logic unchanged)
     </script>
+    <script src="/js/chatbot.js"></script>
   </body>
 </html>
 

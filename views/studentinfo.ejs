@@ -105,15 +105,15 @@
             </td>
 
             <td>
-              <form action="/admin/student/approve/<%= student._id %>" method="POST" style="display:inline;">
+              <form action="/teacher/student/approve/<%= student._id %>" method="POST" style="display:inline;">
                 <button class="approve-btn">Approve</button>
               </form>
 
-              <form action="/admin/student/reject/<%= student._id %>" method="POST" style="display:inline;">
+              <form action="/teacher/student/reject/<%= student._id %>" method="POST" style="display:inline;">
                 <button class="reject-btn">Reject</button>
               </form>
 
-              <form action="/admin/student/block/<%= student._id %>" method="POST" style="display:inline;">
+              <form action="/teacher/student/block/<%= student._id %>" method="POST" style="display:inline;">
                 <button class="block-btn">Block</button>
               </form>
             </td>

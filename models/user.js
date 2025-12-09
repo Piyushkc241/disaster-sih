@@ -10,6 +10,10 @@ const userSchema= new Schema({
         type:String,
         required:true
     },
+    uniqueId:{
+        type:Number,
+        required:true
+    },
     phone:{
         type:Number,
         required:true,
@@ -23,9 +27,9 @@ const userSchema= new Schema({
         required:true
     },
     approval:{
-         type: String,
-  enum: ["approved", "rejected"],
-  default: "rejected"
+        type: String,
+        enum: ["pending", "approved", "rejected", "blocked"],
+        default: "pending"
     },
 
 });

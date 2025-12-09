@@ -303,7 +303,7 @@ FOOTER
   transition: 0.3s;
 }
 
-.blocked-icon {
+  blocked-icon {
   position: absolute;
   left: 68px;
   top: 135px;
@@ -463,7 +463,7 @@ FOOTER
 }
 
 .floor {
-  flex-shrink: 0; /* ensures floor stays left */
+  flex-shrink: 0; 
 }
 
 .demo-text {
@@ -474,3 +474,4 @@ FOOTER
   border: 1px solid #d1d5db;
   box-shadow: 0 4px 14px rgba(0,0,0,0.06);
 }
+

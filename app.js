@@ -65,27 +65,31 @@ async function main() {
 //   res.send("no");
 // });
 
-//routes
+
+//home
 app.get("/", (req, res) => {
   res.render("home",{idx:index,msg:alerts[index]});
 });
 
+//report
 app.get("/report", (req, res) => {
   res.render("report",{idx:index,msg:alerts[index]});
 });
 
+//ar-tools
 app.get("/ar-tools", (req, res) => {
   res.render("ar-tools",{idx:index,msg:alerts[index]});
 });
 
+//chooselogin
 app.get("/chooselogin", (req, res) => {
   res.render("choose-login",{idx:index,msg:alerts[index]});
 });
 
+
 //admin
 app.get("/adminlogin",(req,res)=>{
   res.render("adminLogin");
-  
 });
 
 app.post("/adminlogin",async (req,res)=>{
@@ -107,24 +111,6 @@ app.get("/admin/studentinfo", async (req, res) => {
   const students = await User.find({});
   res.render("studentinfo", { students });
 });
-// STUDENT APPROVE
-app.post("/admin/student/approve/:id", async (req, res) => {
-  await User.findByIdAndUpdate(req.params.id, { approval: "approved" });
-  res.redirect("/admin/studentinfo");
-});
-
-// STUDENT REJECT
-app.post("/admin/student/reject/:id", async (req, res) => {
-  await User.findByIdAndUpdate(req.params.id, { approval: "rejected" });
-  res.redirect("/admin/studentinfo");
-});
-
-// STUDENT BLOCK
-app.post("/admin/student/block/:id", async (req, res) => {
-  await User.findByIdAndUpdate(req.params.id, { approval: "blocked" });
-  res.redirect("/admin/studentinfo");
-});
-
 
 app.get("/admin/teacherinfo", async (req, res) => {
   const teachers = await Teacher.find({});
@@ -132,40 +118,8 @@ app.get("/admin/teacherinfo", async (req, res) => {
 });
 
 
-
-//student
-app.get("/studentregister", (req, res) => {
-  res.render("studentRegister",{idx:index,msg:alerts[index]});
-});
-app.post("/studentregister", async (req, res) => {
-  let newUser = new User(req.body.student);
-  await newUser.save();
-  res.render("studentPendingApproval");
-});
-
-app.get("/studentlogin", (req, res) => {
-  res.render("studentlogin", { idx:index, msg:alerts[index] });
-});
-app.post("/studentlogin", async (req, res) => {
-  let rollNum = req.body.roll;
-  let clgName= req.body.clg;
-  let pass = req.body.password;
-  let exists= await User.find({ uniqueId:rollNum , institue:clgName,password:pass});
-  if(!exists==1){
-    res.redirect("/studentregister");
-  }  
-  res.render("studentDashboard",{idx:index,msg:alerts[index]});
-});
-
-app.get("/studentdashboard", (req, res) => {
-  res.render("studentdashboard",{idx:index,msg:alerts[index]});
-});
-
-app.get("/studentpending",(req,res)=>{
-  res.render("studentPendingApproval");
-});
-
 //teacher
+
 app.get("/teacherregister", (req, res) => {
   res.render("teacherRegister",{idx:index,msg:alerts[index]});
 });
@@ -211,8 +165,6 @@ app.post("/teacherlogin", async (req, res) => {
   res.render("teacherDashboard");
 });
 
-
-
 app.get("/teacherdashboard", (req, res) => {
   res.render("teacherDashboard",{idx:index,msg:alerts[index]});
 });
@@ -220,7 +172,28 @@ app.get("/teacherdashboard", (req, res) => {
 app.get("/teacherapproval",(req,res)=>{
   res.render("teacherPendingApproval");
 });
+app.get("/teacher/studentinfo", async (req, res) => {
+  const students = await User.find({});
+  res.render("studentinfo", { students });
+});
 
+// STUDENT APPROVE
+app.post("/teacher/student/approve/:id", async (req, res) => {
+  await User.findByIdAndUpdate(req.params.id, { approval: "approved" });
+  res.redirect("/teacher/studentinfo");
+});
+
+// STUDENT REJECT
+app.post("/teacher/student/reject/:id", async (req, res) => {
+  await User.findByIdAndUpdate(req.params.id, { approval: "rejected" });
+  res.redirect("/teacher/studentinfo");
+});
+
+// STUDENT BLOCK
+app.post("/teacher/student/block/:id", async (req, res) => {
+  await User.findByIdAndUpdate(req.params.id, { approval: "blocked" });
+  res.redirect("/teacher/studentinfo");
+});
 // APPROVE
 app.post("/admin/teacher/approve/:id", async (req, res) => {
   await Teacher.findByIdAndUpdate(req.params.id, { approval: "approved" });
@@ -237,6 +210,53 @@ app.post("/admin/teacher/reject/:id", async (req, res) => {
 app.post("/admin/teacher/block/:id", async (req, res) => {
   await Teacher.findByIdAndUpdate(req.params.id, { approval: "blocked" });
   res.redirect("/admin/teacherinfo");
+});
+
+
+
+//student
+app.get("/studentregister", (req, res) => {
+  res.render("studentRegister",{idx:index,msg:alerts[index]});
+});
+
+app.post("/studentregister", async (req, res) => {
+  let newUser = new User(req.body.student);
+  await newUser.save();
+  res.render("studentPendingApproval");
+});
+
+app.get("/studentlogin", (req, res) => {
+  res.render("studentlogin", { idx:index, msg:alerts[index] });
+});
+app.post("/studentlogin", async (req, res) => {
+  let rollNum = req.body.roll;
+  let clgName= req.body.clg;
+  let pass = req.body.password;
+  let exists= await User.find({ uniqueId:rollNum , institue:clgName,password:pass});
+  if(!exists==1){
+    res.redirect("/studentregister");
+  }  
+  res.render("studentDashboard",{idx:index,msg:alerts[index]});
+});
+
+app.get("/studentdashboard", (req, res) => {
+  res.render("studentdashboard",{idx:index,msg:alerts[index]});
+});
+
+app.get("/studentpending",(req,res)=>{
+  res.render("studentPendingApproval");
+});
+
+
+//teacher
+
+
+
+
+
+//evacuation
+app.get("/evacuation",(req,res)=>{
+  res.render("evacuationIndex");
 });
 
 

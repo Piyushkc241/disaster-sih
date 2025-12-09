@@ -176,7 +176,7 @@
           <a href="/teacherdashboard" class="active"><i class="fa fa-gauge"></i> Dashboard</a>
           <a href="/alldisaster"><i class="fa fa-book-open"></i> Modules</a>
           <a href="/quiz"><i class="fa fa-question-circle"></i> Quizzes</a>
-          <a href="#drills"><i class="fa fa-people-group"></i> Mock Drills</a>
+          <a href="/evacuation"><i class="fa fa-people-group"></i> Mock Drills</a>
           <a href="/report"><i class="fa fa-file-alt"></i> Reports</a>
         </nav>
 
@@ -218,25 +218,25 @@
             <div class="dashboard-card" id="modules">
               <h2><i class="fa fa-chalkboard"></i> Teaching Modules</h2>
               <p>Access and schedule structured lessons for disaster safety topics.</p>
-              <button class="cta-btn" onclick="viewModules()">Open Modules</button>
+              <button class="cta-btn" onclick="window.location.href='/index'">Open Modules</button>
             </div>
 
-            <div class="dashboard-card" id="quizzes">
+            <!-- <div class="dashboard-card" id="quizzes">
               <h2><i class="fa fa-edit"></i> Create Quizzes</h2>
               <p>Build knowledge tests and evaluate student understanding.</p>
-              <button class="cta-btn" onclick="createQuiz()">Start Creating</button>
-            </div>
+              <button class="cta-btn" onclick="window.location.href='/quiz'">Start Creating</button>
+            </div> -->
 
             <div class="dashboard-card" id="drills">
               <h2><i class="fa fa-person-running"></i> Mock Drill Plans</h2>
               <p>Detailed execution flow for emergency evacuation and drill setups.</p>
-              <button class="cta-btn" onclick="viewDrills()">View Plans</button>
+              <button class="cta-btn" onclick="window.location.href='/evacuation'">View Plans</button>
             </div>
 
             <div class="dashboard-card" id="reports" >
               <h2><i class="fa fa-file"></i>Student List</h2>
               <p> Students approved under you</p>
-              <button class="cta-btn" onclick="viewReports()">View </button>
+              <button class="cta-btn" onclick="window.location.href='/admin/studentinfo'">View </button>
             </div>
           </div>
         </section>
@@ -307,10 +307,6 @@
         window.location.href = "/";
       });
 
-      function viewModules() { alert("Modules coming soon!"); }
-      function createQuiz() { alert("Quiz builder coming soon!"); }
-      function viewDrills() { alert("Drill instructions loading..."); }
-      function viewReports() { alert("Reports dashboard coming soon!"); }
     </script>
 
     <!-- Extra styles -->

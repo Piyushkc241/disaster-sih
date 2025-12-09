@@ -82,18 +82,15 @@
 
       <div class="form-group">
         <label>Password</label>
-        <input type="password" id="regPassword" placeholder="Enter password" required name="student[password]" />
+        <input type="password" id="regPassword" placeholder="Enter password" required name="password" />
       </div>
 
-      <button type="submit" class="register-btn">
-        <i class="fa-solid fa-user-plus" onclick="window.location.href="'/studentregister'" ></i> Register as Student
-      </button>
-      <a href="#" class="auth-link">Forgot password?</a>
+      
 
       <p id="registerStatus" style="margin-top: 0.5rem; font-size: 0.85rem;"></p>
 
       <div style="display:flex; gap:0.7rem; margin-top:1rem;">
-        <button type="submit" class="btn btn-primary" style="flex:1;">
+        <button type="submit" class="btn btn-primary" style="flex:1;" onclick="window.location.href='/teacherdashboard'">
           <i class="fa-solid fa-right-to-bracket"></i> Login
         </button>
         <button type="button" class="btn btn-outline" style="flex:1;" onclick="window.location.href='/teacherregister'">
