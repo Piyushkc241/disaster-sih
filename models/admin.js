@@ -6,12 +6,16 @@ const adminSchema= new Schema({
         type:String,
         required:true,
     },
+    institute:{
+        type:String,
+        required:true,
+
+    },
     password:{
         type:String,
         required:true,
-    }
-    
+    }   
 });
 
-const Teacher=mongoose.model("Admin",adminSchema);
+const Admin=mongoose.model("Admin",adminSchema);
 module.exports=Admin;

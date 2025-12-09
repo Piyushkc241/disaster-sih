@@ -8,25 +8,28 @@ const teacherSchema= new Schema({
     },
     uniqueId: {
         type: String,
+        required:true,
     },
     email : {
         type:String,
         required:true,
-        unique: true,
-    },
-    role:{
-        type:String,
-        default:"teacher",
     },
     password:{
         type:String,
         required:true,
     },
-    number :{
-        type : String,
+    phone :{
+        type : Number,
+        required:true,
     },
     institute:{
         type:String,
+        required:true,
+    },
+    approval:{
+         type: String,
+  enum: ["approved", "rejected"],
+  default: "rejected"
     },
     
 });

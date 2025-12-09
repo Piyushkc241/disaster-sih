@@ -10,18 +10,22 @@ const userSchema= new Schema({
         type:String,
         required:true
     },
+    phone:{
+        type:Number,
+        required:true,
+    },
     password:{
         type:String,
         required:true,
     },
-    institue:{
+    institute:{
         type:String,
-        // required:true
+        required:true
     },
     approval:{
-        type:String,
-        required:true,
-        set:(v)=>v === ""? "rejected" :v,
+         type: String,
+  enum: ["approved", "rejected"],
+  default: "rejected"
     },
 
 });

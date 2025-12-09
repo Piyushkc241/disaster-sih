@@ -51,50 +51,68 @@
     <form id="teacherLoginForm" class="auth-form" action="/teacherlogin" method="POST">
 
       <div class="form-group">
-        <label for="teacherEmail">Institute Email</label>
-        <input type="email" id="teacherEmail" name="email" placeholder="teacher@institute.edu" required />
+        <label for="teacherId">Id Number</label>
+        <input type="number" id="teacherRoll" name="roll" placeholder="teacher@institute.edu" required />
+      </div>
+      <div class="form-group">
+        <label>School / College Name</label>
+        <select id="regCollege" required name="clg">
+            <option value="">Select your college</option>
+            <option value="Accurate Institute of Management and Technology">Accurate Institute of Management and Technology</option>
+            <option value="AKM Institute Of Technology & Management">AKM Institute Of Technology & Management</option>
+            <option value="Bennett University">Bennett University</option>
+            <option value="Delhi Technical Campus">Delhi Technical Campus</option>
+            <option value="Dronacharya Group of Institutions">Dronacharya Group of Institutions</option>
+            <option value="Galgotias College of Engineering and Technology">Galgotias College of Engineering and Technology</option>
+            <option value="Galgotias University">Galgotias University</option>
+            <option value="Gautam Buddha University">Gautam Buddha University</option>
+            <option value="GL Bajaj Institute of Technology and Management">GL Bajaj Institute of Technology and Management</option>
+            <option value="Greater Noida Institute of Technology (GNIOT)">Greater Noida Institute of Technology (GNIOT)</option>
+            <option value="IEC College of Engineering & Technology">IEC College of Engineering & Technology</option>
+            <option value="IILM University Greater Noida">IILM University Greater Noida</option>
+            <option value="ITS Engineering College">ITS Engineering College</option>
+            <option value="Lloyd Institute of Engineering and Technology">Lloyd Institute of Engineering and Technology</option>
+            <option value="Noida Institute of Engineering and Technology (NIET)">Noida Institute of Engineering and Technology (NIET)</option>
+            <option value="Sharda University">Sharda University</option>
+            <option value="Shiv Nadar University">Shiv Nadar University</option>
+            <option value="Vishveshwarya Group of Institutions">Vishveshwarya Group of Institutions</option>
+            <option value="Other">Other / Not listed</option>
+        </select>
       </div>
 
       <div class="form-group">
-        <label for="teacherPassword">Password</label>
-        <input type="password" id="teacherPassword" name="password" placeholder="Enter your password" required />
+        <label>Password</label>
+        <input type="password" id="regPassword" placeholder="Enter password" required name="student[password]" />
       </div>
 
-      <div class="auth-actions">
-        <label class="auth-remember">
-          <input type="checkbox" id="teacherRemember" />
-          Remember me
-        </label>
+      <button type="submit" class="register-btn">
+        <i class="fa-solid fa-user-plus" onclick="window.location.href="'/studentregister'" ></i> Register as Student
+      </button>
+      <a href="#" class="auth-link">Forgot password?</a>
 
-        <a href="#" class="auth-link">Forgot password?</a>
-      </div>
+      <p id="registerStatus" style="margin-top: 0.5rem; font-size: 0.85rem;"></p>
 
-      <!-- LOGIN + SIGNUP SIDE-BY-SIDE -->
       <div style="display:flex; gap:0.7rem; margin-top:1rem;">
         <button type="submit" class="btn btn-primary" style="flex:1;">
           <i class="fa-solid fa-right-to-bracket"></i> Login
         </button>
-
-
-        <!-- SIGNUP REDIRECT BUTTON -->
-         
         <button type="button" class="btn btn-outline" style="flex:1;" onclick="window.location.href='/teacherregister'">
           <i class="fa-solid fa-user-plus"></i> Sign Up
         </button>
+    
       </div>
-
+      
       <p class="auth-status" id="teacherLoginStatus"><%= msg || "" %></p>
-
+    
       <p class="auth-extra">
         Not a teacher? <a href="/studentlogin" class="auth-link">Log in as student</a>
       </p>
       <p class="auth-extra">
         <a href="/" class="auth-link">← Back to main portal</a>
       </p>
-
+      </div>
     </form>
   </div>
-
 </body>
 </html>
 

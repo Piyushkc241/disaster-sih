@@ -25,15 +25,41 @@
       Sign in to manage teachers, students, and disaster preparedness activities.
     </p>
 
-    <form id="adminLoginForm" class="auth-form">
+    <form id="adminLoginForm" class="auth-form" method="post" action="/adminlogin">
       <div class="form-group">
-        <label for="adminEmail">Admin Email</label>
+        <label for="adminUsername">Username</label>
         <input
-          type="email"
-          id="adminEmail"
+          type="text"
+          id="adminUsername"
           placeholder="admin@portal.com"
           required
+          name="username"
         />
+      </div>
+      <div class="form-group">
+        <label>School / College Name</label>
+        <select id="regCollege" required name="institute">
+            <option value="">Select your college</option>
+            <option value="Accurate Institute of Management and Technology">Accurate Institute of Management and Technology</option>
+            <option value="AKM Institute Of Technology & Management">AKM Institute Of Technology & Management</option>
+            <option value="Bennett University">Bennett University</option>
+            <option value="Delhi Technical Campus">Delhi Technical Campus</option>
+            <option value="Dronacharya Group of Institutions">Dronacharya Group of Institutions</option>
+            <option value="Galgotias College of Engineering and Technology">Galgotias College of Engineering and Technology</option>
+            <option value="Galgotias University">Galgotias University</option>
+            <option value="Gautam Buddha University">Gautam Buddha University</option>
+            <option value="GL Bajaj Institute of Technology and Management">GL Bajaj Institute of Technology and Management</option>
+            <option value="Greater Noida Institute of Technology (GNIOT)">Greater Noida Institute of Technology (GNIOT)</option>
+            <option value="IEC College of Engineering & Technology">IEC College of Engineering & Technology</option>
+            <option value="IILM University Greater Noida">IILM University Greater Noida</option>
+            <option value="ITS Engineering College">ITS Engineering College</option>
+            <option value="Lloyd Institute of Engineering and Technology">Lloyd Institute of Engineering and Technology</option>
+            <option value="Noida Institute of Engineering and Technology (NIET)">Noida Institute of Engineering and Technology (NIET)</option>
+            <option value="Sharda University">Sharda University</option>
+            <option value="Shiv Nadar University">Shiv Nadar University</option>
+            <option value="Vishveshwarya Group of Institutions">Vishveshwarya Group of Institutions</option>
+            <option value="Other">Other / Not listed</option>
+        </select>
       </div>
 
       <div class="form-group">
@@ -42,6 +68,7 @@
           type="password"
           id="adminPassword"
           placeholder="Enter your password"
+          name="password"
           required
         />
       </div>
@@ -63,40 +90,7 @@
   </div>
 
   <script>
-    const adminForm = document.getElementById("adminLoginForm");
-    const adminStatus = document.getElementById("adminStatus");
-
-    if (adminForm) {
-      adminForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-
-        const email = document.getElementById("adminEmail").value.trim();
-        const password = document.getElementById("adminPassword").value.trim();
-
-        if (!email || !password) {
-          adminStatus.textContent = "Please enter both email and password.";
-          adminStatus.className = "auth-status error";
-          return;
-        }
-
-        adminStatus.textContent = "Verifying credentials...";
-        adminStatus.className = "auth-status";
-
-        // Demo credentials – change to real auth later
-        if (email === "admin@portal.com" && password === "admin123") {
-          adminStatus.textContent = "Login successful. Redirecting to admin dashboard...";
-          adminStatus.className = "auth-status success";
-
-          setTimeout(() => {
-            // admin dashboard in same folder
-            window.location.href = "/admindashboard";
-          }, 900);
-        } else {
-          adminStatus.textContent = "Invalid admin credentials. Please try again.";
-          adminStatus.className = "auth-status error";
-        }
-      });
-    }
+   
   </script>
 
 </body>

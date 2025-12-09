@@ -51,14 +51,40 @@
     <form id="studentLoginForm" class="auth-form" action="/studentlogin" method="POST">
       
       <div class="form-group">
-        <label for="studentEmail">Email</label>
+        <label for="studentEmail">Roll Number</label>
         <input
-          type="email"
+          type="number"
           id="studentEmail"
-          name="email"
+          name="roll"
           placeholder="student@example.com"
           required
         />
+      </div>
+
+      <div class="form-group">
+        <label>School / College Name</label>
+        <select id="regCollege" required name="clg">
+            <option value="">Select your college</option>
+            <option value="Accurate Institute of Management and Technology">Accurate Institute of Management and Technology</option>
+            <option value="AKM Institute Of Technology & Management">AKM Institute Of Technology & Management</option>
+            <option value="Bennett University">Bennett University</option>
+            <option value="Delhi Technical Campus">Delhi Technical Campus</option>
+            <option value="Dronacharya Group of Institutions">Dronacharya Group of Institutions</option>
+            <option value="Galgotias College of Engineering and Technology">Galgotias College of Engineering and Technology</option>
+            <option value="Galgotias University">Galgotias University</option>
+            <option value="Gautam Buddha University">Gautam Buddha University</option>
+            <option value="GL Bajaj Institute of Technology and Management">GL Bajaj Institute of Technology and Management</option>
+            <option value="Greater Noida Institute of Technology (GNIOT)">Greater Noida Institute of Technology (GNIOT)</option>
+            <option value="IEC College of Engineering & Technology">IEC College of Engineering & Technology</option>
+            <option value="IILM University Greater Noida">IILM University Greater Noida</option>
+            <option value="ITS Engineering College">ITS Engineering College</option>
+            <option value="Lloyd Institute of Engineering and Technology">Lloyd Institute of Engineering and Technology</option>
+            <option value="Noida Institute of Engineering and Technology (NIET)">Noida Institute of Engineering and Technology (NIET)</option>
+            <option value="Sharda University">Sharda University</option>
+            <option value="Shiv Nadar University">Shiv Nadar University</option>
+            <option value="Vishveshwarya Group of Institutions">Vishveshwarya Group of Institutions</option>
+            <option value="Other">Other / Not listed</option>
+        </select>
       </div>
 
       <div class="form-group">

@@ -5,6 +5,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const User = require("./models/user");
 const Teacher = require("./models/teacher");
+const Admin = require("./models/admin");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -84,6 +85,18 @@ app.get("/chooselogin", (req, res) => {
 //admin
 app.get("/adminlogin",(req,res)=>{
   res.render("adminLogin");
+  
+});
+
+app.post("/adminlogin",async (req,res)=>{
+  let adminUsername=req.body.username;
+  let adminInstitute=req.body.institute;
+  let adminPassword=req.body.password;
+  let exists=await Admin.findOne({username:adminUsername, institute:adminInstitute,password:adminPassword});
+  if(exists){
+    res.redirect("/adminlogin");
+  }
+  res.redirect("/admindashboard");
 });
 
 app.get("/admindashboard",(req,res)=>{
@@ -104,44 +117,23 @@ app.get("/studentregister", (req, res) => {
   res.render("studentRegister",{idx:index,msg:alerts[index]});
 });
 app.post("/studentregister", async (req, res) => {
-  // let register = req.body.register;
-  // if (register.role == "student" || register.role == "") {
-  //   const exists = await User.exists({
-  //     email: register.email,
-  //     password: register.password,
-  //   });
-  //   if (!exists) {
-  //     const newUser = new User(req.body.register);
-  //     await newUser.save();
-  //   }
-  // } else {
-  //   const exists = await Teacher.exists({
-  //     email: register.email,
-  //     password: register.password,
-  //   });
-  //   if (!exists) {
-  //     const newTeacher = new Teacher(req.body.register);
-  //     await newTeacher.save();
-  //   }
-  // }
-  res.render("studentDashboard",{idx:index,msg:alerts[index]});
+  let newStudent = new User(req.body.student);
+  await newStudent.save();
+  res.redirect("/studentpending");
 });
 
 app.get("/studentlogin", (req, res) => {
-  res.render("studentlogin", { idx:index, msg:null });
+  res.render("studentlogin", { idx:index, msg:alerts[index] });
 });
 app.post("/studentlogin", async (req, res) => {
-  let studentDetails = req.body;
-
-  const exists = await User.exists({
-    email: studentDetails.email,
-    password: studentDetails.password,
-  });
-  if (exists) {
-    res.render("studentDashboard",{idx:index,msg:alerts[index]});
-  } else {
-    res.status(401).render("studentlogin", { idx:index, msg:"Wrong credentials. Please try again." });
-  }
+  let rollNum = req.body.roll;
+  let clgName= req.body.clg;
+  let pass = req.body.password;
+  let exists= await User.find({ uniqueId:rollNum , institue:clgName,password:pass});
+  if(!exists==1){
+    res.redirect("/studentregister");
+  }  
+  res.render("studentDashboard",{idx:index,msg:alerts[index]});
 });
 
 app.get("/studentdashboard", (req, res) => {
@@ -152,54 +144,33 @@ app.get("/studentpending",(req,res)=>{
   res.render("studentPendingApproval");
 });
 
-
 //teacher
+app.get("/teacherregister", (req, res) => {
+  res.render("teacherRegister",{idx:index,msg:alerts[index]});
+});
+
+app.post("/teacherregister", async (req, res) => {
+  let newTeacher = new Teacher(req.body.teacher);
+  await newTeacher.save();
+  res.render("teacherDashboard",{idx:index,msg:alerts[index]});
+});
+
 app.get("/teacherlogin", (req, res) => {
   res.render("teacherlogin",{idx:index,msg:null});
 });
 app.post("/teacherlogin", async (req, res) => {
-  let teacherDetails = req.body;
-  
-  const exists = await Teacher.exists({
-    email: teacherDetails.email,
-    password: teacherDetails.password,
-  });
-  if (exists) {
-    res.render("teacherDashboard",{idx:index,msg:alerts[index]});
-  } else {
-    res.status(401).render("teacherlogin",{idx:index,msg:"Wrong credentials. Please try again."});
-  }
+  let rollNum = req.body.roll;
+  let clgName= req.body.clg;
+  let pass = req.body.password;
+  let exists= await Teacher.find({ uniqueId:rollNum , institue:clgName,password:pass});
+  if(!exists==1){
+    res.redirect("/teacherregister");
+  }  
+  res.render("teacherDashboard",{idx:index,msg:alerts[index]});
+ 
 });
 
-app.get("/teacherregister", (req, res) => {
-  res.render("teacherregister",{idx:index,msg:alerts[index]});
-});
-app.post("/teacherregister", async (req, res) => {
-  try {
-    const { name, uniqueId, email, number, institute, password, confirmPassword } = req.body;
 
-    if (!name || !email || !password) {
-      return res.status(400).render("teacherregister", { idx:index, msg:"Please fill all required fields" });
-    }
-
-    if (password !== confirmPassword) {
-      return res.status(400).render("teacherregister", { idx:index, msg:"Passwords do not match" });
-    }
-
-    const existingTeacher = await Teacher.findOne({ email });
-    if (existingTeacher) {
-      return res.status(400).render("teacherlogin", { idx:index, msg:"Account already exists. Please login." });
-    }
-
-    const newTeacher = new Teacher({ name, uniqueId, email, number, institute, password });
-    await newTeacher.save();
-
-    return res.render("teacherPendingApproval", { idx:index, msg:alerts[index] });
-  } catch (error) {
-    console.error("Teacher registration error:", error.message);
-    return res.status(500).render("teacherregister", { idx:index, msg:"Registration failed. Please try again." });
-  }
-});
 app.get("/teacherdashboard", (req, res) => {
   res.render("teacherDashboard",{idx:index,msg:alerts[index]});
 });
