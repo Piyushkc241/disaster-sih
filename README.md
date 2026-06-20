@@ -40,7 +40,6 @@ Creating awareness at an early stage also contributes toward building a disaster
 * A digital platform that provides interactive disaster preparedness modules
 * Virtual disaster drills and emergency simulations
 * Region-specific disaster awareness and alerts
-* Gamified learning experiences for better engagement
 * Emergency communication and contact systems
 * Administrative dashboards to track preparedness and participation
 
@@ -168,5 +167,4 @@ For queries or collaboration:
 
 * Name: Piyush kumar chauhan
 * Email: piyushk.c.241@gmail.com
-* LinkedIn: Your LinkedIn Profile
-* GitHub: Your GitHub Profile
+* LinkedIn: https://www.linkedin.com/in/piyush-kumar-chauhan-6b8182309/
