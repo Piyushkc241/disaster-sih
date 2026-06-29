@@ -1,170 +1,212 @@
-# 🌍 Disaster Preparedness & Emergency Response System
+# 🌍 Disaster Learning Hub
 
 <p align="center">
   <img src="https://img.shields.io/badge/Smart%20India%20Hackathon-2025-blue?style=for-the-badge"/>
-  <img src="https://img.shields.io/badge/Frontend-React.js-61DAFB?style=for-the-badge&logo=react"/>
   <img src="https://img.shields.io/badge/Backend-Node.js-339933?style=for-the-badge&logo=node.js"/>
+  <img src="https://img.shields.io/badge/Framework-Express.js-000000?style=for-the-badge&logo=express"/>
   <img src="https://img.shields.io/badge/Database-MongoDB-47A248?style=for-the-badge&logo=mongodb"/>
+  <img src="https://img.shields.io/badge/Templating-EJS-B4CA65?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/AI-Gemini%20API-4285F4?style=for-the-badge&logo=google"/>
 </p>
+
+---
 
 ## 📌 Overview
 
-## Overview
+Disaster Learning Hub is a role-based disaster preparedness education platform developed for **Smart India Hackathon (SIH) 2025**.
 
-This project was developed as part of the **Smart India Hackathon (SIH) 2025** to improve disaster preparedness, emergency communication, and resource coordination during natural or man-made disasters.
-
-The platform helps users, authorities, and emergency response teams manage disaster-related situations efficiently through real-time updates, alerts, reporting systems, and centralized resource management.
+The platform allows schools and colleges to train students on disaster safety through interactive learning modules, quizzes, animations, and an AI-powered chatbot — all managed through a structured three-tier approval system.
 
 ---
 
-# Problem Statement
+## 🚩 Problem Statement
 
-## Problem Description
+Schools and colleges in India lack practical digital systems for disaster preparedness training. Safety guidelines exist but awareness among students and staff remains low.
 
-In India, schools and colleges are often unprepared for natural disasters such as earthquakes, floods, fires, and other emergencies. Although safety guidelines and disaster management policies exist, there is a lack of practical implementation and awareness among students and staff.
-
-Most institutions do not have proper digital systems to conduct virtual drills, simulate emergency scenarios, or provide structured disaster preparedness training. Additionally, awareness regarding region-specific disasters remains low, causing confusion and panic during real emergencies.
-
-Traditional safety drills are infrequent, poorly coordinated, and often fail to create real preparedness among students and educational staff.
-
-## Impact / Why This Problem Needs to Be Solved
-
-Lack of disaster preparedness can lead to panic, injuries, communication failure, and delayed emergency response during critical situations.
-
-By integrating disaster education and preparedness into digital learning systems, institutions can equip students and staff with essential life-saving skills and improve campus safety.
-
-Creating awareness at an early stage also contributes toward building a disaster-resilient society capable of responding effectively during emergencies.
-
-## Expected Outcomes
-
-* A digital platform that provides interactive disaster preparedness modules
-* Virtual disaster drills and emergency simulations
-* Region-specific disaster awareness and alerts
-* Emergency communication and contact systems
-* Administrative dashboards to track preparedness and participation
-
-## Stakeholders / Beneficiaries
-
-* Students (Schools & Colleges)
-* Teachers and Administrative Staff
-* Educational Institutions
-* Parents and Guardians
-* Local Disaster Management Authorities
-* Government Organizations such as NDMA
-
-## Supporting Data
-
-* India is highly vulnerable to disasters including floods, earthquakes, cyclones, and fires.
-* Reports by the National Disaster Management Authority (NDMA) highlight low disaster awareness levels in educational institutions.
-* UNDRR recommends integrating disaster risk reduction education into school systems to improve preparedness and resilience.
+Traditional safety drills are infrequent and poorly coordinated. There is no structured platform for region-specific disaster education in educational institutions.
 
 ---
 
-# ✨ Features
+## ✨ Features
 
-## User Features
+### Three Role-Based Portals
 
-* User Registration & Authentication
-* Emergency Alert Notifications
-* Live Disaster Updates
-* Incident Reporting System
-* Safe Zone / Shelter Information
-* Emergency Contact Access
-* Location-Based Assistance
+**Student**
+- Register and get approved by teacher
+- Access 16 disaster learning modules
+- Take quizzes after each module
+- Use AI chatbot for disaster safety queries
+- Accessibility tools: text-to-speech, high contrast, adjustable text size
 
-## Admin Features
+**Teacher**
+- Register and get approved by admin
+- Approve or reject student registrations
+- View registered student list
 
-* Disaster Monitoring Dashboard
-* Incident Management
-* Resource Allocation Tracking
-* User Report Verification
-* Emergency Broadcast System
-* Analytics & Reports
-
----
-
-# 🛠️ Tech Stack
-
-## Frontend
-
-* HTML
-* CSS
-* JavaScript
-* React.js
-
-## Backend
-
-* Node.js
-* Express.js
-
-## Database
-
-* MongoDB
-
-## APIs & Services
-
-* Google Maps API
-* Geolocation Services
-* Notification/Alert Services
-
-## Tools & Platforms
-
-* Git & GitHub
-* VS Code
-* Postman
+**Admin**
+- Approve or reject teacher registrations
+- Block teachers if needed
+- View total teachers, students, and incident count
+- Full dashboard with pending approval management
 
 ---
 
-# ⚙️ System Architecture
+### 16 Disaster Learning Modules
 
-1. Users report incidents or receive emergency alerts.
-2. Backend processes requests and stores data in the database.
-3. Admin dashboard monitors disaster reports and affected areas.
-4. Emergency notifications are sent to nearby users.
-5. Resource and rescue coordination are managed centrally.
+Each module includes causes, warning signs, do's & don'ts, animations, sign language video, quiz, and a map of affected regions in India.
 
----
-
-# 🔮 Future Enhancements
-
-* AI-based disaster prediction
-* Offline emergency communication
-* Multi-language support
-* Real-time rescue tracking
-* Mobile application support
-* Drone integration for monitoring
+| Module | Module |
+|---|---|
+| Earthquake | Flood |
+| Fire | Cyclone |
+| Avalanche | Landslide |
+| Tsunami | Lightning |
+| Heatwave | Coldwave |
+| Drought | Hailstorm |
+| Forest Fire | Pandemic |
+| Chemical Hazards | Road Accident Safety |
 
 ---
 
-# 📚 Learning Outcomes
+### Other Features
 
-Through this project, we gained experience in:
-
-* Full-stack web development
-* API integration
-* Real-time data handling
-* Database management
-* Team collaboration
-* Problem-solving under hackathon constraints
+- **AI Chatbot** — powered by Google Gemini API for real-time disaster safety Q&A with fallback responses on quota limits
+- **SMS Alerts** — Twilio integration to broadcast disaster alerts via SMS
+- **Evacuation Simulation** — interactive demo showing primary and alternate evacuation routes with blocked-exit scenarios
+- **Approval Workflow** — two-level gate: teacher approves students, admin approves teachers
 
 ---
 
-# 👥 Team
+## 🛠️ Tech Stack
 
-Developed during **Smart India Hackathon (SIH) 2025** by a collaborative student team focused on building impactful technology solutions for public safety.
+| Layer | Technology |
+|---|---|
+| Backend | Node.js, Express.js |
+| Templating | EJS |
+| Database | MongoDB, Mongoose |
+| AI Chatbot | Google Gemini API |
+| SMS Alerts | Twilio API |
+| Frontend | HTML, CSS, Vanilla JavaScript |
+| Tools | Git, GitHub, VS Code, Postman |
 
 ---
 
-# 📄 License
+## ⚙️ System Architecture
+Student / Teacher / Admin
+↓
+Express Routes
+↓
+Mongoose Models
+(User, Teacher, Admin,
+PendingStudent, PendingTeacher)
+↓
+MongoDB
 
-This project is developed for educational and hackathon purposes.
+## **Approval Flow:**
+
+Teacher registers  →  PendingTeacher collection
+Admin approves     →  moves to Teacher collection
+Student registers  →  PendingStudent collection
+Teacher approves   →  moves to User collection
 
 ---
 
-# 📬 Contact
+## 🗂️ Project Structure
+├── app.js                  # Main server and routes
 
-For queries or collaboration:
+├── models/
 
-* Name: Piyush kumar chauhan
-* Email: piyushk.c.241@gmail.com
-* LinkedIn: https://www.linkedin.com/in/piyush-kumar-chauhan-6b8182309/
+│   ├── user.js             # Student schema
+
+│   ├── teacher.js          # Teacher schema
+
+│   ├── admin.js            # Admin schema
+
+│   ├── pendingTeacher.js
+
+│   └── pendingStudent.js
+
+├── views/
+
+│   ├── home.ejs
+
+│   ├── adminDashboard.ejs
+
+│   ├── teacherDashboard.ejs
+
+│   ├── studentDashboard.ejs
+
+│   └── [16 disaster module pages]
+
+├── public/
+
+│   ├── css/
+
+│   ├── js/
+
+│   └── assets/
+
+└── .env                  # API keys (not committed)
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js installed
+- MongoDB running locally or Atlas URI
+- Gemini API key
+- Twilio account SID and Auth Token
+
+### Installation
+
+```bash
+# Clone the repo
+git clone https://github.com/Piyushkc241/disaster-sih.git
+cd disaster-sih
+
+# Install dependencies
+npm install
+
+# Create .env file
+touch .env
+```
+
+### .env Setup
+GEMINI_API_KEY=your_gemini_key
+
+TWILIO_SID=your_twilio_sid
+
+TWILIO_AUTH=your_twilio_auth_token
+
+### Run
+
+```bash
+node app.js
+# Server starts at http://localhost:3000
+```
+
+---
+
+## 🔮 Future Improvements
+
+- Password hashing with bcrypt (currently plain text)
+- JWT-based authentication
+- Dynamic SMS alerts triggered by real events (currently hardcoded)
+- Multilingual content support
+- Mobile responsive design improvements
+- AI-based disaster risk prediction
+
+---
+
+## 👥 Team
+
+Developed during **Smart India Hackathon (SIH) 2025** by a collaborative student team.
+
+---
+
+## 📬 Contact
+
+- **Name:** Piyush Kumar Chauhan
+- **Email:** piyushk.c.241@gmail.com
+- **LinkedIn:** https://www.linkedin.com/in/piyush-kumar-chauhan-6b8182309/
